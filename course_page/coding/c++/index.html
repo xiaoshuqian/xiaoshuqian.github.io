@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            CSC 511 - OBJECT ORIENTED PROGRAMMING WITH C++
+        </title>
+    </head>
+    <body>
+        <h1>
+            CSC 511 - OBJECT ORIENTED PROGRAMMING WITH C++
+        </h1>
+        <h2>
+            Quarter offered
+        </h2>
+        <p>
+        Spring 2019; Jan 26, 27; Mar 2, 3; Apr 4, 6; Room 406
+        </p>
+        <h2>
+            Course description
+        </h2>
+        <h4>
+            Instructor
+        </h4>
+        <p>
+        Dr. Xiaoshu Qian
+        </p>
+        <h4>
+            References
+        </h4>
+        <ul>
+            <li>
+                The C++ Programming Language, by Bjarne Stroustrup; Publisher: Addison-Wesley Professional; 4 edition (May 19, 2013);
+ISBN-10: 0321563840,
+ISBN-13: 978-0321563842.
+            </li>
+            <li>
+                Programming: Principles and Practice Using C++, by Bjarne Stroustrup; Publisher: Addison-Wesley Professional; 2 edition (May 25, 2014)
+ISBN-10: 9780321992789,
+ISBN-13: 978-0321992789,
+ASIN: 0321992784.
+            </li>
+            <li> <a href="http://www.cplusplus.com/doc/tutorial/">Tutorial at cplusplus.com</a>
+            </li>
+            <li> <a href="https://www.hackerrank.com/domains/cpp?filters%5Bsubdomains%5D%5B%5D=cpp-introduction">Tutorial at hackerrank.com</a>
+            </li>
+            <li> Schaum's Outline of Programming with C++, by John R. Hubbard; Publisher: McGraw-Hill Education; 2nd edition (June 6, 2000);
+ISBN-10: 0071353461,
+ISBN-13: 978-0071353465. <a href="https://www.pdfdrive.com/schaums-programming-with-cpdf-e33447066.html">pdf link</a>
+            </li>
+            <li> Schaum's outline of theory and problems programming with C, by Bryon GOTTFRIED; Publisher: McGraw-Hill Education; 2 edition (June 22, 1996);
+ISBN-10: 9780070240353,
+ISBN-13: 978-0070240353,
+ASIN: 0070240353. <a href="https://www.codewithc.com/programming-with-c-pdf-byron-gottfried/">pdf link</a>
+            </li>
+            <li>Introduction to Programming with C++, by Y. Daniel Liang;
+               Publisher: Pearson; 3 edition (January 14, 2013);
+ISBN-10: 9780133252811,
+ISBN-13: 978-0133252811,
+ASIN: 0133252817 Prentice.
+            </li>
+        </ul>
+        <h4>
+            Description
+        </h4>
+        <p>
+        From ITU course catalog: This class teaches Objected Oriented Programming using C++. Prior exposure to C is helpful but not required as the basic concept of C programming will be reviewed. The topics covered include: Syntax of C++, classes and objects, encapsulation, inheritance, polymorphism, design for reuse, programming with objects, the standard template library, namespaces, exceptions, type casting, and file input/output.
+        </p>
+        <h4>
+            Detailed outline
+        </h4>
+        <h5>Basics</h5>
+<ul>
+    <li>Logistics
+        <ul>
+            <li>Using online tutorials: mainly <a href="http://www.cplusplus.com/doc/tutorial/">tutorial at cplusplus.com</a></li>
+            <li>Accessing online compilers e.g. at <a href="https://www.onlinegdb.com/online_c++_compiler">onlinegdb</a></li>
+            <li>Install IDEs, e.g. clion, xcode, visual studio</li>
+            <li>Running "Hello world" online, in IDE and on command line</li>
+            <li>C-Lion tutorials: <a href="https://www.youtube.com/watch?v=MY_Z90Tj6is">Code generation youtube</a>, <a href="https://www.youtube.com/watch?v=Srnw1dI1iAA">youtube</a>
+            </li>
+        </ul>
+    </li>
+    <li>Program structure
+        <ul>
+            <li>"Hello world!": main(int argc, char* argv[]) or main(int argc, string argv[])</li>
+            <li>Basic IO: &lt iostream&gt, &lt string&gt
+                <ul>
+                    <li>cout.  cout << "a single" " string" << 3.14 << endl</li>
+                    <li>cin.  cin >> mystr; getline(cin, mystr)</li>
+                    <li>clog, cerr</li>
+                </ul>
+            </li>
+            <li>namespace</li>
+        </ul>
+    </li>
+    <li>Data types
+        <ul>
+            <li>bool, char, int, long, double</li>
+            <li>c-like/constructor/uniform initializer: int a=1, b(2), c{3}</li>
+            <li>auto and decltype: auto a = 1; decltype(a) b;</li>
+            <li>basics of string (mutable)</li>
+        </ul>
+    </li>
+    <li>Constants
+        <ul>
+            <li>Numbers. octal: 012. hex: 0x12. 3u, 3l, 3ll, 3ul. 3.14L, 3.14F</li>
+            <li>Char & string. String (literal) concatenation: '\n'; string s1 = "A single" " string"; string s = s1 + s1;</li>
+            <li>Others: true/false, nullptr</li>
+        </ul>
+    </li>
+    <li>Operator and precedence
+        <ul>
+            <li>comma operator: a = (b=1, b+2)</li>
+            <li>sizeof operator: sizeof(char)</li>
+            <li>explicit cast: int(a) or (int)a</li>
+        </ul>
+    </li>
+    <li>Preprocessor. #include, #define, #undef, #ifdef, #ifndef, #if, #endif, #else, #elif
+    </li>
+</ul>
+        <h5>Program structure</h5>
+        <ul>
+            <li>Branch
+            </li>
+            <li>Loops: do while, range-based for loop: for (auto c: str) {}
+            </li>
+            <li>Functions
+                <ul>
+                    <li>pass by value/ref</li>
+                    <li>default value in parameters</li>
+                    <li>recursive function</li>
+                </ul>
+            </li>
+            <li>Overload, template &lt class T&gt or template &lt typename T&gt
+                <ul>
+                    <li>use e.g. sum&lt int&gt(i,j)</li>
+                    <li>Non-type template arguments: template &lt class T, int SIZE&gt</li>
+                </ul>
+            </li>
+            <li>namespace and scope operator ::
+            </li>
+        </ul>
+        <h5>Compound data types</h5>
+        <ul>
+            <li>Array
+                <ul>
+                    <li>int arr[5] = {1}; // first entry will be init to 1, rest to 0s</li>
+                    <li>cf: designated initializer: int arr[5] = {[2]=1, [4]=3}<a href="https://stackoverflow.com/questions/9849719/what-do-square-brackets-mean-in-array-initialization-in-c">stackflow</a>, <a href="http://gcc.gnu.org/onlinedocs/gcc-4.0.4/gcc/Designated-Inits.html">gcc ref</a></li>
+                    <li>Array as an argument: void foo(int arg[]); void foo(int arg[][3][4])</li>
+                    <li>Library arrays: array&lt int, 3&gt a = {3, 4, 5};</li>
+                </ul>
+            </li>
+            <li>Vector (Ref: <a href="http://www.cplusplus.com/reference/vector/vector/">cpluscplus</a>, <a href="https://www.geeksforgeeks.org/ways-copy-vector-c/">ways_to_copy_@geeksforgeeks</a>): push_back, =, constructor init, copy, assign
+            </li>
+            <li>C-string
+            </li>
+            <li>String
+                <ul>
+                    <li> C-string to string: string mystring = a_cstr;</li>
+                    <li> String to C-string: cout &lt &lt mystring.c_str();</li>
+                    <li> String to int: stoi(str)</li>
+                    <li>stringstream. &lt sstream&gt, string s("12"); int i; stringstream(s) >> i;</li>
+                    <li>Raw string: R"(string w/ \backslash)", R&%(string)&%"</li>
+                    <li> Common methods (<a href="http://www.cplusplus.com/reference/string/string/">cpluscplus link</a>):
+                        <pre><code>
+s.length()
+s.assign(str)
+s1.compare(s2) // 1, -1 or 0
+s1.append(s2)
+s1.substr(startIdx, length)
+s1.insert(startIdx, str)
+s1.insert(startIdx, nCopies, char)
+s1.replace(startIdx, len, str), // length(str) need not be len
+s1.find(str) // find start index of str in s1
+                        </code></pre>
+                    </li>
+                </ul>
+            </li>
+            <li>Pointer
+                <ul>
+                    <li>difference between int *p1, *p2; and int* p1, p2;</li>
+                    <li>const int *ptr; int const * ptr; int * const ptr;</li>
+                    <li>pointer to the function ~ function name: e.g. int (* minus)(int,int) = subtraction;</li>
+                    <li>passing function name as an arguments to a function:
+                        <a href="https://stackoverflow.com/questions/6356303/passing-function-name-as-arguments-to-a-function">stackflow</a>
+                    </li>
+                </ul>
+            </li>
+            <li>Smarter pointer
+            </li>
+            <li>Reference variable ~ alias
+                <ul>
+                    <li>int &r = i;</li>
+                    <li>A reference must be initialized: int &r; //ERROR
+                    <li>int& test() {return num}; test()=5;</li>
+                    <li>Don't return a local/stack/heap variable by ref. Return a ref only if the life time of the variable will go beyond the call (e.g. the variable is a data member of a class). See <a href="https://stackoverflow.com/questions/752658/is-the-practice-of-returning-a-c-reference-variable-evil">link</a></li>
+                </ul>
+            </li>
+            <li>Dynamic memory allocation
+                <ul>
+                    <li>C way:
+                        <pre>
+                        <code>
+int * ptr = (*int) malloc( numOfInt * sizeof(int) );
+free( ptr );
+                        </pre>
+                        </code>
+                    </li>
+                    <li>Traditional C++ ways:
+                        <pre>
+                        <code>
+int * foo;
+foo = new int [5]; // exception is thrown if mem request is rejected/failed
+foo = new (nothrow) int [5]; // return null_ptr if mem request is rejected/failed
+delete[] foo; // use delete foo if foo is used to allocate a scalar
+                        </pre>
+                        </code>
+                    </li>
+                    <li>Using smart pointer: std::unique_ptr<int[]> ptr( new int[5])
+                        <ul>
+                            <li>Use unique_ptr when you want a single pointer to an object that will be reclaimed when that single pointer is destroyed.</li>
+                            <li>Use shared_ptr when you want multiple pointers to the same resource</li>
+                            <li>Ref: <a href="https://www.youtube.com/watch?v=q_LUYLV3l44">youtube</a>, <a href="https://stackoverflow.com/questions/6876751/differences-between-unique-ptr-and-shared-ptr">stackoverflow</a>, <a href="https://www.geeksforgeeks.org/smart-pointers-cpp/">geeksforgeeks</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>Struct
+                <ul>
+                    <li>Why semicolon is needed after struct declaration? To be compatible with C. Without the semicolon, the C code below will have a main function that returns fred. With the semicolon, it returns an int implicitly. See <a href="https://stackoverflow.com/questions/785686/semicolon-after-class-declaration-braces">link</a>.
+                <pre>
+<code>
+struct fred { int x; long y; }; 
+main() 
+{ 
+  return 0; 
+}
+</code>
+                </pre>
+                <li><a href="https://stackoverflow.com/questions/8422775/why-does-c-need-struct-keyword-and-not-c">C-struct vs C++ struct</a> variable declaration. Cf: 'struct fred foo;' vs 'fred foo;' In C++, keyword struct is only needed to avoid ambiguity (e.g. to distinguish it from an int or function fred)</li>
+                    </li>
+                    <li>Struct can have member functions in C++. struct ~ class except that the default access type for struct is public.</li>
+                    <li> Two ways of declaring struct variables:
+      w/ struct definition, or using struct type</li>
+                    <li> Nesting struct</li>
+                </ul>
+            </li>
+            <li>Union and anonymous union
+            </li>
+            <li>enum and enum class
+                <pre><code>
+enum type_name {      // in ANSI C also, syntax ~ struct syntax
+  value1,
+  value2,
+  value3,
+  .
+  .
+} object_names;
+                </code></pre>
+            </li>
+            <li>enum class
+                <pre><code>
+enum class EyeColor {blue, green, brown};  // cannot be converted to int
+enum class EyeColor : char {blue, green, brown};  // use char to implement
+mycolor = EyeColors::blue;                   // must be scoped
+                </code></pre>
+            </li>
+            <li>typedef and using
+                <ul>
+                    <li>using WORD = unsigned int;      // same as typedef unsigned int WORD</li>
+                    <li>using pChar = char *;                 // same as typedef char * pChar</li>
+                    <li>using field = char [50];              // same as typedef char field[50]</li>
+                </ul>
+            </li>
+        </ul>
+        <h5>Classes</h5>
+        <ul>
+            <li>Class declaration ~ struct/union declaration
+            </li>
+            <li>Class definition ~ struct/union declaration
+            </li>
+            <li>Member initializer: Cylinder (double r, double h) : base(r), height(h) { }
+            </li>
+            <li>Uniform initializer: Cylinder (double r, double h) : base{r}, height{h} { }
+            </li>
+            <li>Overloading and default constructors
+            </li>
+            <li>Ways to call constructor (object initialization):
+                <ul>
+                    <li>Rectangle rectb;   // default constructor called, same as Rectangle rectb{}</li>
+                    <li>Rectangle rectc(); // declare a function with 0 argument</li>
+                    <li>Circle foo (10.0);   // functional form</li>
+                    <li>Circle foo = 10.0;   // assignment init (only works when constructor has a single parameter)</li>
+                    <li>Circle foo {10.0};   // uniform init</li>
+                    <li>Circle foo = {10.0}; // Plain-Old-Data-like</li>
+                </ul>
+            </li>
+            <li>Pointer to the object
+            </li>
+                <ul>
+                    <li>*a.b &equiv; *(a.b)</li>
+                </ul>
+            </li>
+            <li>Operator overloading (see summary table in <a href=https://stackoverflow.com/questions/3846296/how-to-overload-the-operator-in-two-different-ways-for-postfix-a-and-prefix">cplusplus</a> and <a href="https://stackoverflow.com/questions/3846296/how-to-overload-the-operator-in-two-different-ways-for-postfix-a-and-prefix">stackflow</a>
+            </li>The keyword this: *this, this->data
+            <li>Static/class members 
+                <ul>
+                    <li>Must be initialized outside the class</li>
+                    <li>can be referred to as a member of any object of that class or even directly by the class name: obj_name.static_m or Class_name::static_m</li>
+                </ul>
+            </li>
+            <li>Const object, const member functions 
+                <ul>
+                    <li>const class MyClass {} //access to data members from outside the class is read-only</li>
+                    <li>const objects can only access member functions marked as const
+                        <ul>
+                            <li>int get() const {return x;}    // const member function</li>
+                            <li>const int& get() {return x;} // member function returning a const&</li>
+                        </ul>
+                    </li>
+                    <li>return by ref: returned value is an alias to whatever you returned from the function/method. Unless it's a persistent object it's illegal.
+                    </li>
+                    <li>Member functions can be overloaded on their constness
+                    </li>
+                </ul>
+            </li>
+            <li>Class template
+            </li>
+            <li>Template specialization: All its members must be defined in the specializations  
+                <pre><code>
+template <> 
+class mycontainer <char> { ... };
+                </pre></code>
+            </li>
+            <li>Special methods: Default constructor/destructor, copy/move constructor, copy/move assignment (see summary table at <a href="http://www.cplusplus.com/doc/tutorial/classes2/">cplusplus</a>)
+<pre><code>
+MyClass fn();         // function returning a MyClass object
+MyClass foo;          // default constructor
+MyClass bar = foo;    // copy constructor
+MyClass baz = fn();   // move constructor
+foo = bar;            // copy assignment
+baz = MyClass();      // move assignment
+</code></pre>
+            </li>
+            <li>Friend and inheritance
+            </li>
+            <li>Polymorphism
+            </li>
+        </ul>
+        <h5>Miscellaneous</h5>
+        <ul>
+            <li>Type conversion
+            </li>
+            <li>Exceptions
+            </li>
+            <li>Input output with files
+            </li>
+        </ul>
+        <h5>Standard template library</h5>
+    </body>
+</html>

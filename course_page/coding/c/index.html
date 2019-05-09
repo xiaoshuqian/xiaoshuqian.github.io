@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            Programming with C
+        </title>
+    </head>
+    <body>
+        <h1>
+            Programming with C
+        </h1>
+        <h2>
+            Quarter offered
+        </h2>
+        <p>
+        ??Spring 2019; Jan 26, 27; Mar 2, 3; Apr 4, 6; Room 406
+        </p>
+        <h2>
+            Course description
+        </h2>
+        <h4>
+            Instructor
+        </h4>
+        <p>
+        Dr. Xiaoshu Qian
+        </p>
+        <h4>
+            References
+        </h4>
+        <ul>
+            <li>
+                The C Programming Language (Kernighan and Ritchie)
+            </li>
+            <li>
+                C: A Reference Manual (Harbison and Steele)
+            </li>
+            <li> Schaum's outline of theory and problems programming with C, by Bryon GOTTFRIED; Publisher: McGraw-Hill Education; 2 edition (June 22, 1996);
+ISBN-10: 9780070240353,
+ISBN-13: 978-0070240353,
+ASIN: 0070240353. <a href="https://www.codewithc.com/programming-with-c-pdf-byron-gottfried/">pdf link</a>
+            </li>
+        </ul>
+        <h4>
+            Description
+        </h4>
+        <p>
+        </p>
+        <h4>
+            Detailed outline
+        </h4>
+        <h5>Basics</h5>
+<ul>
+    <li>Logistics
+        <ul>
+            <li>Using online tutorials: mainly <a href="https://www.learn-c.org/">interactive tutorial at learn-c.com</a>, also <a href="https://www.w3schools.in/c-tutorial/">tutorial at w3schools.com</a></li>
+            <li>Accessing online compilers e.g. at <a href="https://www.onlinegdb.com/online_c++_compiler">onlinegdb</a></li>
+            <li>Install IDEs, e.g. clion, xcode, visual studio</li>
+            <li>Running "Hello world" online, in IDE and on command line</li>
+            </li>
+            <li>ANSI C and C99</li>
+        </ul>
+    </li>
+    <li>Program structure
+        <ul>
+            <li>"Hello world!": main(int argc, char* argv[]) or main(int argc, char** argv)</li>
+            <li>Basic IO: &lt stdio.h&gt
+                <ul>
+                    <li>stdout: printf("%d\n","Hello world!");</li>
+                    <li>stdin: scanf("%d %d", &i, &j);</li>
+                    <li>char c = getchar()</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>Data types
+        <ul>
+            <li>char, int, long, unsigned</li>
+            <li><a href="https://www.tutorialspoint.com/cprogramming/c_bit_fields.htm">C bit field</a></li>
+            <li>internal/external/static varaibles; internal static: persistent; external static: file scope; extern keyword: for declaring an external variable defined elsewhere</li>
+            <li>implicit casting: signed -> unsigned</li>
+            <li>explicit cast: (int)a</li>
+            <li>bit width (limits.h): for most 32-bit machines, it's ok to use int to store pointers but not for 64-bit machines.</li>
+        </ul>
+    </li>
+    <li>Constants
+        <ul>
+            <li>Numbers. octal: 012. hex: 0x12. 3u, 3l, 3ll, 3ul. 3.14f, 3.14F</li>
+            <li>Char & string: '\n', '\t', '0' is encoded as 0x30</li>
+            <li>Ascii is largely platform independent except for the line termination char. ASCII uses only 7 bits (1 bit wasted) while UTF-8 has added 8th bit for more char</li>
+        </ul>
+    </li>
+    <li>Operator and precedence
+        <ul>
+            <li>bit operators and use them for set operations: &, |, ^, ~ for intersection, union, symmetric difference and complement operations. Logical and arithmetic shifts: >>, <<. </li>
+            <li>logic operator: &&, ||, !</li>
+            <li>sizeof operator: sizeof(char)</li>
+        </ul>
+    </li>
+    <li>Preprocessor. #include, #define, #undef, #ifdef, #ifndef, #if, #endif, #else, #elif
+    </li>
+</ul>
+        <h5>Program structure</h5>
+        <ul>
+            <li>Branch
+            </li>
+            <li>Loops: while, do while, for loop
+            </li>
+            <li>Functions
+                <ul>
+                    <li>pass by value/ref</li>
+                    <li>recursive function</li>
+                </ul>
+            </li>
+        </ul>
+        <h5>Compound data types</h5>
+        <ul>
+            <li>Array
+                <ul>
+                    <li>int arr[5] = {1}; // first entry will be init to 1, rest to 0s</li>
+                    <li>cf: designated initializer: int arr[5] = {[2]=1, [4]=3}<a href="https://stackoverflow.com/questions/9849719/what-do-square-brackets-mean-in-array-initialization-in-c">stackflow</a>, <a href="http://gcc.gnu.org/onlinedocs/gcc-4.0.4/gcc/Designated-Inits.html">gcc ref</a></li>
+                    <li>Array as an argument: void foo(int arg[]); void foo(int arg[][3][4])</li>
+                </ul>
+            </li>
+            <li><a href="https://www.geeksforgeeks.org/const-qualifier-in-c/">Pointer</a>
+                <ul>
+                    <li>difference between int *p1, *p2; and int* p1, p2;</li>
+                    <li>const int *ptr; int const * ptr; int * const ptr;</li>
+                    <li>pointer to the function ~ function name: e.g. int (* minus)(int,int) = subtraction;</li>
+                    <li>passing function name as an arguments to a function:
+                        <a href="https://stackoverflow.com/questions/6356303/passing-function-name-as-arguments-to-a-function">stackflow</a>
+                    </li>
+                </ul>
+            </li>
+            <li>Reference variable ~ alias
+                <ul>
+                    <li>int &r = i;</li>
+                    <li>A reference must be initialized: int &r; //ERROR
+                    <li>int& test() {return num}; test()=5;</li>
+                    <li>Don't return a local/stack/heap variable by ref. Return a ref only if the life time of the variable will go beyond the call (e.g. the variable is a data member of a class). See <a href="https://stackoverflow.com/questions/752658/is-the-practice-of-returning-a-c-reference-variable-evil">link</a></li>
+                </ul>
+            </li>
+            <li>Dynamic memory allocation
+                        <pre>
+                        <code>
+int * ptr = (*int) malloc( numOfInt * sizeof(int) );
+free( ptr );
+                        </pre>
+                        </code>
+            </li>
+            <li>struct
+                <ul>
+                    <li>Why semicolon is needed after struct declaration? To be compatible with C. Without the semicolon, the C code below will have a main function that returns fred. With the semicolon, it returns an int implicitly. See <a href="https://stackoverflow.com/questions/785686/semicolon-after-class-declaration-braces">link</a>.
+                <pre>
+<code>
+struct fred { int x; long y; }; 
+main() 
+{ 
+  return 0; 
+}
+</code>
+                </pre>
+                <li><a href="https://stackoverflow.com/questions/8422775/why-does-c-need-struct-keyword-and-not-c">C-struct vs C++ struct</a> variable declaration. Cf: 'struct fred foo;' vs 'fred foo;' In C++, keyword struct is only needed to avoid ambiguity (e.g. to distinguish it from an int or function fred)</li>
+                    </li>
+                    <li> Two ways of declaring struct variables:
+      w/ struct definition, or using struct type</li>
+                    <li> Nesting struct</li>
+                </ul>
+            </li>
+            <li>Union and anonymous union
+            </li>
+            <li>enum type
+            </li>
+            <li>typedef
+                <ul>
+                    <li>typedef unsigned int WORD</li>
+                    <li>typedef char * pChar</li>
+                    <li>typedef char field[50]</li>
+                </ul>
+            </li>
+        </ul>
+        <h5>Struct/union</h5>
+        <ul>
+            <li>Class declaration ~ struct/union declaration
+            </li>
+            <li>Class definition ~ struct/union declaration
+            </li>
+        </ul>
+        <h5>Miscellaneous</h5>
+        <ul>
+            <li>Input output with files
+            </li>
+        </ul>
+        <h5>Standard library</h5>
+        <h5>Pros of C for writing OSs, device drivers and other application 'close' to HW</h5>
+        <ul>
+            <li>C is 'close' to HW
+                <ul>
+                    <li>C code can include assembly codes, when necessary. Assembly code gives access to low-level operations such as interrupts, changing CPU registers and CPU modes.
+                    </li>
+                    <li>C gives direct access to memory to create interrupt tables, etc using pointers
+                    </li>
+                </ul>
+            <li>C compiles directly to machine code
+                <ul>
+                    <li>It does not require any runtime translators and libraries
+                    </li>
+                    <li>Behavior is reasonably predictable (no weird garbage collection processes)
+                    </li>
+                    <li>Can inspect the resulting machine code to tweak performance
+                    </li>
+                </ul>
+            </li>
+            <li>C is very efficient
+            </li>
+        </ul>
+        <h5>Cons of C</h5>
+        <ul>
+            <li>Lacks standard dynamic collections (lists, dictionaries)
+            </li>
+            <li>Must manage memory yourself (malloc & free)
+            </li>
+            <li>Cannot easily write generic code. Pretty strongly typed, and no inheritance
+            </li>
+            <li>Cannot throw/catch exceptions. Must check function return status explicitly
+            </li>
+            <li>Function parameters often contain return values. Have to pass pointer to pre-allocated buffer as a parameter, and choose buffer size
+            </li>
+            <li>No good, free IDE. You will use something like emacs, vim, or gedit + make + gdb
+            </li>
+        </ul>
+    </body>
+</html>

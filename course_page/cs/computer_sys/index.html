@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Computer Systems</title>
+    </head>
+    <body>
+        <h1>Computer Systems</h1>
+        <h2>
+            Quarter offered
+        </h2>
+        <p>
+        ???Fall 2017, 9/30, 10/1, 11/4, 11/5, 12/9, 12/10, noon-8pm, Room 204
+        </p>
+        <h2>
+            Course description
+        </h2>
+        <p>
+        </p>
+        <h4>
+            Instructor
+        </h4>
+    </body>
+        <p>
+        Dr. Xiaoshu Qian
+        </p>
+        <h4>
+            Reference links and books
+        </h4>
+        <ul>
+            <li><a href="http://csapp.cs.cmu.edu">Computer Systems: A Programmer's Perspective</a>:
+            </li>
+            <li><a href="https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf">x64 cheatsheet</a>
+            </li>
+            <li><a href="http://www.hep.wisc.edu/~pinghc/x86AssmTutorial.htm">x86 tutorial</a>
+            </li>
+            <li>The C Programming Language (Kernighan and Ritchie)
+            </li>
+            <li>C: A Reference Manual (Harbison and Steele)
+            </li>
+        </ul>
+        <h4>
+            Detailed outline
+        </h4>
+<ul>
+    <li>Themes
+        <ul>
+            <li>Data representations and operations: integer/float, char, instruction, pointer (basic: binary, boolean arithmetic)
+            </li>
+            <li>Translation: .c, .java, .js ->(compile)->  .s ->(assemble)-> .o ->(link)-> .exe, .a ->(load)-> reg, mem (In practice, compilers often generate binary code or other intermediate form, e.g. RTL. They may not use assembler to speed up the compilation)
+            </li>
+            <li>Control flow: conditional statement, subroutine
+            </li>
+         </ul>
+    </li>
+    <li>Data representations and operations
+        <ul>
+            <li>Integer: unsigned and signed (2's complement, 1's complement, offset binary)</li>
+            <li>Examining bytes in memory in C: unsigned char *p = ini; for (int i=0; i &lt LEN; ++i) printf("%p: %x\n", p++, *p);</li>
+            <li>Modulo arithmetic (2's complement): The rules of the modulo arithmetic are independent of the representation (or interpretation) used.</li>
+            <li>Floating point (IEEE 754 standard): half/single/double precision
+                <ul>
+                    <li>
+                <table>
+                    <caption>Floating point bit fields</caption>
+                    <tr>
+                        <td>s</td>
+                        <td>exponent (excess-(2<sup>n-1</sup>-1))</td>
+                        <td>significand</td>
+                    </tr>
+                </table>
+                    </li>
+                    <li>
+                <table>
+                    <caption>IEEE 754 standards</caption>
+                    <tr>
+                        <th></th>
+                        <th>Half</th>
+                        <th>Signle</th>
+                        <th>Double</th>
+                        <th>Notes</th>
+                    </tr>
+                    <tr>
+                        <td>Total bit width</td>
+                        <td>16</td>
+                        <td>32</td>
+                        <td>64</td>
+                        <td>Geometric sequence with r = 2</td>
+                    </tr>
+                    <tr>
+                        <td>Exponent bit width</td>
+                        <td>5</td>
+                        <td>8</td>
+                        <td>11</td>
+                        <td>Arithmetic sequence with d = 3</td>
+                    </tr>
+                </table>
+                    </li>
+                    <li>Normal: value = (-1)<sup>s</sup> &times; 1.significand &times; 2<sup>expo</sup>
+                    </li>
+                    <li>Exceptions: subnormals (including &plusmn;0), &plusmn;&infin;, &plusmn;NAN
+                    </li>
+                    <li>Example: |s|=1, |expo| = 3, |significand|=2
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>Machine and assembly
+        <ul>
+            <li>Big, little, bi-endian (Big endian = natural endian = MSB at smallest address, little endian = Intel endian)
+            </li>
+            <li>Register usage and naming conventions
+                <ul>
+                    <li>A, B, C, D, E/X/R:
+                        <ul>
+                            <li>A for accumulator: eax</li>
+                            <li>B for base: ebp</li>
+                            <li>C for counter: ecx</li>
+                            <li>D for data or destination: D0, D8, edx (for data), edi (for destination)</li>
+                            <li>E/X/R
+                                <ul>
+                                    <li>X for extension (8 -> 16): With the change from 8 bit processor to 16 bit processor, the registers were extended from 8 bits to 16 bits so the names have the letter X after the register name such as AX, BX, etc.</li>
+                                    <li>E for extended when 16 -> 32: EAX, EBX </li>
+                                    <li>R for register when 32 -> 64</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>S, D for source and dest, I, P for index and pointer: esi, edi, esp, ebp
+                    <ul>
+                        <li>bp and sp for base pointer and stack pointer </li>
+                    </ul>
+                    </li>
+                    <li>H, L for High and Low: AH, AL, etc</li>
+                </ul>
+            </li>
+            <li>Main registers (PC: %rip, 16 general purpose: a,b,c,d, bp, sp, bi, si, r8-r15), Caller/callee saved registers, reg for argument passing, reg for returned value
+            </li>
+            <li>Moore's law: # of transisters doubles every 18 month.
+            <li>Architecture (=ISA=Instruction Set Arch, visiable to programmer) and micro-architecture (next level of abstraction, implementation of ISA)
+            </li>
+            <li>Assembly programmer's machine model:
+                <ul>
+                    <li>CPU: PC, Reg file, condition code, ALU</li>
+                    <li>Memory: obj code, data, stack, heap</li>
+                    <li>Interconnect: addr/data lines, instruction</li>
+                </ul>
+            </li>
+            <li>Data types: integer (byte, word, double word, quad word), float (4, 8, 10 bytes), untyped pointer (address)
+            </li>
+            <li>Operations
+                <ul>
+                    <li>ATT (mov src des) vs intel or gcc/gas (op dst, src) syntax
+                    <li>load/store: movq %rax (%rbx), push, pop, ... // long long *rbx = rax</li>
+                    <li>arithmetic/logic: test, shl, add, ...</li>
+                    <li>control transfer or conditional/unconditional jump: jmp, jz, jnz, call, ret</li>
+                    <li>string: rep, movsb, ...</li>
+                    <li>system: iret, int, ...</li>
+                </ul>
+            </li>
+            <li>Addr modes
+                <ul>
+                    <li>Immediate: $123</li>
+                    <li>Absolute: 0x104</li>
+                    <li>direct: %rax</li>
+                    <li>indirect: (%rbx)</li>
+                    <li>displaced (base + displacement), indexed, scale-indexed, Disp(Rb, Ri, scale): movq 8(%rbp, %rdx, 4) rdx</li>
+                </ul>
+            </li>
+            <li>Data movement
+                <ul>
+                    <li>movX, movzXX, movsXX, moveabsX where X = {b, w, l, q}, XX = {bw, bl, bq, wl, wq, lq}</li>
+                    <li>cltq: convert long to quad</li>
+                    <li>pushX S, popX D: pushq %rax</li>
+                </ul>
+            </li>
+            <li>Arithmetic
+                <ul>
+                    <li>One operand: incX D, decX D, negX D, notX D (D+1, D-1, -D, ~D)</li>
+                    <li>two operands:
+                        <ul>
+                            <li>arithmetic/logic (op S D for D = S op D): addX, subX, imulX, xorX, orX, andX (addq %rax %rbx)</li>
+                            <li>shift (shr k D for D = D >> k): shlX, shrX, salX, sarX (s or sh for shift, l/r for left/right, a for arithmetic)</li>
+                            <li>address computation (leaX S D for load effective address): leaq 7(%rdx %rdx 4) %rax // rax = 5*rdx + 7
+                                <ul>
+                                    <li>computing address, analogous to p = &x[i]</li>
+                                    <li>computing linear expression: Y = a*X + b</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>Condition code
+                <ul>
+                    <li>Processor state: %rip (PC), %rsp (top of stack), ZF, OF, CF, SF, PF (Zero, Overflow, Carry, Signed Flags)
+                    <li>Implicit set example (for arithmetic/logic or shift op): addq %rax %rbx // t += s
+                        <ul>
+                            <li>ZF or SF set if t == 0 or t &lt; 0
+                            </li>
+                            <li>PF set if t has even # of 1s
+                            </li>
+                            <li>CF set if t overflow as an unsigned (for shift op, CF = left/right bit shift out)
+                            </li>
+                            <li>OF set if t pos or neg overflow as an two's complement number (for 1-bit shift op, OF set if the shift results in a sign change)
+                            </li>
+                            <li>PF set if t has even number of 1s)
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Explicit set for cmp or test op: cmpq b a,  test b a,
+                        <ul>
+                            <li>cmpX Src2 Src1: similar to subX Src2 Src1 but without changing Src1
+                            </li>
+                            <li>testX Src2 Src1: similar to andX Src2 Src1 but without changing Src1, useful for masking
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Accessing condition code: sete al // al = 1 if ZF is set
+                        <ul>
+                            <li>either unsigned or signed (ZF, ~ZF): sete, setne
+                            </li>
+                            <li>unsigned (below CF, above ~CF & ~ZF): setb, seta
+                            </li>
+                            <li>signed
+                                <ul>
+                                    <li>sets: (SF), &lt;0 for whatever reason
+                                    </li>
+                                    <li>setns: (~SF), &gt;=0 for whatever reason
+                                    </li>
+                                    <li>setl: (SF ^ OF), either &lt;0 w/o pos overflow or &gt;0 caused by neg overflow
+                                    </li>
+                                    <li>setle: (SF^OF) | ZF
+                                    </li>
+                                    <li>setge: ~(SF^OF)
+                                    </li>
+                                    <li>setg: ~(SF^OF) & ~ZF
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Example: int gt(int x, int y) {return x>y;}
+                    </li>
+                </ul>
+            </li>
+            <li>Jump: branching, looping, switching
+                <ul>
+                    <li>Condition jump, jX Label: jmp, je, jne, jb, ja, js, jns, jl, jle, jge, jg
+                        <ue>
+                            <li>Example: int foo(long x, long y) {return x>y ? x-y : y-x;}
+                            </li>
+                        </ue>
+                    <li>Conditional move, cmovX S D: move, cmovne, cmovb, cmovbe, cmova, cmovae, cmovs, cmovns, cmovl, cmovle, cmovge, cmovg
+                        <ue>
+                            <li>Motivation: Extra computation (compute both branches) but avoid control transfer (jump) and thus better for pipelining
+                            </li>
+                            <li>Risks:
+                                <ul>
+                                    <li>expensive: val = test(x) : handle1(x) : handle2(x)
+                                    </li>
+                                    <li>error: val = p ? *p : 0; (computing 2nd branch will cause memory access error)
+                                    </li>
+                                    <li>side effect: val = x ? ++x : --x;
+                                    </li>
+                                </ul>
+                            </li>
+                        </ue>
+                    </li>
+                    <li>loop: do-while, while, for
+                        <ul>
+                            <li>Most compilers first transform any loops to do-while loops before converting the latter to machine codes
+                            </li>
+                            <li>Example: int pop_count(unsigned long x) {...}
+                            </li>
+                        </ul>
+                    </li>
+                    <li>switch
+                        <ul>
+                            <li>Bruteforce implementation (~ cascading if-else)
+                            </li>
+                            <li>Using a binary search tree
+                            </li>
+                            <li>Implement using jump table: jump table may be too large if case X has a very large X value
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>Procedure
+                <ul>
+                    <li>Stack structure: rsp, pushq, popq, (push to grow stack by 8, i.e. rsp -= 8). Frame = state for a single procedure invocation
+                    </li>
+                    <li>Passing control
+                        <ul>
+                            <li>callq label: push return address onto stack and jump to lable</li>
+                            <li>retq: pop return address from stack and jump there</li>
+                        </ul>
+                    </li>
+                    <li>Passing data: First 6 arg in reg (rdi, rsi, rdx, rcx, r8, r9), rest in stack (allocate when needed, the last arg pushed first); Return value in rax
+                    </li>
+                    <li>Local data management: frame
+                    </li>
+                    <li>Register saving
+                    </li>
+                    <li>Recursion
+                    </li>
+                </ul>
+            </li>
+            <li>Array, pointer
+                <ul>
+                    <li>
+                    </li>
+                </ul>
+            </li>
+            <li>Structured data type, alignment
+                <ul>
+                    <li>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>Memory hierachy
+    </li>
+</ul>
+    </body>
+</html>

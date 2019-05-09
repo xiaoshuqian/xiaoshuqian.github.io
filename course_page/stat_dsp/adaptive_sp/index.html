@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>SCU ELEN 431 Adaptive Signal Processing</title>
+    </head>
+    <body>
+        <h1>SCU ELEN 431 Adaptive Signal Processing</h2>
+        <h2>Quarter offerred</h3>
+        <p>
+        Fall 2018, Thur, 7:10pm to 9:00pm
+        </p>
+        <h2>
+          Prerequisites
+        </h2>
+        <p>
+        ELEN 233 (DSP I) and knowledge of linear algebra (AMTH 245) and random variables (ELEN 334) or equivalent knowledge
+        </p>
+        <h2>
+            Course description
+        </h2>
+        <h4>
+            Instructor
+        </h4>
+        <p>
+        Dr. Xiaoshu Qian
+        </p>
+        <h4>
+            Reference books
+        </h4>
+        <ul>
+            <li>
+Adaptive Signal Processing, by B. Widrow, S. D. Stearns (A classic)
+            </li>
+            <li>
+Theory and Design of daptive Filters, by J. R. Treichler, C. R Johnson, Jr. M. G. Larimore. (Readable and concise. Very good introductory text)
+            </li>
+            <li>
+Adaptive Filter Theory, 5th edition. 2013
+Author: Simon Haykin
+ISBN-10:  013267145X,   ISBN-13: 9780132671453
+Publisher: Prentice Hall PTR
+            </li>
+        </ul>
+        <h4>
+            Description
+        </h4>
+        <p>This is an introductory course to the theory and applications of adaptive filters. Topics covered include Wiener filter, steepest gradient algorithm, LMS (Least Mean Square) algorithm, normalized LMS algorithm and RLS (Recursive Least Square) algorithm. We will also describe some of the applications of adaptive filters in the area of digital communication, data compression and system identification. Students will be encouraged to select one of application areas and conduct a more in-depth study in their area of choice.
+        </p>
+        <h4> Detailed outline </h4>
+        <ul>
+            <li> Overview
+                <ul>
+                    <li>Three main components of an adaptive filter
+                    </li>
+                    <li>Four main applications of the adaptive filter
+                        <ul>
+                            <li>Prediction</li>
+                            <li>System identification</li>
+                            <li>Equalization (inverse filter)</li>
+                            <li>Echo/interference cancellation</li>
+                        </ul>
+                    </li>
+                    <li>Main/minor variants:
+                        <table>
+                            <caption>Survey of adaptive filters</caption>
+                            <tr>
+                                <th>Purpose</th>
+                                <th>Baseline</th>
+                                <th>With more reliable gradient</th>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>LMS</td>
+                                <td>SDA</td>
+                            </tr>
+                            <tr>
+                                <td>Less sensitive to input power</td>
+                                <td>NLMS</td>
+                                <td>APAF, Newton recursion, RLS</td>
+                            </tr>
+                            <tr>
+                                <td>Less freq but more stable coef update</td>
+                                <td>Block LMS</td>
+                                <td>Block NLMS/APAF/RLS</td>
+                            </tr>
+                            <tr>
+                                <td>freq domain</td>
+                                <td>Fast LMS</td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </li>
+                    <ul>
+                        <li>Leaky LMS, Signed-error LMS, mode dependent update for fast LMS (i.e. &mu; = a diagonal matrix)
+                        </li>
+                    </ul>
+                    <li>Main questions to address: motivation, derivation, convergence, parameter selection
+                    </li>
+                    <li>Preparation
+                        <ul>
+                            <li>LS, MMSE, LS in module (vector space)
+                            </li>
+                            <li>Linear prediction, three representations of a WSS:
+                                <ul>
+                                    <li>ACF or PSD</li>
+                                    <li>Variance and reflection coefficients</li>
+                                    <li>Linear prediction filter coefficients and variance of residual noise</li>
+                                </ul>
+                            </li>
+                            <li>Complex gradient/Hessian: Heuristic method, Wirtinger calculus
+                            </li>
+                            <li>Block matrix inversion, ABCD lemma
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>SDA
+            </li>
+            <li>LMS, leaky LMS, signed-error LMS
+            </li>
+            <li>Newton recursion
+            </li>
+            <li>NLMS, block NLMS
+            </li>
+            <li>APAF, block APAF
+            </li>
+            <li>RLS
+            </li>
+            <li>Fast LMS, mode-dependent FLMS
+            </li>
+            <li>Applications
+            </li>
+        </ul>
+        <h4>Grading
+        </h4>
+             <ul>
+                 <li>Homework: 20%</li>
+                 <li>Midterm: 30%</li>
+                 <li>Final: 50%</li>
+                 <li>Make-up Work: not allowed unless special circumstances</li>
+             </ul>
+    </body>
+</html>

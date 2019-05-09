@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            Meeting coding challenges for engineering students
+        </title>
+    </head>
+    <body>
+        <h1>
+            SCU ELEN 239 Special Topic: Meeting coding challenges for engineering students
+        </h1>
+        <h2>
+            Quarter offered
+        </h2>
+        <p>
+        Summer 2019, Session 1. Tuesday 7:10pm - 9:00pm
+        </p>
+        <h2>
+            Prerequisites
+        </h2>
+        <p>
+            Knowledge of at least one programming language
+        </p>
+        <h2>
+            Course description
+        </h2>
+        <h4>
+            Instructor
+        </h4>
+        <p>
+        Dr. Xiaoshu Qian
+        </p>
+        <h4>
+            Reference textbook(s)
+        </h4>
+        <ul>
+            <li>
+Cracking the Coding Interview, by	
+Gayle Laakmann McDowell
+Publisher: CareerCup, 6th edition (July 1, 2015);
+ISBN-10: 0984782869;
+ISBN-13: 978-0984782857;
+ASIN: 0984782850        
+            </li>
+            <li>Introduction to the Design and Analysis of Algorithms, by Anany Levitin; Publisher: Pearson; 3 edition (October 9, 2011)
+ISBN-10: 9780132316811
+ISBN-13: 978-0132316811
+            </li>
+            <li>
+                Mathematics for the Analysis of Algorithms, by Daniel H. Greene, Donald E. Knuth. 
+                Publisher: Birkhauser, 3 edition (October 5, 2007);
+ISBN-10: 0817647287;
+ISBN-13: 978-0817647285.
+<a href="https://www-cs-faculty.stanford.edu/~knuth/gk.html">book site</a>
+            </li>
+            <li>Algorithm Design, by Jon Kleinberg and Eva Tardos; Publisher: Pearson; 1 edition (March 26, 2005)
+<a href="http://www.cs.princeton.edu/~wayne/kleinberg-tardos/">See slides</a> and
+<a href="http://www.cs.sjtu.edu.cn/~jiangli/teaching/CS222/">more slides</a>;
+ISBN-10: 9780321295354
+ISBN-13: 978-0321295354
+            </li>
+        </ul>
+        </p>
+        <h4>
+            Description
+        </h4>
+        <p>
+        It has become increasingly important for engineering students working in the areas such as artificial intelligence, machine learning, data science, digital communications and multimedia to be proficient in solving both numerical and non-numerical problems using programming languages. Many companies now use coding challenges to screen job candidates. This course describes effective problem solving strategies and illustrates solving typical coding challenge problems using these strategies. The students will complete many programming exercises provided to master these techniques. The main strategies covered include divide-and-conquer, transform-and-conquer, greedy, dynamic programming, backtracking, branch-and-bound, iterative improvement, and space-time tradeoff. They will be used to illustrate solving problem examples from computer science, artificial intelligence, data science, and many others.
+        </p>
+        <h4>
+            Detailed outline
+        </h4>
+<ul>
+    <li>Problem solving basic
+        <ul>
+            <li>IO, partition; class, function (use them to encapsulate a computational unit to make the program logic more clear and ease testing/debugging); architecture/structure, pseudo code</li>
+            <li>Examples: selection/insertion sort, tower of Hanoi (info representation), Fibonacci (iterative, recursive, tail-recursive), pipeline, client server, <a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">MVC</a>, <a href="https://www.jinfonet.com/resources/bi-defined/3-tier-architecture-complete-overview/">3-tier</a></li>
+             <li>spelling check: makewords &lt doc | lowercase | sort | uniq | match_dict</li>
+        </ul>
+    </li>
+    <li>Problem solving techniques
+    <ol>
+    <li>Basic: Using the right ADT, invariance, state machine
+        <ul>
+            <li>ADT: array, stack, queue, deque, priority queue, indexed priority queue, list, set, dict, tree, graph, union-find, trie</li>
+             <li>Examples using ADT: matching parentheses</li>
+             <li>Examples using invariance, state machine: sortings, Knuth-Morris-Pratt string-searching</li>
+        </ul>
+    </li>
+    <li>Exhaustive search
+        <ul>
+             <li>Examples: closest pair, 8 queen, knapsack, Hamilton, TSP, combinatorial listing: all subsets, permutations, combinations</li>
+        </ul>
+    </li>
+    <li>Divide/Transform and conquer: top down or bottom up
+        <ul>
+             <li>Decrease and conquer: by a constant/variable term/factor
+                 <ul>
+                     <li>poly eval, exponentiation, search a sorted array, BST, selection/insertion/quick/merge sort, element uniqueness (check whether all the elements in a given array of n elements are distinct) fake coin puzzle (Levitin's book) or weighing problem (David Mackay's book), Euler circuits, merges two lists of intervals (merge two lists of intervals, each containing non-overlapping intervals, so that the resulting list of non-overlapping intervals cover points and only points covered by the two original lists of intervals)
+                     </li>
+                 </ul>
+             </li>
+             <li>Transform and conquer (reduction)
+                 <ul>
+                     <li>Reduce to sorting: rank (e.g. median), element distinctness, convex Hull, 3-collinear (cost = N<sup>2</sup>*log(N) + N<sup>2</sup>)</li>
+                     <li>Critical Path Method or CPM: reduce to topological sort</li>
+                     <li>Burrows-Wheeler transform reduces to suffix sort</li>
+                     <li>Arbitrage reduces to shortest paths</li>
+                 </ul>
+             </li>
+        </ul>
+    <li>Greedy
+        <ul>
+             <li>Examples: Knapsack, money change, signature collection, max ad revenue, max # of prizes, max salary</li>
+        </ul>
+    </li>
+    <li>Dynamic programing: Recurrence solution + Avoid overlapping/redundant computation by storing the solutions needed later
+        <ul>
+             <li>Examples: Knapsack (int/float, unbounded, 0/1), money change, primitive calculator: min # of operations (2x, 3x, x+1) needed to obtain an int n from 1, alignment (edit distance, longest common subsequence) array reconstruction</li>
+        </ul>
+    </li>
+    <li>Space-time trade-off: Store some of the input (or intermediate results) to be used later in solving the problem, often making accessing the info faster via hashing or other indexing schemes (e.g. array, BST, B-Tree)
+        <ul>
+            <li>Two-sum</li>
+            <li>Union-find using an auxiliary array with height of the tree</li>
+            <li>Counting sorts</li>
+            <li>String searching algorithms</li>
+        </ul>
+    </li>
+    <li>Iterative improvement
+        <ul>
+             <li>Examples: Linear programming, network flow</li>
+        </ul>
+    </li>
+    <li>Uninformed search: tree search, graph search
+        <ul>
+            <li>Examples: 8-queen, subset sum, Hamilton circuit, TSP, scheduling, city attractions, array reconstruction, Dijkstra, MST, assignment, knapsack</li>
+            <li><a href="http://wiki.cs.pdx.edu/cs543-spring2010/important_algorithms.html">Techniques</a>: loop, exchaustive, backtracking (dfs), branch-n-bound, bfs, best first, depth-first iterative deepening, <a href="http://cs.brown.edu/courses/cs149/notes/lds_expanded.pdf">limited discrepancy</a> (or <a href="http://cse.unl.edu/~choueiry/Documents/LDS.pdf">LDS</a>)
+                <ul>
+                    <li>Backtracking
+                        <ul>
+                            <li>Construct the state-space graph
+                                <ul>
+                                    <li>nodes: partial solutions; edges: choices in extending partial solutions</li>
+                                </ul>
+                            </li>
+                            <li>Explore the state space tree using depth-first search</li>
+                            <li>Prune nonpromising nodes: stop exploring subtrees rooted at nodes that cannot lead to a solution and backtracks to such a node's parent to continue the search</li>
+                        </ul>
+                    </li>
+                    <li>Branch-N-Bound:
+For each node (partial solution) of a state-space tree, computes a bound on the value of the objective function for all descendants of the node (extensions of the partial solution). Use the bound for:
+                        <ul>
+                            <li>ruling out certain nodes as nonpromising to prune the tree, if a node's bound is not better than the best solution seen so far</li>
+                            <li>guiding the search through state-space</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>Informed search: tree/graph search
+        <ul>
+            <li>Best-first search: evaluation function f, heuristic function h(n)</li>
+            <li>Greedy best-first search: f(n) = h(n)</li>
+            <li>A<sup>*</sup> search: minimizing the total estimated cost f(n) = g(n) + h(n)
+                <ul>
+                    <li>Admissibility and consistency</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    </ol>
+    </li>
+    <li>CS algorithms survey 
+        <ul>
+            <li>sorting: selection, insertion, quick, merge, heap</li>
+            <li>searching: BST, balanced tree, B-tree, hash</li>
+            <li>graph: topological sort, MST, shortest path (Bellman, Dijkstra, Bellman-Ford, Washall-Floyd), network flow</li>
+            <li>String: string sort, suffix tree, trie, substring search, regular expression, compression</li>
+        </ul>
+    </li>
+    <li>Numerical linear algebra algorithm survey
+        <ul>
+            <li>LDU, Cholesky decomposition, SVD</li>
+            <li>Gram-Schmidt, Modified GS, Householder transform</li>
+            <li>QR algorithms (with shifts) for eigenvalue decomposition</li>
+            <li>Gradient descend, conjugated gradient</li>
+            <li>GMRES</li>
+            <li>Biorthogonalization</li>
+        </ul>
+    </li>
+</ul>
+    </body>
+</html>

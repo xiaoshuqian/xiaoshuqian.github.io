@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            ELEN 235 Estimation
+        </title>
+    </head>
+    <body>
+        <h1>ELEN 235 Estimation</h1>
+        <h2>
+            Quarter offered
+        </h2>
+        <p>
+        Spring 2015, 7:10pm -- 8pm.
+        </p>
+        <h2>
+          Prerequisites
+        </h2>
+        <p>
+        AMTH 211 or AMTH 212, AMTH 246 or AMTH 247, familiarity with MATLAB.
+        </p>
+        <h2>
+            Course description
+        </h2>
+        <h4>
+            Instructor
+        </h4>
+        <p>
+        Dr. Xiaoshu Qian
+        </p>
+        <h4>
+            Reference textbook(s)
+        </h4>
+
+        <ul>
+            <li>
+Fundamentals of Statistical Signal Processing: Estimation Theory
+By Steven M. Kay,  ISBN: 0-13-345711-7, published by Prentice Hall PTR
+            </li>
+            <li>
+            An Introduction to Signal Detection and Estimation, by H. Vincent Poor, ISBN-13: 978-0387941738, published by Springer; 2nd edition (March 16, 1998)
+            </li>
+        </ul>
+        <h4>
+            Additional references
+        </h4>
+        <ul>
+            <li>
+Linear Estimation, by Thomas Kailath, Ali H. Sayed, Babak Hassibi; ISBN-13: 978-0130224644; Published by Pearson, 1st ed.
+            </li>
+            <li>
+ Detection Estimation and Modulation Theory, Part I: Detection, Estimation, and Filtering Theory
+by Harry L. Van Trees, Kristine L. Bell, with Zhi Tian; ISBN-13: 978-0470542965; published by Wiley; 2nd edition (April 15, 2013)
+            </li>
+            <li>
+            Introduction to Mathematical Statistics,
+by Robert V. Hogg, Joseph W. McKean, Allen T. Craig; ISBN-13: ISBN-13: 978-0321795434; Published by Pearson; 7th Edition (Jan 2012)
+            </li>
+            <li>
+                Mathematical Statistics: Basic Ideas and Selected Topics. Vol 1, by  Peter J. Bickel, Kjell A. Doksum; ISBN-13: 978-0132306379; Published by Pearson; 2nd edition (May 4, 2006)
+            </li>
+            <li>
+                <a href="http://www-ee.stanford.ed~gray/sp.pdf">
+                    An Introduction to
+                    Statistical Signal Processing</a>
+                </a>, by Robert M. Gray and Lee D. Davisson 
+            </li>
+            <li>
+Kendall's Advanced Theory of Statistics: Classic Interference and the Linear Model, by Alan Stuart, Steven Arnold, J. Keith Ord. 6th edition.
+            </li>
+            <li>
+Parameter Estimation: Principles and Problems, by Haorld W. Sorenson
+            </li>
+        </ul>
+        <h4>
+            Description
+        </h4>
+        <p>
+        From SCU course catalog: Introduction to classical estimation. Minimum Variance Unbiased Estimator (MVUE) from Cramer-Rao theorem, sufficient statistics, and linear estimator constraint. Maximum Likelihood Estimation (MLE) method. Least Square (LS) methods.
+        </p>
+        <h4> Detailed outline </h4>
+        <ul>
+            <li> Estimation vs detection
+            </li>
+            <li> Detection overview [HVP chap1]
+                <ul>
+                    <li>Framework, decision region D, Bayes vs Fisher, performance metric
+                    <li>Neyman-Pearson detector
+                        <ul>
+                            <li><a href="https://www.dataschool.io/simple-guide-to-confusion-matrix-terminology/">Confusion matrix</a>,
+                            <a href="http://en.wikipedia.org/wiki/Sensitivity_and_specificity">Wiki</a> (see t1_introduction.pptx)
+                                <ul>
+                                    <li>Accuracy</li>
+                                    <li>Specificity, FA, type I error, significance level, size</li>
+                                    <li>Sensibility, power, detection,  recall, miss detection, type II error</li>
+                                    <li>PPV, precision</li>
+                                    <li>NPV</li>
+                                    <li>Power function</li>
+                                    <li>F1-score</li>
+                                    <li>ROC</li>
+                                </ul>
+                            </li>
+                            <li>Significance level, size, p-value for composite hypotheses/test (see t1_introduction.pptx)</li>
+                            <li>One-sided, two sided tests: determined by H<sub>a</sub></li>
+                            <li><a href="https://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9399.7_rule">68-95-99.7 rule</a></li>
+                            <li>Example of test, critical value, test-statistic:
+                                <ul>
+                                    <li>z-test, z<sub>&alpha;</sub>, z-value</li>
+                                    <li>One/Two-sample t-test, t<sub>&alpha;</sub>, t-value</li>
+                                    <li>&chi;<sup>2</sup>-test, &chi;<sup>2</sup><sub>&alpha;</sub>, &chi;<sup>2</sup>-value</li>
+                            <li>See slides 17-21 <a href="https://ocw.mit.edu/courses/mathematics/18-05-introduction-to-probability-and-statistics-spring-2014/class-slides/">here</a> for examples</li>
+                                </ul>
+                        </ul>
+                    </li>
+                    <li>Bayesian simple detector
+                        <ul>
+                            <li>Bayesian detector
+                                <ul>
+                                    <li>Conditional risk for H<sub>j</sub></li>
+                                    <li>Bayes rule to minimize Bayes risk</li>
+                                    <li>LRT using LR or LLR</li>
+                                    <li>MAP rule using posterior cost of choosing H<sub>j</sub></li>
+                                    <li>Digital COM examples: 1) BSC; 2) AWGN</li>
+                                </ul>
+                            </li>
+                            <li>Minimax detector
+                            </li>
+                        </ul>
+                    <li>Bayesian composite detector
+                        <ul>
+                            <li>
+                                Conditional risk, Bayes risk
+                            </li>
+                            <li>
+                                Bayes rule to minimizing Bayes risk
+                            </li>
+                            <li>
+                                Minimizing posterior cost of choosing H<sub>j</sub>
+                            </li>
+                            <li>
+                                UMP, LMP
+                            </li>
+                            <li>
+                                Generalized LR, aka MLT
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li> Bayesian estimation [SMK chap10-13, see also linear_est_review.pdf]
+                <ul>
+                    <li>Framework: error, cost function, Bayes risk</li>
+                    <li>Main methods
+                        <ul>
+                            <li>MMSE (conditional <em>mean</em>): quadratic cost function</li>
+                            <li>MAP (<em>mode</em> or max of posterior pdf): hit-or-miss cost function</li>
+                            <li><em>Median</em> of posterior pdf: absolute error cost function</li>
+                        </ul>
+                    </li>
+                    <li>LMMSE</li>
+                    <li>Recursive LMMSE</li>
+                    <li>Kalman filter</li>
+                </ul>
+            </li>
+            <li> Classical estimation
+                <ul>
+                    <li>LS [SMK chap 8, see also linear_est_review.pdf] 
+                        <ul>
+                            <li>LS</li>
+                            <li>WLS</li>
+                            <li>Regularized WLS</li>
+                            <li>RLS aka sequential LS</li>
+                            <li>Order-RLS, QR decomposition</li>
+                            <li>Constrained LS</li>
+                            <li>Nonlinear LS
+                                <ul>
+                                    <li>Transform nonlinear parameters to linear ones</li>
+                                    <li>Separate nonlinear and linear parameters</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>BLUE [SMK chap 6]</li>
+                    <li>ML [SMK chap 7]</li>
+                    <li>MVUE [SMK chap 2]</li>
+                    <li>CR bound [SMK chap 3]</li>
+                </ul>
+            </li>
+            <li> Estimation and detection using EM
+                <ul>
+                    <li>
+                    <a href="https://people.eecs.berkeley.edu/~pabbeel/cs287-fa13/slides/Likelihood_EM_HMM_Kalman.pdf">Pieter Abbee</a>
+                    </li>
+                    <li>
+                    <a href="http://cs229.stanford.edu/notes/cs229-notes8.pdf">Andrew Ng</a>
+                    </li>
+                </ul>
+            </li>
+            <li> Applications
+                <ul>
+                    <li>Decision-feedback detection for MIMO channels [see blst_5_views.pdf]
+                        <ul>
+                            <li>5 views of ZF-DFE
+                                <ul>
+                                    <li>SIC</li>
+                                    <li>Matrix</li>
+                                    <li>Gram-Schmidt</li>
+                                    <li>Cholesky</li>
+                                    <li>Linear prediction</li>
+                                </ul>
+                            </li>
+                            <li> MMSE-DFE
+                            </li>
+                                <ul>
+                                    <li>SIC view</li>
+                                    <li>Linear prediction view</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Optimal regulator design [see linear_est_review.pdf]</li>
+                    <li>Beam-forming</li>
+                </ul>
+            </li>
+        </ul>
+            <h4>Grading
+            </h4>
+                <ul>
+                    <li>Homework: 20%</li>
+                    <li>Midterm: 30%</li>
+                    <li>Final: 50%</li>
+                    <li>Make-up Work: not allowed unless special circumstances</li>
+                </ul>
+    </body>
+</html>

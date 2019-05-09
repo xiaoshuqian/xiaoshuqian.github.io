@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>PRINCIPLES OF OS AND DISTRIBUTED SYSTEMS
+        </title>
+    </head>
+    <body>
+        <h1>PRINCIPLES OF OS AND DISTRIBUTED SYSTEMS
+        </h1>
+        <h2>
+            Quarter offered
+        </h2>
+        <p>
+        Fall 2017, 9/30, 10/1, 11/4, 11/5, 12/9, 12/10, noon-8pm, Room 204
+        </p>
+        <h2>
+            Course description
+        </h2>
+        <p>
+        The course begins with basic principles of a monolithic OS, as exemplified by Linux, MacOS, and Windows, then advances to more sophisticated details of processes, preemptive multiprocessing, lightweight processes, and interrupts various types of interprocess communications, demons, file systems, signals, and paging, which are present on each independent node of the network. Then it advances to the specific software subsets on each node of the aggregate operating system composed of the multitude of nodes. Then it advances to the higher level of the global system management components given for each node that coordinate the nodes' activities to form a collaboration. Coordination of the cooperation of an individual node's kernel OS and management component by the management system. In a properly functioning integration the whole distributed system should exhibit transparency which means that it appears to the user as one single OS entity.
+        </p>
+        <h4>
+            Instructor
+        </h4>
+    </body>
+        <p>
+        Dr. Xiaoshu Qian
+        </p>
+        <h4>
+            Reference links and books
+        </h4>
+        <ul>
+            <li><a href="http://pages.cs.wisc.edu/~remzi/OSTEP/">Operating systems, three easy pieces</a>
+            </li>
+            <li><a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-828-operating-system-engineering-fall-2012/lecture-notes-and-readings/">MIT OS course link</a>:
+                <ul>
+                    <li><a href="https://pdos.csail.mit.edu/6.828/2012/xv6.html">xv6 2012</a></li>
+                    <li><a href="https://pdos.csail.mit.edu/6.828/2018/xv6.html">xv6 2018</a></li>
+                    <li><a href="https://pdos.csail.mit.edu/6.828/2018/schedule.html">Notes 2018</a></li>
+                </ul>
+            </li>
+            <li><a href="https://tc.gts3.org/cs3210/2016/spring/cal.html">Georgia Tech OS course link</a>
+            <li><a href="https://www.ics.uci.edu/~aburtsev/143A/2017fall/">UCI OS course link</a>,
+            </li>
+            <li><a href="http://courses.cs.vt.edu/csonline/OS/Lessons/index.html">Virginia Tech OS course link</a>
+            <li><a href="https://cs162.eecs.berkeley.edu/">UC Berkeley OS course link</a>,
+                <a href="https://www.youtube.com/playlist?list=PLRdybCcWDFzCag9A0h1m9QYaujD0xefgM">UC Berkeley OS youtube</a>
+            </li>
+            <li><a href="http://www.personal.kent.edu/~rmuhamma/OpSystems/os.html">Kent OS course link</a>,
+                <a href="http://www.personal.kent.edu/~rmuhamma/OpSystems/osreview.html">OS Review</a>
+            </li>
+            <li><a href="http://www.bravegnu.org/gnu-eprog/index.html">Embedded Programming with the GNU Toolchain</a> A good overview of ARM assembly for writing loader/linker code.
+            </li>
+        </ul>
+        <h4>
+            Detailed outline
+        </h4>
+<ul>
+    <li>Intro
+        <ul>
+            <li>Operating system = a layer between HW abstraction and API
+            </li>
+            <li>Roles operating systems
+                <ul>
+                    <li>For convenience: provide a user I/F and a programming I/F for a single/multiple users, programs more portable to different HWs</li>
+                        <ul>
+                            <li>OSs relieve users and programs from low level tasks such booting and allow them conveniently (sometimes transparently) share CPU (process multiplexing/scheduling), memory (allocation/deallocation), I/O devices (file system, etc), ... while having the illusion that they have the entire CPU, Memory, IO devices to themselves</li>
+                        </ul>
+                    <li>For efficiency: To help manage resources (CPU, memory/disk, ...) more efficiently: time sharing, boot</li>
+                    <li>For security and protection: Limited direct access, isolation, user/kernel mode</li>
+                </ul>
+            </li>
+            <li>Before OSs were born:
+                <ul>
+                    <li>user could only run one program at a time</li>
+                    <li>had to insert the program disk before booting the machine</li>
+                    <li>Program had to control HW (CPU, memory, disk, printer, etc) directly and would only be compatible with one set of HW</li>
+                </ul>
+            </li>
+            <li>Scope of an OS: Essential functions of the kernel -- CPU scheduling, memory allocation, device access (disk, network, IO devices). Other functions: editors, compilers, , etc</li>
+            <li>Design goals: reliability, maintainability, power/protability in addition to convenience/efficiency/security/protection above.
+            </li>
+            <li>Trade-off between number of supported services and simplicity/reliability: provide selected tools and combining mechanisms (e.g. pipe) to provide many combinations of services
+            </li>
+            <li>History: Multics, Unix (BSD), Linux, macOS, windows
+            </li>
+            <li>Main resources
+                <ul>
+                    <li>CPU/process
+                    </li>
+                    <li>memory
+                        <ul>
+                            <li>real mode, memory segmentation (CS, DS, SS, ES/FS)
+                            </li>
+                            <li>memory hirarchy: direct mapping, fully associative, set associative; 3x3:
+                                <ul>
+                                    <li>3 parts of an address: tag + index + offset
+                                    </li>
+                                    <li>3 parameters: A, S, B
+                                    </li>
+                                    <li>3 steps of address decoding: decoding using index, associative mapping of tag, byte addr using block offset
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>protected mode (paging): paging as caching, for protection, Translation Lookaside Buffer (TLB)
+                            </li>
+                        </ul>
+                    </li>
+                    <li>IO devices (file system in particular)
+                    </li>
+                </ul>
+            </li>
+            <li>Key ideas: isolation/communication, concurrency/syncronization, virtualization, persistency
+            </li>
+            <li>Design: I/F, organization
+            </li>
+            <li>Organization: monolithic, library, micro-kernel
+            </li>
+         </ul>
+    </li>
+    <li>I/F
+         <ul>
+            <li>User I/F: implementing shell, shell IO redirection, pipe & shell pipelining
+            </li>
+            <li>Programming I/F: system calls
+                <ul>
+                    <li>U/K: User/Kernel mode
+                    </li>
+                    <li>Process: create/kill, exec/fork, getpid/setpid
+                    </li>
+                    <li>Memory: sbrk
+                    </li>
+                    <li>File system: create/delete, open/close, write/read
+                    </li>
+                </ul>
+            </li>
+         </ul>
+    </li>
+    <li>CPU sharing: processes
+        <ul>
+            <li>Process definition
+            </li>
+            <li>Process' view: code (operations) and data
+                <ul>
+                    <li>CPU: ip, bp & sp, general purpose reg, condition code, cs/ss/ds/es, etc
+                    </li>
+                    <li>memory: virtual memory (illusion of having all the moery for itself), stack, heap.
+                    </li>
+                    <li>IO devices and other peripherals.
+                    </li>
+                </ul>
+            </li>
+            <li>Three main states of a process (running, blocked, ready), six states of xv6 processes (unused, embryo, sleeping, running, runnable, zombie)
+            <li>Interrupt, exception (trap, fault, abort): timer, watchdog timer, system call
+            </li>
+            <li>How a system call is implemented in xv6: a journey from getting called to completion using kill(int pid) as an example
+                <ul>
+                    <li>user.h: function prototype kill(int pid)
+                    </li>
+                    <li>usys.S (implementation of kill(int pid) in assembly), traps.h (T_SYSCALL), syscall.h (#define sys_KILL 8)
+                    </li>
+                    <li>syscall.c (systemcall[] to map sys_KILL number to sys_kill function)
+                    </li>
+                    <li>sys_kill is implemented in sysproc.c and it will call kill(pid) implemented in proc.c (files used in this step vary with system calls. e.g. sys_pipe & pipe won't be in sysproc.c & proc.c and they are defined in sysfile.c and pipe.c respectively)
+                    </li>
+                </ul>
+            </li>
+            <li>Mechanism for time sharing
+            </li>
+            <li>Process scheduling
+            </li>
+        </ul>
+    </li>
+    <li>Memory: mechanism and policy
+        <ul>
+            <li>Virtual memory (fully associative)
+            </li>
+            <li>Page table, one-level, two-level, ...
+            </li>
+            <li>TLB (Translation Lookaside Buffer): OS
+            </li>
+            <li>Memory allocation: swapping, free list management, sbrk and mmap
+            </li>
+        </ul>
+    </li>
+    <li>File system
+    </li>
+</ul>
+    </body>
+</html>

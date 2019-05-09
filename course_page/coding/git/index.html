@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Git</title>
+    </head>
+    <body>
+        <h1>Git</h1>
+        <h2>
+            Quarter offered
+        </h2>
+        <p>
+        ?Fall 2017, 9/30, 10/1, 11/4, 11/5, 12/9, 12/10, noon-8pm, Room 204
+        </p>
+        <h2>
+            Prerequisites
+        </h2>
+        None
+        <h2>
+            Course description
+        </h2>
+        <h4>
+            Instructor
+        </h4>
+        <p>
+        Dr. Xiaoshu Qian
+        </p>
+        <h4>
+            References
+        </h4>
+        <ul>
+            <li>
+                <a href="https://www.youtube.com/watch?v=4XpnKHJAok8">Tech Talk: Linus Torvalds on git</a>
+            </li>
+            <li>
+                <a href="https://www.youtube.com/watch?v=SWYqp7iY_Tc">git crash course</a>
+                <ul>
+                    <li>git installation, window, mac, linux</li>
+                    <li>bash: touch filename</li>
+                    <li>show hidden files in windows: view->option->change seach options</li>
+                    <li>git init</li>
+                </ul>
+            </li>
+            <li><a href="https://git-scm.com/">git-scm.com</a>: official git link where you can find installation guide, tutorials, doc, git book, etc
+            </li>
+            <li><a href="https://marklodato.github.io/visual-git-guide/index-en.html">A Visual Git Reference</a>
+            </li>
+            <li><a href="http://try.github.io/">learn-by-doing</a>
+            </li>
+            <li>git cheatsheets:
+                <ul>
+                    <li><a href="http://resources.docs.salesforce.com/rel1/doc/en-us/static/pdf/SF_Git_cheatsheet_web.pdf">saleforce.com</a></li>
+                    <li><a href="https://about.gitlab.com/images/press/git-cheat-sheet.pdf">gitlab.com</a></li>
+                    <li><a href="https://www.keycdn.com/blog/git-cheat-sheet">keycdn.com</a></li>
+                    <li><a href="https://education.github.com/git-cheat-sheet-education.pdf">github.com</a></li>
+                    <li><a href="https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet">atlassian.com, bitbucket</a></li>
+                    <li><a href="https://ndpsoftware.com/git-cheatsheet.html">ndpsoftware.com</a></li>
+                </ul>
+            </li>
+            <li><a href="https://launchacademy.com/codecabulary/learn-git">launchacademy.com/codeabulary/learn-git</a>
+            </li>
+            <li><a href="https://betterexplained.com/articles/a-visual-guide-to-version-control/">A visual guide to version control</a> (using subversion as examples)</a>
+            </li>
+            <li>
+                <a href="https://www.siteground.com/tutorials/sg-git/">sg-git</a>: This site also provides web hosting for a fee</a>
+            </li>
+        </ul>
+        <h4>
+            Description
+        </h4>
+        <p>
+        From ITU course catalog:
+This course is designed to make the participants experts in git
+tool. It starts with fundamental concepts like git branch and
+continues to advanced topics like design and git work flow.
+The course covers different components of git and github
+and how they are used in software development operations.
+The course also covers Installation and Configuration of
+github and other tools and techniques like github desktop,
+SourceTree and Sparkle share as well. Participants will also
+get to implement one project towards the end of the course.
+Companies use git for creating and managing open source
+API's and to help the open source community. It is github, a
+git repository hosting service founded just a few years ago
+to build software better, together. Most of the high paying
+companies are using git and github for their new, innovative
+and upcoming Software Languages. Open source software
+can now be made using github and you will be able to share
+your repositories with other developers so that they can also
+contribute. github concepts can be implemented in Big Data
+and Hadoop technology, Java Projects and other frameworks
+as well. Some of the trending repositories in github are Scala
+and AngularJS.
+        </p>
+        <h4>
+            Detailed outline
+        </h4>
+<ul>
+    <li>Introduction
+        <ul>
+            <li><a href="https://git-scm.com/video/what-is-version-control">What is VCM?</a>
+            </li>
+            <li><a href="https://git-scm.com/video/what-is-git">What is Git?</a>
+            </li>
+            <li>Installation: <a href="https://git-scm.com/">git-scm.com</a>
+            </li>
+            <li><a href="https://git-scm.com/video/quick-wins">Benefits of git</a>:
+                <ul>
+                    <li>focus on contents not file, Sha-1</li>
+                    <li>distributed</li>
+                    <li>use index to control what's in the commit; avoid accidentally include undesirable files</li>
+                    <li>everything is local; easy to work offline</li>
+                    <li>easy to branch/merge</li>
+                </ul>
+            </li>
+            <li><a href="https://git-scm.com/figures/18333fig0106-tn.png">Different areas</a> (see <a href="https://git-scm.com/book/en/v1/Getting-Started-Git-Basics">git-scm.com</a>): stash, workspace (working dir), index (stage), local repo, remote repo (upstream repo)
+            </li>
+            <li><a href="https://launchacademy.com/codecabulary/learn-git/git-lifecycle">File status lifecycle</a>: untracked, unmodified, modified, staged
+            </li>
+        </ul>
+    </li>
+    <li>Basic <a href="https://images.osteele.com/2008/git-transport.png">Git workflow</a> (see <a href="https://blog.osteele.com/2008/05/my-git-workflow/">my-git-workflow</a> and <a href="https://marklodato.github.io/visual-git-guide/index-en.html">visual-git-guide</a>)
+        <ul>
+            <li>Between workspace and index: the command below can be optionally followed by a pathname
+                <ul>
+                    <li>git add -A: the default. Add all (new, deleted, modified)
+                    </li>
+                    <li>git add -u: Add only updated (deleted & modified)
+                    </li>
+                    <li>git add --ignore-removal: Add only new & modified)
+                    </li>
+                    <li>git rm --cached: remove only files from index
+                    </li>
+                    <li>git rm: remove files from both workspace & index
+                    </li>
+                    <li>git checkout: overwrite the file in workspace with the version in index
+                    </li>
+                </ul>
+            </li>
+            <li>Between index and local repo
+            </li>
+                <ul>
+                    <li>git commit
+                    </li>
+                    <li>git reset
+                    </li>
+                </ul>
+            </li>
+            <li>Between workspace and local repo
+            </li>
+                <ul>
+                    <li>git commit -a
+                    </li>
+                    <li>git diff HEAD
+                    </li>
+                    <li>git checkout HEAD
+                    </li>
+                </ul>
+            </li>
+            <li>Between local repo and remote repo
+                <ul>
+                    <li>push
+                    </li>
+                    <li>fetch
+                    </li>
+                </ul>
+            </li>
+            <li>Between workspace and remote repo
+                <ul>
+                    <li>clone
+                    </li>
+                    <li>pull or rebase
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>Branching
+    </li>
+</ul>
+    </body>
+</html>
