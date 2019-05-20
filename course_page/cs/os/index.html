@@ -40,6 +40,68 @@
                     <li><a href="https://pdos.csail.mit.edu/6.828/2018/schedule.html">Notes 2018</a></li>
                 </ul>
             </li>
+            <li><a href="http://www.cse.iitm.ac.in/~chester/courses/15o_os/index.html">Lectures from IIT by Prof Chester</a>:
+                <ul>
+                    <li><a href="https://www.youtube.com/watch?v=k51934LHz3k&t=25s&index=1&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun">lec01-Intro</a> </li>
+                    <li><a href="https://www.youtube.com/watch?v=Cuo8GTklgoE&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=4">lec04-CPU sharing, race conditions, sync, scheduling</a> </li>
+                    <li><a href="https://www.youtube.com/watch?v=DdUeTN0qfuE&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=5">lec05-Memory Mgmt: process, fragmentation, deallocation</a> </li>
+                    <li><a href="https://www.youtube.com/watch?v=g9HTAK0WwkY&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=6">lec06-MM: solution to fragmentation: paging & virtual memory</a> </li>
+                    <ul>
+                        <li>user instruction is executed on virtual address while page tables are in Kernel space -> achieve isolation
+                        </li>
+                        <li>demand paging -> expoit locality & allow program size > RAM size: PTE_P bit, replacement policy (LRU, LFU, FIFO), Dirty bit to determine if swap-out/write-back is needed, protection bits (ReadOnly, Executable, User/Kernel access, etc)
+                        </li>
+                    </ul>
+                    <li><a href="https://www.youtube.com/watch?v=AKGtJAi4wGo&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=7">lec07-MM: How virtual memory works? MMU</a> </li>
+                    <ul>
+                        <li>MMU: %cr3 (page dir reg), two level mapping, TLB
+                        </li>
+                        <li>Role of OS, CPU & MMU in the sequence of steps to recover a page fault
+                        </li>
+                    </ul>
+                    <li><a href="https://www.youtube.com/watch?v=SqYigYLFvcI&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=8">lec08-MM: segmentation & fragmentation</a> </li>
+                    <ul>
+                        <li>Logical address: SS (used to obtain Base Address) + Offset
+                        </li>
+                        <li>Segment Selector in segment register for x86: CS/EIP, DS, SS/ESP (4 data segment registers D, E, F, G)
+                        </li>
+                        <li>GDTR: Reg with a pointer to GDT (Global Descriptor Table)
+                        </li>
+                        <li>Segment Descriptor: base addr, limit, access (privilage level and access type (R/W/E)) 
+                        </li>
+                        <li>From logical address to linear/virtual address to physical address
+                        </li>
+                    </ul>
+                    <li><a href="https://www.youtube.com/watch?v=8LS8TCxJqCg&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=9">lec09-MM in xv6</a> </li>: kalloc and step to enable paging:
+                    <ul>
+                        <li>set the paging enable bit in CR0</li>
+                        <li>create/fill page directory: walkpddir</li>
+                        <li>fill page table: mappages</li>
+                        <li>load CR3 register so that paging directory can be found</li>
+                    </ul>
+                    <li><a href="https://www.youtube.com/watch?v=V6PQClbz0zY&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=11">lec12-create/fork, execute/exec, exit/kill/wait, wakeup process</a> </li>
+                    <ul>
+                        <li>EMBRYO
+                        </li>
+                        <li>ZOMBIE: A ZOMBIE is removed upon reading of the exit status by its parent, who then deallocates or removes page-dir, kstack and PCB
+                        </li>
+                        <li>Orphan
+                        </li>
+                    </ul>
+                    <li><a href="https://www.youtube.com/watch?v=aZKNAWpFVCg&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=12">lec13-Internals of the sys calls for proc mgmt: fork/exit/wait</a> </li>
+                    <li><a href="https://www.youtube.com/watch?v=rnGVincwk30&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=13">lec14-What is interupt? Interupt types & handling</a> </li>
+                    <li><a href="https://www.youtube.com/watch?v=V1TJ6b6_EjM&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=14">lec15-Interupt handling in details</a> </li>
+                    <li><a href="https://www.youtube.com/watch?v=KqgMGZyiLnU">lec16-sys call</a> </li>
+                    <li><a href="https://www.youtube.com/watch?v=v79j6lYA7x0">lec17-cpu context switching</a> </li>
+                    <li><a href="https://www.youtube.com/watch?v=exlaEOVRWQM&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=17">lec18-cpu scheduling policy: FCFS, SJF, SRTF, round-robin</a> </li>
+                    <li><a href="https://www.youtube.com/watch?v=G2vwkBZy894&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=22">lec23-IPC: shared memory (sgmget/sgmat/shmdt), message passing (send/receive/pipe) & signal (kill/signal)</a> </li>
+                    <li><a href="https://www.youtube.com/watch?v=ZQb3DRy0g8U&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=23">lec24-Race condition, sync, lock (mutual exclussion, progress, no starvation)</a> </li>
+                    <li><a href="https://www.youtube.com/watch?v=B_lH2Xov_g4&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=24">lec25-Lock implementation in SW: Peterson's solution for two processors</a> </li>
+                    <li><a href="">lec26-Lock implementation in SW: Bakery algorithm for more than two processors</a> </li>
+                    <li><a href="https://www.youtube.com/watch?v=yB8sm-pwvZo&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=26">lec27-HW locks: spinlocks and its usage</a> </li>
+                    <li><a href="https://www.youtube.com/watch?v=9cuwgiHQyoI&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=32">lec33-Threads: thread model, thread vs process, pthread</a> </li>
+                    <li><a href="https://www.youtube.com/watch?v=LNiNOW-_8lw&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=33">lec34-Threads: user/kernel level, threading</a> </li>
+                </ul>
             <li><a href="https://tc.gts3.org/cs3210/2016/spring/cal.html">Georgia Tech OS course link</a>
             <li><a href="https://www.ics.uci.edu/~aburtsev/143A/2017fall/">UCI OS course link</a>,
             </li>

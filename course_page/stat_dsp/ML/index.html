@@ -39,6 +39,10 @@
             </li>
             <li><a href="https://www.coursera.org/learn/machine-learning">ML_Andrew_Ng (intro)</a>
             </li>
+            <li><a href="https://colab.research.google.com/notebooks/welcome.ipynb">colab</a>
+            </li>
+            <li>Tutorials: <a href="https://www.pyimagesearch.com/2018/09/10/keras-tutorial-how-to-get-started-with-keras-deep-learning-and-python/">try_your_own_images</a>, <a href="https://www.datacamp.com/community/tutorials/deep-learning-python">datacamp</a>, <a href="https://www.pyimagesearch.com/2014/05/26/opencv-python-k-means-color-clustering/">k-mean using scikit-learn</a>
+            </li>
         </ul>
         <h4>
             Description
@@ -78,7 +82,7 @@ Machine learning is a fast-moving field with many recent real world commercial a
             </li>
             <li><a href="https://towardsdatascience.com/a-tour-of-the-top-10-algorithms-for-machine-learning-newbies-dde4edffae11">Popular algorithms in ML</a> (see also <a href="https://towardsdatascience.com/top-10-machine-learning-algorithms-for-data-science-cdb0400a25f9">here</a>)
                 <ul>
-                    <li>Linear regression
+                    <li>Linear regression: model architecture, loss function, optimizer (sgd & learning rates), scaling data, training, testing, validation, prediction, regularization
                     </li>
                     <li>Logistic regression
                     </li>
@@ -92,7 +96,7 @@ Machine learning is a fast-moving field with many recent real world commercial a
                     </li>
                     <li>K-Nearest neighbor
                     </li>
-                    <li>K-mean
+                    <li>K-mean: <a href="https://www.pyimagesearch.com/2014/05/26/opencv-python-k-means-color-clustering/">k-mean using scikit-learn</a>
                     </li>
                     <li>Vector support
                     </li>
@@ -113,6 +117,13 @@ Machine learning is a fast-moving field with many recent real world commercial a
                 </ul>
             </li>
             <li>Tools: Python and TensorFlow
+                <ul>
+                    <li>A 'hello world': model = keras.Sequential(...), model.compile(..); model.fit(..); model.evaluate(..); model.predict(..)<br>
+                        model = keras.Sequential([keras.layers.Dense(units=1, input_shape=[1])]); model.compile(loss='mse', optimizer=''sgd'); xs = np.array(range(7), dtype=float); ys = 5*xs+5; model.fit(xs,ys, epochs=10); print(model.predict([7.0]);
+                    </li>
+                    <li>MNIST examples: mnist = keras.datasets.mnist or fashion_mnist; (im,lab), (tst_im,tst_lab) = mnist.loaddata(); Flatten(), Dense(..); class myCallback(keras.callbacks.Callback): def on_epoch_end(self, epoch, logs={}): ...
+                    </li>
+                </ul>
             </li>
             <li>Applications
                 <ul>
@@ -135,6 +146,12 @@ Machine learning is a fast-moving field with many recent real world commercial a
                  <li>Midterm: 40%</li>
                  <li>Project: 60%</li>
                  <li>Make-up Work: not allowed unless special circumstances</li>
+             </ul>
+        <h4>Gloassary
+        </h4>
+             <ul>
+                 <li>relu (REctified Linear Unit)
+                 </li>
              </ul>
     </body>
 </html>
