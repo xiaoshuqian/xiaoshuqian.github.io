@@ -1,253 +1,308 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>PRINCIPLES OF OS AND DISTRIBUTED SYSTEMS
-        </title>
-    </head>
-    <body>
-        <h1>PRINCIPLES OF OS AND DISTRIBUTED SYSTEMS
-        </h1>
-        <h2>
-            Quarter offered
-        </h2>
-        <p>
-        Fall 2017, 9/30, 10/1, 11/4, 11/5, 12/9, 12/10, noon-8pm, Room 204
-        </p>
-        <h2>
-            Course description
-        </h2>
-        <p>
-        The course begins with basic principles of a monolithic OS, as exemplified by Linux, MacOS, and Windows, then advances to more sophisticated details of processes, preemptive multiprocessing, lightweight processes, and interrupts various types of interprocess communications, demons, file systems, signals, and paging, which are present on each independent node of the network. Then it advances to the specific software subsets on each node of the aggregate operating system composed of the multitude of nodes. Then it advances to the higher level of the global system management components given for each node that coordinate the nodes' activities to form a collaboration. Coordination of the cooperation of an individual node's kernel OS and management component by the management system. In a properly functioning integration the whole distributed system should exhibit transparency which means that it appears to the user as one single OS entity.
-        </p>
-        <h4>
-            Instructor
-        </h4>
-    </body>
-        <p>
-        Dr. Xiaoshu Qian
-        </p>
-        <h4>
-            Reference links and books
-        </h4>
+  <head>
+    <meta charset="UTF-8">
+    <title>PRINCIPLES OF OS AND DISTRIBUTED SYSTEMS
+    </title>
+  </head>
+  <body>
+    <h1>PRINCIPLES OF OS AND DISTRIBUTED SYSTEMS
+    </h1>
+    <h2>
+      Quarter offered
+    </h2>
+    <p>
+    Fall 2017, 9/30, 10/1, 11/4, 11/5, 12/9, 12/10, noon-8pm, Room 204
+    </p>
+    <h2>Course description
+    </h2>
+    <p>
+    The course begins with basic principles of a monolithic OS, as exemplified by Linux, MacOS, and Windows, then advances to more sophisticated details of processes, preemptive multiprocessing, lightweight processes, and interrupts various types of interprocess communications, demons, file systems, signals, and paging, which are present on each independent node of the network. Then it advances to the specific software subsets on each node of the aggregate operating system composed of the multitude of nodes. Then it advances to the higher level of the global system management components given for each node that coordinate the nodes' activities to form a collaboration. Coordination of the cooperation of an individual node's kernel OS and management component by the management system. In a properly functioning integration the whole distributed system should exhibit transparency which means that it appears to the user as one single OS entity.
+    </p>
+    <h4>Instructor
+    </h4>
+  </body>
+    <p>Dr. Xiaoshu Qian
+    </p>
+    <h4>Reference links and books
+    </h4>
+    <ul>
+      <li><a href="http://pages.cs.wisc.edu/~remzi/OSTEP/">Operating systems, three easy pieces</a>
+      </li>
+      <li><a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-828-operating-system-engineering-fall-2012/lecture-notes-and-readings/">MIT OS course link</a>:
         <ul>
-            <li><a href="http://pages.cs.wisc.edu/~remzi/OSTEP/">Operating systems, three easy pieces</a>
-            </li>
-            <li><a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-828-operating-system-engineering-fall-2012/lecture-notes-and-readings/">MIT OS course link</a>:
-                <ul>
-                    <li><a href="https://pdos.csail.mit.edu/6.828/2012/xv6.html">xv6 2012</a></li>
-                    <li><a href="https://pdos.csail.mit.edu/6.828/2018/xv6.html">xv6 2018</a></li>
-                    <li><a href="https://pdos.csail.mit.edu/6.828/2018/schedule.html">Notes 2018</a></li>
-                </ul>
-            </li>
-            <li><a href="http://www.cse.iitm.ac.in/~chester/courses/15o_os/index.html">Lectures from IIT by Prof Chester</a>:
-                <ul>
-                    <li><a href="https://www.youtube.com/watch?v=k51934LHz3k&t=25s&index=1&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun">lec01-Intro</a> </li>
-                    <li><a href="https://www.youtube.com/watch?v=Cuo8GTklgoE&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=4">lec04-CPU sharing, race conditions, sync, scheduling</a> </li>
-                    <li><a href="https://www.youtube.com/watch?v=DdUeTN0qfuE&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=5">lec05-Memory Mgmt: process, fragmentation, deallocation</a> </li>
-                    <li><a href="https://www.youtube.com/watch?v=g9HTAK0WwkY&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=6">lec06-MM: solution to fragmentation: paging & virtual memory</a> </li>
-                    <ul>
-                        <li>user instruction is executed on virtual address while page tables are in Kernel space -> achieve isolation
-                        </li>
-                        <li>demand paging -> expoit locality & allow program size > RAM size: PTE_P bit, replacement policy (LRU, LFU, FIFO), Dirty bit to determine if swap-out/write-back is needed, protection bits (ReadOnly, Executable, User/Kernel access, etc)
-                        </li>
-                    </ul>
-                    <li><a href="https://www.youtube.com/watch?v=AKGtJAi4wGo&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=7">lec07-MM: How virtual memory works? MMU</a> </li>
-                    <ul>
-                        <li>MMU: %cr3 (page dir reg), two level mapping, TLB
-                        </li>
-                        <li>Role of OS, CPU & MMU in the sequence of steps to recover a page fault
-                        </li>
-                    </ul>
-                    <li><a href="https://www.youtube.com/watch?v=SqYigYLFvcI&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=8">lec08-MM: segmentation & fragmentation</a> </li>
-                    <ul>
-                        <li>Logical address: SS (used to obtain Base Address) + Offset
-                        </li>
-                        <li>Segment Selector in segment register for x86: CS/EIP, DS, SS/ESP (4 data segment registers D, E, F, G)
-                        </li>
-                        <li>GDTR: Reg with a pointer to GDT (Global Descriptor Table)
-                        </li>
-                        <li>Segment Descriptor: base addr, limit, access (privilage level and access type (R/W/E)) 
-                        </li>
-                        <li>From logical address to linear/virtual address to physical address
-                        </li>
-                    </ul>
-                    <li><a href="https://www.youtube.com/watch?v=8LS8TCxJqCg&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=9">lec09-MM in xv6</a> </li>: kalloc and step to enable paging:
-                    <ul>
-                        <li>set the paging enable bit in CR0</li>
-                        <li>create/fill page directory: walkpddir</li>
-                        <li>fill page table: mappages</li>
-                        <li>load CR3 register so that paging directory can be found</li>
-                    </ul>
-                    <li><a href="https://www.youtube.com/watch?v=V6PQClbz0zY&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=11">lec12-create/fork, execute/exec, exit/kill/wait, wakeup process</a> </li>
-                    <ul>
-                        <li>EMBRYO
-                        </li>
-                        <li>ZOMBIE: A ZOMBIE is removed upon reading of the exit status by its parent, who then deallocates or removes page-dir, kstack and PCB
-                        </li>
-                        <li>Orphan
-                        </li>
-                    </ul>
-                    <li><a href="https://www.youtube.com/watch?v=aZKNAWpFVCg&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=12">lec13-Internals of the sys calls for proc mgmt: fork/exit/wait</a> </li>
-                    <li><a href="https://www.youtube.com/watch?v=rnGVincwk30&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=13">lec14-What is interupt? Interupt types & handling</a> </li>
-                    <li><a href="https://www.youtube.com/watch?v=V1TJ6b6_EjM&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=14">lec15-Interupt handling in details</a> </li>
-                    <li><a href="https://www.youtube.com/watch?v=KqgMGZyiLnU">lec16-sys call</a> </li>
-                    <li><a href="https://www.youtube.com/watch?v=v79j6lYA7x0">lec17-cpu context switching</a> </li>
-                    <li><a href="https://www.youtube.com/watch?v=exlaEOVRWQM&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=17">lec18-cpu scheduling policy: FCFS, SJF, SRTF, round-robin</a> </li>
-                    <li><a href="https://www.youtube.com/watch?v=G2vwkBZy894&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=22">lec23-IPC: shared memory (sgmget/sgmat/shmdt), message passing (send/receive/pipe) & signal (kill/signal)</a> </li>
-                    <li><a href="https://www.youtube.com/watch?v=ZQb3DRy0g8U&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=23">lec24-Race condition, sync, lock (mutual exclussion, progress, no starvation)</a> </li>
-                    <li><a href="https://www.youtube.com/watch?v=B_lH2Xov_g4&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=24">lec25-Lock implementation in SW: Peterson's solution for two processors</a> </li>
-                    <li><a href="">lec26-Lock implementation in SW: Bakery algorithm for more than two processors</a> </li>
-                    <li><a href="https://www.youtube.com/watch?v=yB8sm-pwvZo&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=26">lec27-HW locks: spinlocks and its usage</a> </li>
-                    <li><a href="https://www.youtube.com/watch?v=9cuwgiHQyoI&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=32">lec33-Threads: thread model, thread vs process, pthread</a> </li>
-                    <li><a href="https://www.youtube.com/watch?v=LNiNOW-_8lw&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=33">lec34-Threads: user/kernel level, threading</a> </li>
-                </ul>
-            <li><a href="https://tc.gts3.org/cs3210/2016/spring/cal.html">Georgia Tech OS course link</a>
-            <li><a href="https://www.ics.uci.edu/~aburtsev/143A/2017fall/">UCI OS course link</a>,
-            </li>
-            <li><a href="http://courses.cs.vt.edu/csonline/OS/Lessons/index.html">Virginia Tech OS course link</a>
-            <li><a href="https://cs162.eecs.berkeley.edu/">UC Berkeley OS course link</a>,
-                <a href="https://www.youtube.com/playlist?list=PLRdybCcWDFzCag9A0h1m9QYaujD0xefgM">UC Berkeley OS youtube</a>
-            </li>
-            <li><a href="http://www.personal.kent.edu/~rmuhamma/OpSystems/os.html">Kent OS course link</a>,
-                <a href="http://www.personal.kent.edu/~rmuhamma/OpSystems/osreview.html">OS Review</a>
-            </li>
-            <li><a href="http://www.bravegnu.org/gnu-eprog/index.html">Embedded Programming with the GNU Toolchain</a> A good overview of ARM assembly for writing loader/linker code.
-            </li>
+          <li><a href="https://pdos.csail.mit.edu/6.828/2012/xv6.html">xv6 2012</a></li>
+          <li><a href="https://pdos.csail.mit.edu/6.828/2018/xv6.html">xv6 2018</a></li>
+          <li><a href="https://pdos.csail.mit.edu/6.828/2018/schedule.html">Notes 2018</a></li>
         </ul>
-        <h4>
-            Detailed outline
-        </h4>
+      </li>
+      <li><a href="http://www.cse.iitm.ac.in/~chester/courses/15o_os/index.html">Lectures from IIT by Prof Chester</a>:
+        <ul>
+          <li><a href="https://www.youtube.com/watch?v=k51934LHz3k&t=25s&index=1&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun">lec01-Intro</a>
+          </li>
+          <li><a href="https://www.youtube.com/watch?v=mio9OsckCZM&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=2">lec02-PC organization/HW, addr types (IO ports), addr range</a>
+          </li>
+          <li><a href="https://www.youtube.com/watch?v=n5lgcKch3Hk&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=3">lec03-Programs & processes, system calls, OS structures</a>
+          </li>
+          <li><a href="https://www.youtube.com/watch?v=Cuo8GTklgoE&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=4">lec04-CPU sharing, race conditions, sync, scheduling</a>
+          </li>
+          <li>Memory
+            <ul>
+              <li><a href="https://www.youtube.com/watch?v=DdUeTN0qfuE&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=5">lec05-Memory Mgmt: process, fragmentation, deallocation</a>
+              </li>
+              <li><a href="https://www.youtube.com/watch?v=g9HTAK0WwkY&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=6">lec06-MM: solution to fragmentation: paging & virtual memory</a>
+                <ul>
+                  <li>user instruction is executed on virtual address while page tables are in Kernel space -> achieve isolation
+                  </li>
+                  <li>demand paging -> expoit locality & allow program size > RAM size: PTE_P bit, replacement policy (LRU, LFU, FIFO), Dirty bit to determine if swap-out/write-back is needed, protection bits (ReadOnly, Executable, User/Kernel access, etc)
+                  </li>
+                </ul>
+              </li>
+              <li><a href="https://www.youtube.com/watch?v=AKGtJAi4wGo&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=7">lec07-MM: How virtual memory works? MMU</a>
+                <ul>
+                  <li>MMU: %cr3 (page dir reg), two level mapping, TLB
+                  </li>
+                  <li>Role of OS, CPU & MMU in the sequence of steps to recover a page fault
+                  </li>
+                </ul>
+              </li>
+              <li><a href="https://www.youtube.com/watch?v=SqYigYLFvcI&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=8">lec08-MM: segmentation & fragmentation</a>
+                <ul>
+                  <li>Logical address: SS (used to obtain Base Address) + Offset
+                  </li>
+                  <li>Segment Selector in segment register for x86: CS/EIP, DS, SS/ESP (4 data segment registers D, E, F, G)
+                  </li>
+                  <li>GDTR: Reg with a pointer to GDT (Global Descriptor Table)
+                  </li>
+                  <li>Segment Descriptor: base addr, limit, access (privilage level and access type (R/W/E)) 
+                  </li>
+                  <li>From logical address to linear/virtual address to physical address
+                  </li>
+                </ul>
+              </li>
+              <li><a href="https://www.youtube.com/watch?v=8LS8TCxJqCg&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=9">lec09-MM in xv6</a>: kalloc and step to enable paging:
+                <ul>
+                  <li>set the paging enable bit in CR0</li>
+                  <li>create/fill page directory: walkpddir</li>
+                  <li>fill page table: mappages</li>
+                  <li>load CR3 register so that paging directory can be found</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>Process management and system calls
+            <ul>
+              <li><a href="https://www.youtube.com/watch?v=ZplB2v2eMas&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=10">lec10-Booting in details</a> (lec11 does not exist)
+              </li>
+              <li><a href="https://www.youtube.com/watch?v=V6PQClbz0zY&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=11">lec12-create/fork, execute/exec, exit/kill/wait, wakeup process</a>
+                <ul>
+                  <li>EMBRYO
+                  </li>
+                  <li>ZOMBIE: A ZOMBIE is removed upon reading of the exit status by its parent, who then deallocates or removes page-dir, kstack and PCB
+                  </li>
+                  <li>Orphan
+                  </li>
+                </ul>
+              </li>
+              <li><a href="https://www.youtube.com/watch?v=aZKNAWpFVCg&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=12">lec13-Internals of the sys calls for proc mgmt: fork/exit/wait</a>
+              </li>
+              <li><a href="https://www.youtube.com/watch?v=rnGVincwk30&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=13">lec14-What is interupt? Interupt types & handling</a>
+              </li>
+              <li><a href="https://www.youtube.com/watch?v=V1TJ6b6_EjM&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=14">lec15-Interupt handling in details</a>
+              </li>
+              <li><a href="https://www.youtube.com/watch?v=KqgMGZyiLnU">lec16-sys call</a>
+              </li>
+              <li><a href="https://www.youtube.com/watch?v=v79j6lYA7x0">lec17-cpu context switching</a>
+              </li>
+            </ul>
+          </li>
+          <li>Process scheduling
+            <ul>
+              <li><a href="https://www.youtube.com/watch?v=exlaEOVRWQM&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=17">lec18-cpu scheduling policy: FCFS, SJF, SRTF, round-robin</a>
+              </li>
+            </ul>
+          </li>
+          <li>Process communication/coordination/synchronization
+            <ul>
+              <li><a href="https://www.youtube.com/watch?v=G2vwkBZy894&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=22">lec23-IPC: shared memory (sgmget/sgmat/shmdt), message passing (send/receive/pipe) & signal (kill/signal)</a>
+              </li>
+              <li><a href="https://www.youtube.com/watch?v=ZQb3DRy0g8U&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=23">lec24-Race condition, sync, lock (mutual exclussion, progress, no starvation)</a>
+              </li>
+              <li><a href="https://www.youtube.com/watch?v=B_lH2Xov_g4&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=24">lec25-Lock implementation in SW: Peterson's solution for two processors</a>
+              </li>
+              <li><a href="https://www.youtube.com/watch?v=YHQxp-XduS0&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=25">lec26-Lock implementation in SW: Bakery algorithm for more than two processors</a>
+              </li>
+              <li><a href="https://www.youtube.com/watch?v=yB8sm-pwvZo&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=26">lec27-HW locks: spinlocks and its usage</a>
+              </li>
+              <li><a href="https://www.youtube.com/watch?v=xKqO04SN6C0&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=27">lec28-Mutex: thundering herd problem, priority inversion, priority inheritance</a>
+              </li>
+              <li><a href="https://www.youtube.com/watch?v=UM4tk3J6WxQ&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=28">lec29-semaphores: consumer-producer or bounded buffer problem (its variants are not covered)</a>
+              </li>
+              <li><a href="https://www.youtube.com/watch?v=syMOLWlGjNg&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=29">lec30-dining phylosophers' problem and its solutions: deadlock/starvation/no-progress, solutions using random wait-time, mutex, or semaphore</a>
+              </li>
+              <li><a href="https://www.youtube.com/watch?v=Y14b7_T3AEw&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=30">lec31-deadlock detection and recovery</a>
+              </li>
+              <li><a href="https://www.youtube.com/watch?v=PzV5hzGRPRs&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=31">lec32-deadlock avoidance and prevention</a>
+              </li>
+              <li><a href="https://www.youtube.com/watch?v=9cuwgiHQyoI&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=32">lec33-Threads: thread model, thread vs process, pthread</a>
+              </li>
+              <li><a href="https://www.youtube.com/watch?v=LNiNOW-_8lw&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=33">lec34-Threads: user/kernel level, threading</a>
+              </li>
+            </ul>
+          </li>
+          <li>Security & protection
+            <ul>
+              <li><a href="https://www.youtube.com/watch?v=fs3COGpVk4A&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun&index=34">lec35-OS security: goal, policy & model; access control techniques</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      <li><a href="https://tc.gts3.org/cs3210/2016/spring/cal.html">Georgia Tech OS course link</a>
+      <li><a href="https://www.ics.uci.edu/~aburtsev/143A/2017fall/">UCI OS course link</a>,
+      </li>
+      <li><a href="http://courses.cs.vt.edu/csonline/OS/Lessons/index.html">Virginia Tech OS course link</a>
+      <li><a href="https://cs162.eecs.berkeley.edu/">UC Berkeley OS course link</a>,
+        <a href="https://www.youtube.com/playlist?list=PLRdybCcWDFzCag9A0h1m9QYaujD0xefgM">UC Berkeley OS youtube</a>
+      </li>
+      <li><a href="http://www.personal.kent.edu/~rmuhamma/OpSystems/os.html">Kent OS course link</a>,
+        <a href="http://www.personal.kent.edu/~rmuhamma/OpSystems/osreview.html">OS Review</a>
+      </li>
+      <li><a href="http://www.bravegnu.org/gnu-eprog/index.html">Embedded Programming with the GNU Toolchain</a> A good overview of ARM assembly for writing loader/linker code.
+      </li>
+    </ul>
+    <h4>
+      Detailed outline
+    </h4>
 <ul>
-    <li>Intro
+  <li>Intro
+    <ul>
+      <li>Operating system = a layer between HW abstraction and API
+      </li>
+      <li>Roles operating systems
         <ul>
-            <li>Operating system = a layer between HW abstraction and API
-            </li>
-            <li>Roles operating systems
-                <ul>
-                    <li>For convenience: provide a user I/F and a programming I/F for a single/multiple users, programs more portable to different HWs</li>
-                        <ul>
-                            <li>OSs relieve users and programs from low level tasks such booting and allow them conveniently (sometimes transparently) share CPU (process multiplexing/scheduling), memory (allocation/deallocation), I/O devices (file system, etc), ... while having the illusion that they have the entire CPU, Memory, IO devices to themselves</li>
-                        </ul>
-                    <li>For efficiency: To help manage resources (CPU, memory/disk, ...) more efficiently: time sharing, boot</li>
-                    <li>For security and protection: Limited direct access, isolation, user/kernel mode</li>
-                </ul>
-            </li>
-            <li>Before OSs were born:
-                <ul>
-                    <li>user could only run one program at a time</li>
-                    <li>had to insert the program disk before booting the machine</li>
-                    <li>Program had to control HW (CPU, memory, disk, printer, etc) directly and would only be compatible with one set of HW</li>
-                </ul>
-            </li>
-            <li>Scope of an OS: Essential functions of the kernel -- CPU scheduling, memory allocation, device access (disk, network, IO devices). Other functions: editors, compilers, , etc</li>
-            <li>Design goals: reliability, maintainability, power/protability in addition to convenience/efficiency/security/protection above.
-            </li>
-            <li>Trade-off between number of supported services and simplicity/reliability: provide selected tools and combining mechanisms (e.g. pipe) to provide many combinations of services
-            </li>
-            <li>History: Multics, Unix (BSD), Linux, macOS, windows
-            </li>
-            <li>Main resources
-                <ul>
-                    <li>CPU/process
-                    </li>
-                    <li>memory
-                        <ul>
-                            <li>real mode, memory segmentation (CS, DS, SS, ES/FS)
-                            </li>
-                            <li>memory hirarchy: direct mapping, fully associative, set associative; 3x3:
-                                <ul>
-                                    <li>3 parts of an address: tag + index + offset
-                                    </li>
-                                    <li>3 parameters: A, S, B
-                                    </li>
-                                    <li>3 steps of address decoding: decoding using index, associative mapping of tag, byte addr using block offset
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>protected mode (paging): paging as caching, for protection, Translation Lookaside Buffer (TLB)
-                            </li>
-                        </ul>
-                    </li>
-                    <li>IO devices (file system in particular)
-                    </li>
-                </ul>
-            </li>
-            <li>Key ideas: isolation/communication, concurrency/syncronization, virtualization, persistency
-            </li>
-            <li>Design: I/F, organization
-            </li>
-            <li>Organization: monolithic, library, micro-kernel
-            </li>
-         </ul>
-    </li>
-    <li>I/F
-         <ul>
-            <li>User I/F: implementing shell, shell IO redirection, pipe & shell pipelining
-            </li>
-            <li>Programming I/F: system calls
-                <ul>
-                    <li>U/K: User/Kernel mode
-                    </li>
-                    <li>Process: create/kill, exec/fork, getpid/setpid
-                    </li>
-                    <li>Memory: sbrk
-                    </li>
-                    <li>File system: create/delete, open/close, write/read
-                    </li>
-                </ul>
-            </li>
-         </ul>
-    </li>
-    <li>CPU sharing: processes
-        <ul>
-            <li>Process definition
-            </li>
-            <li>Process' view: code (operations) and data
-                <ul>
-                    <li>CPU: ip, bp & sp, general purpose reg, condition code, cs/ss/ds/es, etc
-                    </li>
-                    <li>memory: virtual memory (illusion of having all the moery for itself), stack, heap.
-                    </li>
-                    <li>IO devices and other peripherals.
-                    </li>
-                </ul>
-            </li>
-            <li>Three main states of a process (running, blocked, ready), six states of xv6 processes (unused, embryo, sleeping, running, runnable, zombie)
-            <li>Interrupt, exception (trap, fault, abort): timer, watchdog timer, system call
-            </li>
-            <li>How a system call is implemented in xv6: a journey from getting called to completion using kill(int pid) as an example
-                <ul>
-                    <li>user.h: function prototype kill(int pid)
-                    </li>
-                    <li>usys.S (implementation of kill(int pid) in assembly), traps.h (T_SYSCALL), syscall.h (#define sys_KILL 8)
-                    </li>
-                    <li>syscall.c (systemcall[] to map sys_KILL number to sys_kill function)
-                    </li>
-                    <li>sys_kill is implemented in sysproc.c and it will call kill(pid) implemented in proc.c (files used in this step vary with system calls. e.g. sys_pipe & pipe won't be in sysproc.c & proc.c and they are defined in sysfile.c and pipe.c respectively)
-                    </li>
-                </ul>
-            </li>
-            <li>Mechanism for time sharing
-            </li>
-            <li>Process scheduling
-            </li>
+          <li>For convenience: provide a user I/F and a programming I/F for a single/multiple users, programs more portable to different HWs</li>
+            <ul>
+              <li>OSs relieve users and programs from low level tasks such booting and allow them conveniently (sometimes transparently) share CPU (process multiplexing/scheduling), memory (allocation/deallocation), I/O devices (file system, etc), ... while having the illusion that they have the entire CPU, Memory, IO devices to themselves</li>
+            </ul>
+          <li>For efficiency: To help manage resources (CPU, memory/disk, ...) more efficiently: time sharing, boot</li>
+          <li>For security and protection: Limited direct access, isolation, user/kernel mode</li>
         </ul>
-    </li>
-    <li>Memory: mechanism and policy
+      </li>
+      <li>Before OSs were born:
         <ul>
-            <li>Virtual memory (fully associative)
-            </li>
-            <li>Page table, one-level, two-level, ...
-            </li>
-            <li>TLB (Translation Lookaside Buffer): OS
-            </li>
-            <li>Memory allocation: swapping, free list management, sbrk and mmap
-            </li>
+          <li>user could only run one program at a time</li>
+          <li>had to insert the program disk before booting the machine</li>
+          <li>Program had to control HW (CPU, memory, disk, printer, etc) directly and would only be compatible with one set of HW</li>
         </ul>
-    </li>
-    <li>File system
-    </li>
+      </li>
+      <li>Scope of an OS: Essential functions of the kernel -- CPU scheduling, memory allocation, device access (disk, network, IO devices). Other functions: editors, compilers, , etc</li>
+      <li>Design goals: reliability, maintainability, power/protability in addition to convenience/efficiency/security/protection above.
+      </li>
+      <li>Trade-off between number of supported services and simplicity/reliability: provide selected tools and combining mechanisms (e.g. pipe) to provide many combinations of services
+      </li>
+      <li>History: Multics, Unix (BSD), Linux, macOS, windows
+      </li>
+      <li>Main resources
+        <ul>
+          <li>CPU/process
+          </li>
+          <li>memory
+            <ul>
+              <li>real mode, memory segmentation (CS, DS, SS, ES/FS)
+              </li>
+              <li>memory hirarchy: direct mapping, fully associative, set associative; 3x3:
+                <ul>
+                  <li>3 parts of an address: tag + index + offset
+                  </li>
+                  <li>3 parameters: A, S, B
+                  </li>
+                  <li>3 steps of address decoding: decoding using index, associative mapping of tag, byte addr using block offset
+                  </li>
+                </ul>
+              </li>
+              <li>protected mode (paging): paging as caching, for protection, Translation Lookaside Buffer (TLB)
+              </li>
+            </ul>
+          </li>
+          <li>IO devices (file system in particular)
+          </li>
+        </ul>
+      </li>
+      <li>Key ideas: isolation/communication, concurrency/syncronization, virtualization, persistency
+      </li>
+      <li>Design: I/F, organization
+      </li>
+      <li>Organization: monolithic, library, micro-kernel
+      </li>
+     </ul>
+  </li>
+  <li>I/F
+     <ul>
+      <li>User I/F: implementing shell, shell IO redirection, pipe & shell pipelining
+      </li>
+      <li>Programming I/F: system calls
+        <ul>
+          <li>U/K: User/Kernel mode
+          </li>
+          <li>Process: create/kill, exec/fork, getpid/setpid
+          </li>
+          <li>Memory: sbrk
+          </li>
+          <li>File system: create/delete, open/close, write/read
+          </li>
+        </ul>
+      </li>
+     </ul>
+  </li>
+  <li>CPU sharing: processes
+    <ul>
+      <li>Process definition
+      </li>
+      <li>Process' view: code (operations) and data
+        <ul>
+          <li>CPU: ip, bp & sp, general purpose reg, condition code, cs/ss/ds/es, etc
+          </li>
+          <li>memory: virtual memory (illusion of having all the moery for itself), stack, heap.
+          </li>
+          <li>IO devices and other peripherals.
+          </li>
+        </ul>
+      </li>
+      <li>Three main states of a process (running, blocked, ready), six states of xv6 processes (unused, embryo, sleeping, running, runnable, zombie)
+      <li>Interrupt, exception (trap, fault, abort): timer, watchdog timer, system call
+      </li>
+      <li>How a system call is implemented in xv6: a journey from getting called to completion using kill(int pid) as an example
+        <ul>
+          <li>user.h: function prototype kill(int pid)
+          </li>
+          <li>usys.S (implementation of kill(int pid) in assembly), traps.h (T_SYSCALL), syscall.h (#define sys_KILL 8)
+          </li>
+          <li>syscall.c (systemcall[] to map sys_KILL number to sys_kill function)
+          </li>
+          <li>sys_kill is implemented in sysproc.c and it will call kill(pid) implemented in proc.c (files used in this step vary with system calls. e.g. sys_pipe & pipe won't be in sysproc.c & proc.c and they are defined in sysfile.c and pipe.c respectively)
+          </li>
+        </ul>
+      </li>
+      <li>Mechanism for time sharing
+      </li>
+      <li>Process scheduling
+      </li>
+    </ul>
+  </li>
+  <li>Memory: mechanism and policy
+    <ul>
+      <li>Virtual memory (fully associative)
+      </li>
+      <li>Page table, one-level, two-level, ...
+      </li>
+      <li>TLB (Translation Lookaside Buffer): OS
+      </li>
+      <li>Memory allocation: swapping, free list management, sbrk and mmap
+      </li>
+    </ul>
+  </li>
+  <li>File system
+  </li>
 </ul>
-    </body>
+  </body>
 </html>
