@@ -13,9 +13,12 @@
         <h2>
             Quarter offered
         </h2>
-        <p>
-        Spring 2019; Jan 26, 27; Mar 2, 3; Apr 4, 6; Room 406
-        </p>
+        <ul>
+            <li>Summer 2019; May 25, 26; Jun 29, 30; Aug 3, 4; Room 303
+            </li>
+            <li>Spring 2019; Jan 26, 27; Mar 2, 3; Apr 4, 6; Room 406
+            </li>
+        </ul>
         <h2>
             Course description
         </h2>
@@ -192,12 +195,13 @@ s1.find(str) // find start index of str in s1
             </li>
             <li>Smarter pointer
             </li>
-            <li>Reference variable ~ alias
+            <li><a href="https://www.tutorialspoint.com/cplusplus/cpp_references.htm">Reference variable</a> ~ alias
                 <ul>
                     <li>int &r = i;</li>
-                    <li>A reference must be initialized: int &r; //ERROR
+                    <li>A reference must be initialized: int &r; //ERROR</li>
+                    <li>A reference cannot be changed to refer to another variable after its initialization</li>
                     <li>int& test() {return num}; test()=5;</li>
-                    <li>Don't return a local/stack/heap variable by ref. Return a ref only if the life time of the variable will go beyond the call (e.g. the variable is a data member of a class). See <a href="https://stackoverflow.com/questions/752658/is-the-practice-of-returning-a-c-reference-variable-evil">link</a></li>
+                    <li>Don't return a local/stack/heap variable by ref. Return a ref only if the life time of the variable will go beyond the call (e.g. the variable is a data member of a class). See <a href="https://www.tutorialspoint.com/cplusplus/passing_parameters_by_references.htm">cplusplus</a> and <a href="https://stackoverflow.com/questions/752658/is-the-practice-of-returning-a-c-reference-variable-evil">stackflow</a></li>
                 </ul>
             </li>
             <li>Dynamic memory allocation
@@ -306,8 +310,10 @@ mycolor = EyeColors::blue;                   // must be scoped
                     <li>*a.b &equiv; *(a.b)</li>
                 </ul>
             </li>
-            <li>Operator overloading (see summary table in <a href=https://stackoverflow.com/questions/3846296/how-to-overload-the-operator-in-two-different-ways-for-postfix-a-and-prefix">cplusplus</a> and <a href="https://stackoverflow.com/questions/3846296/how-to-overload-the-operator-in-two-different-ways-for-postfix-a-and-prefix">stackflow</a>
-            </li>The keyword this: *this, this->data
+            <li>Operator overloading (see summary table in <a href="http://www.cplusplus.com/doc/tutorial/templates/">cplusplus</a> and <a href="https://stackoverflow.com/questions/3846296/how-to-overload-the-operator-in-two-different-ways-for-postfix-a-and-prefix">stackflow</a>)
+            </li>
+            <li>The keyword this: *this, this->data
+            </li>
             <li>Static/class members 
                 <ul>
                     <li>Must be initialized outside the class</li>
@@ -360,7 +366,18 @@ baz = MyClass();      // move assignment
             </li>
             <li>Input output with files
             </li>
+            <li><a href="https://en.cppreference.com/w/cpp/utility/variadic">Variadic functions</a>
+            </li>
         </ul>
         <h5>Standard template library</h5>
+        <ul>
+            <li><a href="https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/">map</a>
+            </li>
+        </ul>
+        <h5>Useful tricks in competitive programming (many relevant links can be found at <a href="https://www.geeksforgeeks.org/some-useful-c-tricks-for-beginners-in-competitive-programming/">this geeksforgeeks link</a>)</h5>
+        <ul>
+            <li>#define watch(x) cout &lt&lt (#x) &lt&lt " is " &lt&lt (x) &lt&lt endl;
+            </li>
+        </ul>
     </body>
 </html>

@@ -27,7 +27,7 @@
     <h4>Reference links and books
     </h4>
     <ul>
-      <li><a href="http://pages.cs.wisc.edu/~remzi/OSTEP/">Operating systems, three easy pieces</a>
+      <li><a href="http://pages.cs.wisc.edu/~remzi/OSTEP/">Operating systems, three easy pieces</a>. Also slides from <a href="http://pages.cs.wisc.edu/~remzi/OSTEP/Educators-Slides/Tyler/">Tyler</a> and from <a href="https://www.eecis.udel.edu/~cshen/361/Slides/">Shen</a>.
       </li>
       <li><a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-828-operating-system-engineering-fall-2012/lecture-notes-and-readings/">MIT OS course link</a>:
         <ul>
@@ -157,6 +157,9 @@
             </ul>
           </li>
         </ul>
+      </li>
+      <li><a href="https://www.cs.columbia.edu/~junfeng/12sp-w4118/">Columbia</a>
+      </li>
       <li><a href="https://tc.gts3.org/cs3210/2016/spring/cal.html">Georgia Tech OS course link</a>
       <li><a href="https://www.ics.uci.edu/~aburtsev/143A/2017fall/">UCI OS course link</a>,
       </li>
@@ -302,6 +305,100 @@
     </ul>
   </li>
   <li>File system
+    <ul>
+      <li>Problems to address: directory/file, space/disk management, persistence, sharing (sync), cache, crash,... 
+      </li>
+      <li>xv6 file system data structures
+          <ul>
+              <li>bootblock, superblock, log, inode, bitmap, data blocks
+              </li>
+              <li>superblock (filled by mkfs.c): represented by a struct: size (# of blocks in the file sys), nblocks (# of data blks), ninodes
+                <ul>
+                  <li>size (# of blocks in the file sys)
+                  </li>
+                  <li>nblocks (# of data blks)
+                  </li>
+                  <li>ninodes
+                  </li>
+                </ul>
+              </li>
+              <li>dinode: each dinode contains info about a file on disk and is represented by a struct dinode:
+                <ul>
+                  <li> type (file type): used to distinguish
+between files, directories, and special files (devices). A type of zero indicates that an on-disk inode is free.
+                  </li>
+                  <li>major/minor (device #)
+                  </li>
+                  <li>nlinks (# of links pointing to this file): The nlink field counts the number of directory entries that refer to this inode, in order to recognize when the on-disk inode and its data blocks should be freed.
+                  </li>
+                  <li>size (# of bytes used by the file)
+                  </li>
+                  <li>13 addresses (direct/indirect pointers to the blocks used by the files): the block numbers of the disk blocks holding the file’s
+content.
+                  </li>
+                </ul>
+              </li>
+              <li>inode: kernel also keeps an in-memory copy of dinode if there are C pointers referring to that inode. 
+                <ul>
+                  <li>Fields in inode in addition to those in dinode:
+                    <ul>
+                      <li>dev: device number
+                      </li>
+                      <li>inum: inode number
+                      </li>
+                      <li>ref: counts the number of C pointers referring to that inode. The ref can be changed by iget and iput, which acquire and release pointers to an inode. Pointers to an inode can come from file descriptors, current working directories, and transient kernel code such as exec.
+                      </li>
+                      <li>lock: a sleeplock that protects all fields in inode except the three above. It ensures exclusive access to the inode’s fields (such as file length) as well as to the inode’s file or directory content blocks.
+                      </li>
+                      <li>valid: the file has been read from the disk?
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>bitmap: each bit is associated with a block (not an inode)
+                <ul>
+                  <li>Although the very first block is unused, it is always marked as 1 in the first bit of the bitmap, and so are all the blocks where the inodes and bitmap itself reside.
+                  </li>
+                  <li> Bitmap is grouped in byte. Intel x86 processors use little-endian. Example: FFC2 => 1111 1111 1100 0010 => 7 6 5 4 3 2 1 0 | 15 14 13 12 11 10 9 8
+                  </li>
+                </ul>
+              </li>
+              <li>data blocks: each block has 512 (BSIZE) bytes
+              </li>
+          </ul>
+      </li>
+      <li>Layered approach: 
+          <ul>
+              <li>File descriptor I/F: open, read, write, close, seek
+                  <ul>
+                      <li>used to abstract many devices other than disks
+                      </li>
+                  </ul>
+              </li>
+              <li>Pathname
+              </li>
+              <li>Directory
+              </li>
+              <li>Inode
+              </li>
+              <li>Logging to handle crash
+              </li>
+              <li>Cache/sync (bio.c): bread (return a locked buf), brelse (release the lock), bwrite, 
+                  <ul>
+                      <li>buf is a struct, its fields comprise a char array of size BSIZE (=512), dev no & block no (~virtual addr), prev/next (used to form a doubly linked list), sleeplock, flags (VALID, DIRTY), refcnt (# of file links use this block) and qnext (disk queue).
+                      </li>
+                      <li>The cache has a fixed number (NBUF) of buf. bcache is a variable of anonmous struct type with 3 fields: lock (spinlock), buf (buf array of size NBUF) and head (buf). The head can be used to refer a doublely linked list. bcache.head.next refers to the most recently used buf.
+                      </li>
+                      <li>Replacement policy is least recently used (LRU)
+                      </li>
+                  </ul>
+              </li>
+              <li>Device driver: read sector, track, etc
+              </li>
+          </ul>
+      </li>
+    </ul>
   </li>
 </ul>
   </body>
