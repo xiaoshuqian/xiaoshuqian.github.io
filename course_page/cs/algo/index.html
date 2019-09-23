@@ -29,6 +29,8 @@
         <ul>
           <li><a href="https://introcs.cs.princeton.edu/java/home/">Sedgewick & Wayne at Princeton</a> (See also <a href="http://www.cs.princeton.edu/~rs/">Sedgewick</a>):
             <ul>
+              <li><a href="https://algs4.cs.princeton.edu/cheatsheet/">Cheat Sheet</a> for algorithms and data structures
+              </li>
               <li><a href="https://introcs.cs.princeton.edu/java/11cheatsheet/">Java cheat sheet</a>
               </li>
               <li>books: Java, computer science, algorithms, analysis of algorithm, analytic combinatorics
@@ -36,6 +38,14 @@
               <li>Online/coursera courses: Computer Science: Programming with a Purpose, algorithms I/II, analytic combinatorics
               </li>
               <li><a href="https://introcs.cs.princeton.edu/java/assignments/">Programming assignments</a>: <a href="https://coursera.cs.princeton.edu/introcs/assignments/">a good subset</a>
+            </ul>
+          </li>
+          <li><a href="http://jeffe.cs.illinois.edu/teaching/algorithms/">Algorithms</a> by Jeff Erickson
+          </li>
+          <li>Stanford:
+            <ul>
+              <li><a href="https://web.stanford.edu/class/cs97si/07-shortest-path-algorithms.pdf">shortest path algorithms</a> by Prof. Jaehyun Park
+              </li>
             </ul>
           </li>
         </ul>
@@ -49,9 +59,150 @@
             Detailed outline
         </h4>
 <ul>
-    <li>LEGB rule for scoping: Local->Enclosed->Global->Built-in
-    </li>
-    </li>
+  <li>Overview
+    <ul>
+      <li>Key concepts in problem solving: bottom-up (smallest problem first), top-down/recursion, search tree, info encapsulation/memory, data structure & ADT, invariance, state-machine
+      </li>
+      <li>Problem solving strategies
+        <ol>
+          <li>Exhaustive search
+          </li>
+          <li>Divide and conquer
+          </li>
+          <li>Transform and conquer or reduction
+          </li>
+          <li>Greedy
+          </li>
+          <li>Dynamic programming
+          </li>
+          <li>Back-tracking, branch & bound
+          </li>
+          <li>Uninformed/informed search
+          </li>
+          <li>Iterative-improvement
+          </li>
+          <li>Space-time trade-off
+          </li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+  <li>Data structure and ADT
+    <ul>
+      <li>List: array and linked list representation
+      </li>
+      <li>Stack
+      </li>
+      <li>Queue
+      </li>
+      <li>Set
+      </li>
+      <li>Map/dict
+      </li>
+      <li>Priority queue and Indexed PQ
+      </li>
+    </ul>
+  </li>
+  <li>Sorting
+    <ul>
+      <li>Selection
+      </li>
+      <li>Insertion
+      </li>
+      <li>Quick
+      </li>
+      <li>Merge
+      </li>
+      <li>Bubble
+      </li>
+      <li>Shell
+      </li>
+    </ul>
+  </li>
+  <li>Searching/symbol table
+    <ul>
+      <li>Array: sorted, unsorted
+      </li>
+      <li>BST
+      </li>
+      <li>Balanced ST
+        <ul>
+          <li>2-3 tree
+          </li>
+          <li>Red-black
+          </li>
+          <li>AVL
+          </li>
+          <li>B-tree
+          </li>
+        </ul>
+      </li>
+      <li>Hashing
+      </li>
+    </ul>
+  </li>
+  <li>Graph
+    <ul>
+      <li>Representation, I/F
+      </li>
+      <li>DFS, BFS for graph and digraph
+      </li>
+      <li>Connected and strongly connected components
+      </li>
+      <li>MST
+      </li>
+      <li>Shortest path: Dijkstra, Bellman-Ford, Bellman for DAG, Floyd-Warshall
+      </li>
+      <li>Maximum flows and minimum cuts
+      </li>
+    </ul>
+  </li>
+  <li>String
+    <ul>
+      <li>Sorting
+      </li>
+      <li>Searching with tries
+      </li>
+      <li>Matching
+        <ul>
+          <li>Brute-force, with or without backtracking
+          </li>
+          <li>Knuth-Morris-Pratt
+          </li>
+          <li>Boyer-Moore: Huristic, starting from the last symbol
+          </li>
+          <li>Rabin-Karp: Modular hashing
+          </li>
+        </ul>
+      </li>
+      <li>Regular expression
+        <ul>
+          <li>DFA and NFA definitions and representations
+          </li>
+          <li>NFA simulation
+          </li>
+          <li>NFA construction
+          </li>
+          <li>Applications: A fundamental paradigm in CS used in KMP, grep, Java (they have an underlying pattern (or/and a grammer), a parser to check syntax errors (not needed in KMP), a compiler, and a simulator):
+            <ul>
+              <li>Pick an intermediate abstraction (e.g. DFA, NFA, byte code)
+              </li>
+              <li>Build a compiler that transforms problems into this intermediate abstraction (e.g. output of the compiler can be DFA, NFA, byte code, or a pattern from java.util.regex.Pattern)
+              </li>
+              <li>Build a simulator that 'implements' this intermediate abstraction using a lower level abstraction/machine (i.e. make the abstraction concrete. e.g. JVM, a matcher of type java.util.regex.Matcher)
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Data compression
+      </li>
+    </ul>
+  </li>
+  <li>Reduction and complexity theory
+  </li>
+  <li>Linear programming
+  </li>
 </ul>
     </body>
 </html>

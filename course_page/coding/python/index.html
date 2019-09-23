@@ -51,8 +51,103 @@ ISBN: 9781449361167
             Detailed outline
         </h4>
 <ul>
-    <li>LEGB rule for scoping: Local->Enclosed->Global->Built-in
-    </li>
+  <li>Data, variables, operators
+    <ul>
+      <li>Scoping rules:
+        <ul>
+          <li>Read: LEGB (Local->Enclosed->Global->Built-in)
+          </li>
+          <li>Write: declare using non-local/global. If you don't declare using non-local/global, it will be treated as a local and will cause an exception if the variable has already been used as a non-local.
+          </li>
+        </ul>
+      </li>
+      <li><a href="https://medium.com/@meghamohan/mutable-and-immutable-side-of-python-c2145cf72747">Mutable vs Immutable</a>, id() and type()
+        <ul>
+          <li>Mutable: The value can be changed without change the id(). Including list, dict, set, byte array
+          </li>
+          <li>Immutable: If the value is changed, the id() has to change. Include string, tuple, frozenset 
+          </li>
+        </ul>
+      </li>
+      <li>Chained comparison/assignment: a < x > b is equivalent to a < x and x > b
+      </li>
+    </ul>
+  </li>
+  <li>Branching
+  </li>
+  <li>Loops and comprehension
+  </li>
+  <li>Function
+  </li>
+  <li>Class
+  </li>
+  <li>Standard modules
+      <ul>
+        <li><a href="https://www.programiz.com/python-programming/methods/built-in">Built-in</a> functions (68 in python 3.6):
+          <ul>
+            <li>ord, chr
+            </li>
+            <li>id, type
+            </li>
+            <li>input, print, format, open, close
+            </li>
+            <li>int, float, complex, str, repr, hex, oct, bin, bool, iter, next
+            </li>
+            <li>eval, exec
+            </li>
+            <li>map, filter
+            </li>
+            <li>round, pow, round, divmod, min, max, abs, sum, any, all, sorted, reversed, len
+            </li>
+            <li>set, dict, list, frozenset, tuple, bytearray, enumerate, zip
+            </li>
+            <li>locals, globals
+            </li>
+            <li>isinstance, issubclass, vars, getattr, hasattri, delattr
+            </li>
+          </ul>
+        </li>
+        <li><a href="https://docs.python.org/3/library/collections.html#collections.Counter">Collections</a>: namedtuple, deque, Counter, Defaultdict, OrderedDict
+        </li>
+        <li><a href="https://pymotw.com/2/Queue/">queue</a>: SimpleQueue (3.7), Queue, PriorityQueue, LifoQueue
+        </li>
+        <li><a href="https://docs.python.org/3/library/unittest.html">unittest</a>
+          <ul>
+            <li>import unittest
+            </li>
+            <li>class TestMethod(unittest.TestCase): def test1(self): self.assertEqual(actual, expected);
+            </li>
+            <li>unittest.main()
+            </li>
+          </ul>
+        </li>
+        <li><a href="https://docs.python.org/3.7/library/functools.html">functools</a>
+          <ul>
+            <li>sorted(xs, key=functools.cmp_to_key(cmp_fun))
+            </li>
+            <li>functools.reduce(function, iterable[, initializer])
+            </li>
+            <li>@functools.total_ordering
+            </li>
+            <li>functools.partial(func, *args, **keywords)
+            </li>
+          </ul>
+        </li>
+        <li><a href="https://docs.python.org/2/library/itertools.html">itertools</a>
+          <ul>
+            <li>for item in chain(xs, ys): cycle(xs): accumulate(xs): accumulate(xs, mult):
+            </li>
+            <li>product('ABC', repeat=2): AA AB AC BA BB BC CA CB CC
+            </li>
+            <li>permutations('ABCD', 2): AB AC AD BA BC BD CA CB CD DA DB DC
+            </li>
+            <li>combinations('ABCD', 2): AB AC AD BC BD CD
+            </li>
+            <li>combinations_with_replacement('ABCD', 2): AA AB AC AD BB BC BD CC CD DD
+            </li>
+          </ul>
+        </li>
+      </ul>
     </li>
 </ul>
     </body>

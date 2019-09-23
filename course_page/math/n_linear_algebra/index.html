@@ -29,7 +29,7 @@
             Reference textbook(s)
         </h4>
         <ul>
-            <li>Book by Trefeton and Bau
+            <li>Book by Trefethen and Bau
               <ul>
                 <li><a href="http://people.maths.ox.ac.uk/~trefethen/text.html">NUMERICAL LINEAR ALGEBRA</a>
                 </li>
@@ -49,9 +49,57 @@
             Detailed outline
         </h4>
 <ul>
-    <li>
-    </li>
-    </li>
+  <li>LU decomposition and Cholesky decomposition
+  </li>
+  <li>Solve Ax = b using QR decomposition
+    <ul>
+      <li>Compute QRD: A = QR
+      </li>
+      <li>Compute Q<sup>*</sup>b by left multiplying b by Q<sup>*</sup>
+      </li>
+      <li>Solve Rx = Q<sup>*</sup>b by back-substitution
+      </li>
+    </ul>
+  </li>
+  <li><a href="https://blogs.mathworks.com/cleve/2016/07/25/compare-gram-schmidt-and-householder-orthogonalization-algorithms/">QR decomposition using GS, MGS and Householder</a>
+    <ul>
+      <li>All three algorithms compute Q and R that do a good job of reproducing the data A (i.e. norm(A-Q*R,inf)/norm(A, inf) is small).
+      </li>
+      <li>Their behavior is very different when it comes to producing orthogonality (i.e. norm(Q'*Q - eye(n), inf) = ?).
+        <ul>
+          <li>Classic Gram-Schmidt. Usually very poor orthogonality.
+          </li>
+          <li>Modified Gram-Schmidt. Depends upon condition of A. Fails completely when X is singular.
+          </li>
+          <li>Householder. Always good orthogonality.
+          </li>
+        </ul>
+      </li>
+      <li>MGS: The idea is to orthogonalize against the emerging set of vectors instead of against the original set. There are two variants, a column-oriented one and a row-oriented one, that produce the same results.
+        <ul>
+          <li>Row version of the MGS can be viewed as triangular orthogonalization by right multiplication of a sequence of right triangular matrices (see Trefethen and Bau or this <a href="https://dspace.mit.edu/bitstream/handle/1721.1/75282/18-335j-fall-2006/contents/lecture-notes/lec6handout6pp.pdf">slide</a>). Cf: LU decompositon can be viewed as producing an upper trianular matrix by left multiplication of a sequence of left triangular matrices.
+          </li>
+          <li>
+            <a href="https://www.quora.com/Why-is-modified-Gram-Schmidt-more-numerically-stable-than-classical-Gram-Schmidt">Why is MGS more stable?</a> Each time you orthogonalize you introduce some small error in random directions. With classical GS, these errors all add up; with modified GS they get eliminated.
+
+Compare: if you compute the subtraction of q0 and q1 separately from the k-th vector, they all introduce random error.
+
+On the other hand, if you first subtract q0 (times the right coefficient), it introduces error in direction of q1, but that error is then eliminated when you compute the coefficient for subtracting q1. Et cetera.
+          </li>
+        </ul>
+      </li>
+      <li><a href="https://dspace.mit.edu/bitstream/handle/1721.1/75282/18-335j-fall-2006/contents/lecture-notes/lec6handout6pp.pdf">Householder</a>: A Householder reflection H transforms a given vector x into a multiple of a unit vector e1 while preserving length, so Hx=&mnplus;s*e1 where s=||x||. The matrix H is never formed. The reflection is expressed as a rank-one modification of the identity: H=I-uu* where ||u||=sqrt(2). Reflectors can be used to compute
+        <ul>
+          <li>Q<sup>*</sup>x
+          </li>
+          <li>Qx
+          </li>
+          <li>Q
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
 </ul>
     </body>
 </html>

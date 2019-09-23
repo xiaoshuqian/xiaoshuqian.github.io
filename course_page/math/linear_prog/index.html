@@ -3,18 +3,17 @@
     <head>
         <meta charset="UTF-8">
         <title>
-            CSC 520 Python Programming
+            Linear Programming
         </title>
     </head>
     <body>
         <h1>
-            CSC 520 Python Programming
+            Linear Programming
         </h1>
         <h2>
             Quarter offered
         </h2>
         <p>
-        Fall 2017, 9/30, 10/1, 11/4, 11/5, 12/9, 12/10, noon-8pm, Room 204
         </p>
         <h2>
             Course description
@@ -26,29 +25,149 @@
         Dr. Xiaoshu Qian
         </p>
         <h4>
-            Reference textbook(s)
+            References
         </h4>
         <ul>
+          <li>Online simplex <a href="https://www.zweigmedia.com/simplex/simplex.php?lang=en">tool</a>. You can google to find more such tools.
+          </li>
+            <li>MIT
+              <ul>
+                <li><a href="https://ocw.mit.edu/courses/sloan-school-of-management/15-053-optimization-methods-in-management-science-spring-2013/index.htm">MIT optimization course</a> (In particular, see <a href="https://ocw.mit.edu/courses/sloan-school-of-management/15-053-optimization-methods-in-management-science-spring-2013/tutorials/">MIT-15-053-spring-2013 tutorials</a>)
+                </li>
+                <li><a href="http://web.mit.edu/15.053/www/AMP.htm">Applied Mathematical Programming</a> by by Bradley, Hax, and Magnanti (Addison-Wesley, 1977)
+                </li>
+              </ul>
+            </li>
+            <li>Princeton
+              <ul>
+                <li><a href="https://vanderbei.princeton.edu/LPbook/index.html">Slides, books etc</a> from Prof. Robert J Vanderbei at Princeton
+                </li>
+                <li><a href="https://algs4.cs.princeton.edu/lectures/99LinearProgramming.pdf">Slides</a>, <a href="https://algs4.cs.princeton.edu/code/edu/princeton/cs/algs4/LinearProgramming.java.html">code</a> from Prof. Sedgewick & Wayne's <a href="https://algs4.cs.princeton.edu/lectures/">Algorithms</a> book.
+                </li>
+              </ul>
+            </li>
             <li>
-<a href="https://www.oreilly.com/library/view/introducing-python/9781449361167/">Introducing Python</a> by Bill Lubanovic;
-Publisher: O'Reilly Media, Inc.;
-Release Date: November 2014;
-ISBN: 9781449361167
+            <a href="http://algorithmics.lsi.upc.edu/docs/Dasgupta-Papadimitriou-Vazirani.pdf">Algorithms</a> by Sanjoy Dasgupta, Christos H. Papadimitriou, and Umesh Vazirani (see chap 7 in particular)
+            </li>
+            <li>Simplex method: <a href="https://people.richland.edu/james/ictcm/2006/simplex.html">Primer</a>. <a href="https://algs4.cs.princeton.edu/lectures/99LinearProgramming.pdf">Slides</a>, <a href="https://algs4.cs.princeton.edu/code/edu/princeton/cs/algs4/LinearProgramming.java.html">code</a> from Princeton <a href="https://algs4.cs.princeton.edu/lectures/">Algorithms</a> class. <a href="https://medium.com/@geekrodion/linear-programming-simplex-method-bc586b9aec10">How to program it in python</a>. <a href="https://stackoverflow.com/questions/10697995/linear-programming-in-python">LP packages</a>
+            </li>
+            <li><a href="http://www-users.math.umd.edu/~wolfe/LAYchap9.pdf">Chap 9</a> of David Lay's linear algebra book: Berline airlift, zero-sum game, simplex, duality
+            </li>
+            <li><a href="http://www.cengage.com/cgi-wadsworth/course_products_wp.pl?fid=M20b&product_isbn_issn=9781111823610&token=">An Introduction to Management Science: Quantitative Approaches to Decision Making, 14th Edition</a> by David R. Anderson, Dennis J. Sweeney, Thomas A. Williams, Jeffrey D. Camm, James J. Cochran, Michael J. Fry, Jeffrey W. Ohlmann
             </li>
         </ul>
         <h4>
             Description
         </h4>
         <p>
-        From ITU course catalog: Emphasizes principles of software development, style, and testing. Topics include procedures and functions, iteration, recursion, arrays and vectors, strings, an operational model of procedure and function calls, algorithms, exceptions, object-oriented programming.
+        From ITU course catalog: 
         </p>
         <h4>
             Detailed outline
         </h4>
 <ul>
-    <li>LEGB rule for scoping: Local->Enclosed->Global->Built-in
-    </li>
-    </li>
+  <li>A simple example (see section below on reduction for more examples)
+  </li>
+  <li>Canonical and standard form (using a common convention. No wide agreement on which form is 'standard')
+  </li>
+  <li><a href="https://people.richland.edu/james/ictcm/2006/simplex.html">Simplex method</a> for LP in cannonical form with b &ge; 0 (Simplex in python: <a href="https://medium.com/@geekrodion/linear-programming-simplex-method-bc586b9aec10">tutorial</a>, <a href="https://stackoverflow.com/questions/10697995/linear-programming-in-python">packages</a>)
+    <ul>
+      <li>To std form: Adding slacking variable to convert the inequality constraints to equality constraints: Ax + Iw = b
+      </li>
+      <li>Write out the initial tableau (target function P - cx = 0), start with the initial non-basic variable x = 0 and then repeat:
+      </li>
+        <ul>
+          <li>Pick a pivot column or declare optimal value attained
+          </li>
+          <li>Pick a pivot row or delcare the solution is unbounded
+          </li>
+          <li>Pivot
+          </li>
+        </ul>
+    </ul>
+  </li>
+  <li>Convert between different forms
+  </li>
+  <li>Phase I solution
+    <ul>
+      <li>Common approach
+      </li>
+      <li>Approach described in Vanderbei
+      </li>
+    </ul>
+  </li>
+  <li>Degeneracy
+    <ul>
+      <li>Different definitions
+      </li>
+      <li>Ways to address degeneracy
+      </li>
+    </ul>
+  </li>
+  <li>Duality
+    <ul>
+      <li>Dual problem
+        <ul>
+          <li>Motivation: estimate the upper bound of the primal problem
+          </li>
+          <li>Alternative motivation: shadow price or marginal cost = maximum price you are willing to pay to get additional resources (if more than that you should be selling instead of producing much less buying more)
+          </li>
+        </ul>
+      </li>
+      <li>Weak duality
+      </li>
+      <li>Strong duality
+      </li>
+      <li>Revised simplex method and proof of strong duality
+      </li>
+      <li>Complementary slackness
+      </li>
+    </ul>
+  </li>
+  <li>Sensitivity analysis (see <a href="http://www.cengage.com/cgi-wadsworth/course_products_wp.pl?fid=M20b&product_isbn_issn=9781111823610&token=">Chap 3 slides</a> in Andeson et al. and see this <a href="https://web.fe.up.pt/~mac/ensino/docs/OT20112012/Chapter%203%20-%20Sensitivity%20Analysis.pdf">slide set</a> and the <a href="http://web.mit.edu/15.053/www/AMP.htm">AMP book</a> (chap 3) for formal derivation)
+    <ul>
+      <li>Sensitivity to the coefficient of the objective function
+        <ul>
+          <li>Reduced/opportunity cost of a non-basic variable in the optimal solution = (absolute value of) the dual value on the nonnegativity constraint for that variable = how much the objective function coefficient on the corresponding variable must be improved before the value of the variable will be positive in the optimal solution (reduced cost of a basic variable in the optimal solution is always 0)
+          </li>
+          <li>Range of optimality = The range of values over which an objective function coefficient may vary without causing any change in the values of the decision variables in the optimal solution
+            <ul>
+              <li>100% rule
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Sensitivity to the limits on the RHS of the constraint inequalities (or equalities)
+        <ul>
+          <li>Shadow price or dual value or marginal cost (note that the dual value for a non-negativity constraint associated with a non-basic variable is negative and its absolute value is called reduced cost) = The change in the value of the objective function per unit increase in the right-hand side of a constraint = The shadow price for a constraint is the negative of the coefficient of the slack (or artificial) variable in the objective function of the final tableau (the equivalence of the two expressions can be seen from the final objective function expression in the final tableau as shown in the ref above)
+          </li>
+          <li>Range of feasibility = The range of RHS values over which the dual value is applicable
+            <ul>
+              <li>100% rule
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Other terms: Sunk cost vs relevant cost = cost independent or dependent on the values of decision variables
+      </li>
+    </ul>
+  </li>
+  <li>Reduction and example applications
+    <ul>
+      <li><a href="https://vanderbei.princeton.edu/LPbook/index.html">Slides, books etc</a> from Prof. Robert J Vanderbei at Princeton
+        <ul>
+          <li>Portforlio selection
+          </li>
+          <li>Option pricing
+          </li>
+          <li>Network type problems
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
 </ul>
     </body>
 </html>
