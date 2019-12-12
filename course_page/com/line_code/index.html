@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Line code
+    </title>
+    <style>
+table, th, td {
+  border: 1px solid;
+  border-collapse: collapse;
+}
+    </style>
+  </head>
+  <body>
+    <h1>Line code
+    </h1>
+<h4>References
+</h4>
+  <ul>
+    <li><a href="https://web.stanford.edu/class/ee179/lectures/notes14.pdf">Notes on line codes</a>
+    </li>
+  </ul>
+<h4>Description
+</h4>
+  <p>
+  </p>
+<h4>Detailed outline
+</h4>
+  <ul>
+    <li>Line code is often used for wireline transmission when efficiency is desired: power, BW and probability of error. The design emphasis is often on
+      <ul>
+        <li>Spectrum matches the channel for power efficiency. Removing DC component in the spectrum is often needed.
+        </li>
+        <li>Presence of clock frequency in the data spectrum for time-synchronization.
+        </li>
+        <li>Some error correction/detection capability to reduce the error rate.
+        </li>
+        <li>Transparency: All sequence can be transmitted
+        </li>
+      </ul>
+    </li>
+    <li>Line code construction
+      <ul>
+        <li>Bit to symbol mapping:
+          <table>
+            <tr>
+              <th>Mapping
+              </th>
+              <th>PSD S(e<sup>j2&pi;FT</sup>)
+              </th>
+            </tr>
+            <tr>
+              <td>Bipolar: A or -A
+              </td>
+              <td>A<sup>2</sup>
+              </td>
+            </tr>
+            <tr>
+              <td>OOK: 0 or A, =(A + polar)/2
+              </td>
+              <td>A<sup>2</sup>/4 (1 + &delta;(F)/T)
+              </td>
+            </tr>
+            <tr>
+              <td>AMI: 0 or A or -A
+              </td>
+              <td>A<sup>2</sup>sin<sup>2</sup>(&pi;FT)
+              </td>
+            </tr>
+          </table>
+        </li>
+        <li>Pulse shaping: RZ, NRZ, split-phase
+          <table>
+            <tr>
+              <th>Pulse p(t)
+              </th>
+              <th>FT P(F)
+              </th>
+            </tr>
+            <tr>
+              <td>NRZ
+              </td>
+              <td>T sinc(&pi;FT)
+              </td>
+            </tr>
+            <tr>
+              <td>RZ
+              </td>
+              <td>T/2 sinc(&pi;FT/2)
+              </td>
+            </tr>
+            <tr>
+              <td>Split-phase
+              </td>
+              <td>T<sup>2</sup>
+                  sinc<sup>2</sup>(&pi;FT/2)
+                  sin<sup>2</sup>(&pi;FT/2)
+              </td>
+            </tr>
+          </table>
+        </li>
+      </ul>
+    </li>
+    <li>Line code examples
+      <ul>
+        <li>Level codes
+          <table>
+            <tr>
+              <th>Name
+              </th>
+              <th>Mapping
+              </th>
+              <th>Pulse
+              </th>
+            </tr>
+            <tr>
+              <td>AMI
+              </td>
+              <td>0 for 0, AMI (A or -A) for 1
+              </td>
+              <td>RZ or NRZ
+              </td>
+            </tr>
+          </table>
+        </li>
+        <li>Transition codes
+          <table>
+            <tr>
+              <th>Name
+              </th>
+              <th>Mapping
+              </th>
+              <th>Pulse
+              </th>
+            </tr>
+            <tr>
+              <td>Manchester
+              </td>
+              <td>Antipodal: A or -A
+              </td>
+              <td>Split-phase
+              </td>
+            </tr>
+            <tr>
+              <td>CMI
+              </td>
+              <td>A for 0, AMI for 1
+              </td>
+              <td>Split-phase for 0, NRZ for 1
+              </td>
+            </tr>
+          </table>
+        </li>
+      </ul>
+    </li>
+    <li>PSD of line codes
+      <ul>
+        <li><a href="https://en.wikipedia.org/wiki/Cyclostationary_process#Wide-sense_cyclostationarity">Wide-sense Cyclostationary</a>
+        </li>
+        <li>Same pulse for every symbol
+        </li>
+        <li>More general line code with symbol dependent pulse shape
+        </li>
+      </ul>
+    <li>Derivation of PSD of example line codes above
+    </li>
+  </ul>
+  </body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Probability Distribution Functions
+    </title>
+  </head>
+  <body>
+    <h1>Probability Distribution Functions
+    </h1>
+<h4>References
+</h4>
+  <ul>
+    <li><a href="https://www.csie.ntu.edu.tw/~r97002/temp/Concrete%20Mathematics%202e.pdf">Concrete Math</a> by Graham, Knuth & Pastshnik, 2nd ed.
+      <ul>
+        <li>Cover both generating functions for combinatorics and probability generating functions
+        </li>
+      </ul>
+    </li>
+    <li>Applied Combinatorics by Tucker
+      <ul>
+        <li>Cover ordinary and exponetial generating functions
+        </li>
+      </ul>
+    </li>
+    <li>Mathematical Statistics: Basic Ideas and Selected Topics. Vol 1, by Peter J. Bickel, Kjell A. Doksum; ISBN-13: 978-0132306379; Published by Pearson; 2nd edition (May 4, 2006)
+      <ul>
+        <li>Cover exponetial familiy
+        </li>
+      </ul>
+    </li>
+    <li>Probability, Random Variables and Stochastic Processes by Athanasios Papoulis and S. Unnikrishna Pillai, 4th Ed
+      <ul>
+        <li>Inside of front and back covers contain
+          <ul>
+            <li>a list of distributions and their mean, variance and characteristic functions
+            </li>
+            <li>a list of relationship among different distributions
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="http://www.sze.hu/~harmati/Sztochasztikus%20folyamatok/Probability,_Statistics,_and_Random_Processes_for_Eletrical_Engineerging,_3rd_Ed_-_Leon-Garcia(1).pdf">Probability, Statistics, and Random Processes For Electrical Engineering</a> by Alberto Leon-Garcia, 3rd ed.
+      <ul>
+        <li>Contains a table of distributions and their mean, variance and characteristic functions
+        </li>
+      </ul>
+    </li>
+  </ul>
+<h4>Description
+</h4>
+  <p>
+  </p>
+<h4>Detailed outline
+</h4>
+  <ul>
+    <li>Tools to study discrete (pmf) and continuous (pdf) Random Variables (RVs)
+      <ul>
+        <li>Probability Generating Function (PGF = E(z<sup>X</sup>)): esp for non-negative integer RV
+          <ul>
+            <li>Use G(z) or G(1+t) to find mean and variance or cumulant statistics
+            </li>
+            <li>Use G(z) to study sum of independent random variables
+            </li>
+            <li>cf ordinary generating functions (See ref by Tucker or Graham et al 
+            </li>
+            <li>cf Z-transform for causal sequences
+            </li>
+          </ul>
+        </li>
+        <li>Moment Generating Function (MGF = E(e<sup>sX</sup>) = G(z) with z = e<sup>sX</sup>): cf Laplace Transform
+        </li>
+        <li>Characteristic function: cf Fourier Transform
+        </li>
+      </ul>
+    </li>
+    <li>Bernoulli, B(n,p)/P(&lambda;T)
+    </li>
+    <li>Geometric/E(&lambda;), NB(m,p)/&Gamma;(m, &lambda;)
+      <ul>
+        <li>Distributions of NB(m,p)/&Gamma;(m, &lambda;) can be derived
+          <ul>
+            <li>using MGF because they are sum of Geometric/E(&lambda;), or
+            </li>
+            <li>heuristically based on the distributions of B(n,p)/P(&lambda;T)
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Normal, Chi-square, t(n) and F(m,n), non-central versions (see Stevens Kay's detection book)
+    </li>
+    <li>Conjugate prior to exponential family is also an exponential family (ref: Bickel & Docksum). Special cases (Ref: MIT course notes and Bayesian statistics UCSD coursera):
+      <ul>
+        <li>Beta(a,b) is conjugate prior to Bernoullli vector or B(n,p)
+        </li>
+        <li>Dirichlet is conjugate prior to Multi-nomial
+        </li>
+        <li>&Gamma;(k,&lambda;) is conjugate prior to E(&lambda)
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  </body>
+</html>

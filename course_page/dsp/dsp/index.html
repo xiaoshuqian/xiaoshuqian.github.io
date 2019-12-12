@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Digital Signal Processing
+    </title>
+        <style>
+table, th, td {
+  border: 1px solid;
+  border-collapse: collapse;
+}
+        </style>
+  </head>
+  <body>
+    <h1>Digital Signal Processing
+    </h1>
+<h4>References
+</h4>
+  <ul>
+    <li>Coursera course <a href="https://www.coursera.org/learn/dsp/home/welcome">Digital Signal Processing</a> by Ecole Polytechnique Federale de Lausanne.
+      <ul>
+        <li>Emphasis on communication applications, esp in the last quiz
+        </li>
+        <li>The textbook by the instructor is <a href="https://www.sp4comm.org/download.html">SP for communication</a> 
+        </li>
+        <li>Has python, numpy assignments
+        </li>
+      </ul>
+    </li>
+  </ul>
+<h4>Description
+</h4>
+  <p>
+  </p>
+<h4>Detailed outline
+</h4>
+  <ul>
+    <li>Digital signal
+      <ul>
+        <li>Why digital? Processing and storage, Regenerative effect
+        </li>
+        <li>Cost measure: Sample size and sampling rate
+        </li>
+        <li>Sample size impacts 'contrast': black white vs gray scale
+        </li>
+        <li>Sampling rate limits freq content: CD quality vs telephone
+          <ul>
+            <li>Aliasing: telephone signal: 8KHz sampling rate keep freq upt 4KHz
+            </li>
+          </ul>
+        </li>
+        <li>Over-sampling: Freq SQNR and oversampling ratio -> number of bits: SNRdB = 1.76 + 6.02n + 10*log(r/PAR), where r = oversampling ratio
+        </li>
+      </ul>
+    </li>
+    <li>DSP systems
+      <ul>
+        <li>Desirable system properties
+          <ul>
+            <li>Causal
+            </li>
+            <li>BIBO
+            <li>Time-invariant
+            <li>Linear
+            </li>
+          </ul>
+        </li>
+        <li>LTI system
+          <ul>
+            <li>Characterized by impulse response
+            </li>
+            <li>Implemented by convolution
+              <ul>
+                <li>Weighted averaging: two views
+                  <ul>
+                    <li>h[k] as weight: moving average: x[n-k]*h[k]
+                    </li>
+                    <li>x[k] as weight: weighted average of a train of shifted impulse responses: x[k]*h[n-k]
+                    </li>
+                  </ul>
+                </li>
+                <li>FAMS: Flip, Align (or shift), Mult, Sum
+                </li>
+                <li>Poly mult: Can be arranged like an ordinary mult without carry
+                </li>
+                <li>Convolution is commutative, associative and distributive (linear) over addition, just like poly mult
+                </li>
+              </ul>
+            </li>
+            <li>BIBO if impulse response is absolutely summable: Note ideal LPF is not BIBO because sinc sequence is not absolutely summable
+            </li>
+            <li>Causal if h[n] is one-sided: h[n] = 0 when n &lt; 0
+            </li>
+            <li>Anti-causal: current output or state depends solely on future input: h[n] = 0 when n &ge; 0 (Alternative definition (e.g. Messerschmitt): h[n] is anticausal iff h[-n] is causal)
+            </li>
+          </ul>
+        </li>
+        <li>Implementing FIR and IIR systems: Direct Form I, II and their transpose. Cannonical form (number of delays = order of the system)
+          <ul>
+            <li>FIR system
+            </li>
+            <li>All pole system
+            </li>
+            <li><a href="https://www.dsprelated.com/freebooks/filters/Difference_Equations_State_Space.html#fig:ssexdf">General IIR system:</a>
+              <ul>
+                <li>
+                  Direct Form I and its transpose are not canonical form
+                </li>
+                <li>Direct Form II (controller canonical) and its transpose (observer canonical form)
+                </li>
+                <li>For the system to be observable, the zeros must be on the input side. Otherwise, the state (say from initial condition) may be canceled by the zeros before being observed
+                </li>
+                <li>For the system to be controllable, the zeros must be on the output side. Otherwise, the input may be canceled by zeros before reaching (being able to control) the state (delay) elements
+                </li>
+                <li>From canincal form to derive the matrix (state-space) representation
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Z-transform
+      <ul>
+        <li>Z-transform and its inverse
+        </li>
+        <li>Inverse Z-transform for rational system H(z) = A(z)/B(z)
+          <ul>
+            <li>Case 1: B(z) has only simple roots
+            </li>
+            <li>Case 2: B(z) has only roots of multiple order
+            </li>
+            <li>Case 3: degree of A(z) is bigger than that of B(z)
+            </li>
+          </ul>
+        </li>
+        <li>ROC of Z-transform: bounded by one or two concentric circle
+          <ul>
+            <li>ROC for two-sided, causal, anti-causal and finite sequence
+            </li>
+            <li>BIBO: ROC contains unit circle
+            </li>
+            <li>Causal and BIBO: all poles, if any, are inside the unit circle
+            </li>
+          </ul>
+        </li>
+        <li>Examples
+          <ul>
+            <li>Delta and delayed delta function
+            </li>
+            <li>Unit step function u[n]
+            </li>
+            <li>Exponential system a<sup>n</sup>u[n]
+            </li>
+            <li>Exponential system a<sup>n</sup>u[-n-1]: same H(z) as above but with different ROC |z| &lt; a
+            </li>
+          </ul>
+        </li>
+        <li>Prove the following properties of convolution (LTI system):
+          <ul>
+            <li>Linearity: ax[n] + by[n] -- aX(z) + bY(z)
+            </li>
+            <li>Delay in time: x[n-d] -- z<sup>-1</sup>X(z)
+            </li>
+            <li>Convolution in time domain -- Multiplication in Z-domain
+            </li>
+            <li>Inverse in time -- Inverse in Z (i.e. z -- 1/z)
+            </li>
+            <li>Conjugate in time -- H<sup>*</sup>(z<sup>*</sup>)
+            </li>
+            <li>Associative, commutative and distributive
+            </li>
+            <li>Transfer function of a digital filter network: cascading, parallel and feedback system: H(z) = F(z) / (1 + F(z)B(z))
+            </li>
+            <li>Representing an IIR system using difference equation when H(z) is a rational function
+            </li>
+            <li>Justifying total solution method and 'transient/zero-input solution + zero-state solution' method
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Difference equations (and linear differential equations)
+      <ul>
+        <li>Total solution method: homogeneous solution + particular solution
+        </li>
+        <li>Transilent solution + zero-state or steady state solution
+        </li>
+        <li>Z-transform method and justification of the two methods above
+        </li>
+      </ul>
+    </li>
+    <li>Linear transform: To frequency domain
+      <ul>
+        <li>Intro
+          <ul>
+            <li>Complex numbers
+            </li>
+            <li>Polar form, De Moivre formula
+            </li>
+            <li>Euler formula, Euler identity: exp(i&pi;)+1 = 0 (which connect three fundamental math constants, e, i, &pi; in one equation)
+            <li>What is a sinusoidal signal? What is signal with a negative freq?
+            </li>
+            <li>Discrete time sinusoidal signals
+            </li>
+            <li>Why differentiate freqency contents of signals?
+            </li>
+            <li>How to find out freqency contents of signals?
+            </li>
+            <li>How to design systems to modify the freqency contents of signals?
+            </li>
+          </ul>
+        </li>
+        <li>Transforms & their Inverse
+          <ul>
+            <li>Continuos/Discrete, Periodic/Aperiodic
+            </li>
+            <li> Kernels for LT, FT, FS, ZT, DTFT, DFT (DFS): exp(-st), exp(-jwt), exp(-j2&pi;kt/T), z<sup>-n</sup>, exp(-jwn), exp(-j2&pi;kn/N)
+            </li>
+            <li>Expressed the transforms in terms of normalized/undimensional or unnormalized frequency for discrete-time signals
+            </li>
+          </ul>
+        </li>
+        <li>Examples
+          <ul>
+            <li>sin(&pi;Wt)/(&pi;Wt) --FT-- rect<sub>W</sub>(F)/W (Normalizing the rectangle pulse on the right by W makes it easier to remember)
+            </li>
+            <li>sin(&pi;Wn)/(&pi;Wn) --DTFT-- rect<sub>W</sub>(f)/W (with aliasing period 1. this pair can be obtained from the last pair by sampling in time domain)
+            </li>
+            <li>&delta;(t) --FT-- 1
+            </li>
+            <li>&Sigma; &delta;(t-nT) --FT-- 1/T&Sigma; &delta;(F-k/T) (this pair can be obtained from the last pair by aliasing in time domain)
+            </li>
+            <li>&delta;<sub>n</sub> --DTFT-- 1
+            </li>
+            <li>&Sigma;&delta;<sub>n-mM</sub> --DTFT-- 1/M&Sigma; &delta;(f-m/M) (this pair can be obtained from the last pair by aliasing in time domain)
+            </li>
+          </ul>
+        </li>
+        <li>Sampling in one domain -- Aliasing in the other
+          <table>
+            <tr>
+              <th>time
+              </th>
+              <th>continuous
+              </th>
+              <th>discrete
+              </th>
+            </tr>
+            <tr>
+              <th>aperiodic
+              </th>
+              <td>LT<br>FT
+              </td>
+              <td>ZT<br>DTFT
+              </td>
+              <th>continuous
+              </th>
+            </tr>
+            <tr>
+              <th>periodic
+              </th>
+              <td>FS
+              </td>
+              <td>DFT
+              </td>
+              <th>discrete
+              </th>
+            </tr>
+            <tr>
+              <th>
+              </th>
+              <th>aperiodic
+              </th>
+              <th>periodic
+              </th>
+              <th>freq
+              </th>
+            </tr>
+          </table>
+          <ul>
+            <li>2<sup>4</sup> = 16 identities can be derived from the above tables:
+            </li>
+            <li>Aliasing-Period * Sampling-interval = 1
+            </li>
+            <li>Move left/right along the row:
+              <ul>
+                <li>(Down)sampling in time -- Aliasing in freq
+                  <ul>
+                    <li>Two identities in row 1: Aliasing-Period * Sampling-interval = 1/T * T = 1 or 1/M * M = 1
+                      <ul>
+                        <li>Proof method 1:
+                          <ul>
+                            <li>step 1. PAM representation: Represent down-sampled signal as the multiplication of the original signal by an impulse train
+                            </li>
+                            <li>step 2. Use multiplication in time -- convolution in freq
+                            </li>
+                          </ul>
+                        </li>
+                        <li>Proof method 2:
+                          <ul>
+                            <li>step 1. Represent down-sampled signal as inverse transform of the FT of the original signal
+                            </li>
+                            <li>step 2. Use linearity to apply the transform of the down sampled signal on both sides of the equation in step 1.
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>Two identities in row 2
+                    </li>
+                  </ul>
+                </li>
+                <li>Reconstruction/Interpolation/Pulse-shaping in time -- Windowing/Un-aliasing(removing aliased copies)/Lowpassing/Zero-padding in freq
+                  <ul>
+                    <li>Two identities in row 1
+                    </li>
+                    <li>Two identities in row 2
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>Move up/down the column:
+              <ul>
+                <li>Aliasing in time -- (Down)sampling in freq
+                  <ul>
+                    <li>Two identities in column 1: Aliasing-period * Sampling-interval = P * (1/P) = 1 or Q * M/P = 1
+                      <ul>
+                        <li>Example: Poisson formula: aliased CT signal expressed as FS expansion with FS coefficients X(k/P)/P
+                        </li>
+                      </ul>
+                    </li>
+                    <li>Two identities in column 2
+                    </li>
+                  </ul>
+                </li>
+                <li>Windowing/Unaliasing/Zero-padding in time -- Interpolation/Reconstruction in freq 
+                  <ul>
+                    <li>Two identities in column 1
+                    </li>
+                    <li>Two identities in column 2
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>z = exp(-st) maps s-plane to z-plane and LT to ZT.
+            </li>
+            <li>DTFT and FS are dual of each other. FT and DFT are self-dual (i.e. original and transform domains are both either CT/Aperiodic or DT/Periodic)
+            </li>
+          </ul>
+        </li>
+        <li>Default basis in time (&delta;(t), &delta;[n]) and basis in freq(see the transform kernels above)
+          <ul>
+            <li>These orthononal bases can always be used to approximate a given function.
+            </li>
+            <li>They are actually 'complete' and thus can be used to represent the signals in the space exactly.
+            </li>
+          </ul>
+        </li>
+        <li>Eigen 'vectors' for LTI systems: exp(jwt), exp(j2&pi;kt/T), exp(jwn), exp(j2&pi;kn/N). 
+          <ul>
+            <li>For periodic or finite time system, the time invariant should be understood as 'circular shift invariant'.
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Properties of linear transform
+      <ul>
+        <li>Conjugate -- Conjugate and inverse/conjugate (h<sup>*</sup>[n] --ZT-- H<sup>*</sup>(z<sup>*</sup>))
+        </li>
+        <li>Inverse -- Inverse (h[-n] --ZT-- H(1/z))
+        </li>
+        <li>Mult -- Convolve
+        </li>
+        <li>Initial -- Sum
+        </li>
+        <li>Thinner -- Fatter (h(at) --FT--  1/|a| H(F/|a|))
+        </li>
+        <li>X(t) --FT-- x(-F)
+        </li>
+      </ul>
+    </li>
+    <li>FFT
+    </li>
+    <li>Spectrum of deterministic signals
+    </li>
+    <li>LTI system analysis
+      <ul>
+        <li>A rational transfer function H(z) has the same numbers of zeros and poles if we include zeros/poles at 0 and infinity
+        </li>
+        <li>Linear phase system
+        </li>
+        <li>All pass system
+        </li>
+        <li>Minimum phase system
+        </li>
+      </ul>
+    </li>
+    <li>Filter design
+      <ul>
+        <li>IIR filter design
+          <ul>
+            <li>Analog filter LPF prototypes:
+              <ul>
+                <li>Butterworth
+                </li>
+                <li>Chebyshev
+                </li>
+                <li>Inverse Chebyshev
+                </li>
+                <li>Elliptic
+                </li>
+              </ul>
+            </li>
+            <li>Analog BP, BS, HP filters
+            </li>
+            <li>Equiripple (invented by Jackson and others before him)
+            </li>
+          </ul>
+        </li>
+        <li>FIR filter design
+          <ul>
+            <li>Window method: Hamming, Hann, Blackman, Kaiser
+            </li>
+            <li>LS
+            </li>
+            <li>Remez or equiripple
+            </li>
+            <li>Freq sampling
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Sampling
+      <ul>
+        <li>CT processing of DT signal: impulse invariance
+        </li>
+        <li>DT processing of CT signal: impulse invariance
+        </li>
+        <li>Resampling
+          <ul>
+            <li>Time-domain and Z or freq domain representation
+              <ul>
+                <li>Upsampling (zero-padding)
+                </li>
+                <li>Down-sampling (skipping samples)
+                </li>
+                <li>General expressions: polyphase form -- Modulation form
+                </li>
+                <li>Noble identities
+                  <ul>
+                    <li>Swapping delay operation with ^M and &downarrow;M
+                      <ul>
+                        <li>z<sup>-1</sup> + ^M = ^M + z<sup>-M</sup>
+                        </li>
+                        <li>z<sup>-M</sup> + &downarrow;M =  &downarrow;M + z<sup>-1</sup>
+                        </li>
+                        <li>H(z<sup>-1</sup>) + ^M = ^M + H(z<sup>-M</sup>)
+                        </li>
+                        <li>
+                            H(z<sup>-M</sup>) + &downarrow;M =  &downarrow;M + H(z<sup>-1</sup>)
+                        </li>
+                      </ul>
+                    </li>
+                    <li>Swapping a memoryless operation (e.g. +, *) with ^M and &downarrow;M
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>Direct form I and II, polyphase implementation
+              <ul>
+                <li>Interpolation
+                </li>
+                <li>Decimation
+                </li>
+                <li>Resampling by a rational factor M/N: canonical form (w/ min number of delay elements)
+                </li>
+                <li>Resampling by an arbitrary factor: Farrow structure
+                  <ul>
+                    <li>Quadratic resampler (Gardner): Customized datapath, control logic, buffer to accommodate clock crossing from input clock to slower or faster output clock based on average clock ratio and the resampling rate
+                    </li>
+                    <li>Nyquist filer: Half-band, L-band
+                    </li>
+                    <li>Spline based
+                    </li>
+                    <li>Lagrange interpolation
+                    </li>
+                  </ul>
+                </li>
+                <li>CIC
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Sigma-Delta ADC
+          <ul>
+            <li>Noise shaping
+            </li>
+          </ul>
+        </li>
+        <li>Sigma-Delta DAC
+        </li>
+        <li>Bandpass sampling
+        </li>
+      </ul>
+    </li>
+    <li>Complex number tricks
+      <ul>
+        <li>CORDIC: iterative procedure using a LUT (using perhaps only one or two multiplications) to
+          <ul>
+            <li>compute phase and mag based on coordinates (x,y). Key ideas:
+              <ul>
+                <li>Rotate (x,y) to (r, 0) while accumulating the rotated angle. The latter is the phase of (x,y) and r is the magnitude after the gain is compensated. The gain value depends on the # of iterations used and is stored in LUT.
+                </li>
+                <li>Rotate 90 degrees can be achieved by multiplying (0, &pm;j). Rotating successively smaller angles (stored in LUT) are achieved by multiplying (0, &pm;2<sup>-n</sup>). Each angle is roughly half of the one before.
+                </li>
+              </ul>
+            </li>
+            <li>compute (x, y) on unit circle based on phase. The procedure is the reverse of the one above: rotate the (1, 0) to the desired phase while accumulating the rotated angle. The final coordinate (x,y) is the desired one after gain compensation.
+            </li>
+          </ul>
+        </li>
+        <li>Magnitude of a complex number ~ a*max(I,Q) + b*min(I,Q)
+          <ul>
+            <li>a = 1, b = 1/4
+            </li>
+            <li>a = 15/16, b = 15/32
+            </li>
+          </ul>
+        </li>
+        <li>Computing multiplication of two complex numbers using 3 real multiplications: (a+jb)(c+jd) = ac - bd + j[(a-b)(d-c) + ac + bd]
+          <ul>
+            <li>This trick dates back to Gauss. It cannot be done less than 3 multiplcation. The idea is similar to the divide and conquer algorithm used by Karatsuba (1960) to multiply two large integers, although faster algorithms to solve the latter problem can be achieved using FFT (Toom-Cook, etc).
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  </body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Image Signal Processing
+    </title>
+  </head>
+  <body>
+    <h1>Image Signal Processing
+    </h1>
+<h4>References
+</h4>
+  <ul>
+    <li><a href="http://www.imageprocessingplace.com/">Digital Image Processing</a> by Rafael Gonzalez and Richard Woods. Pearson
+    </li>
+    <li>Coursera courses
+      <ul>
+        <li><a href="https://www.coursera.org/learn/digital">Fundamentals of Digital Image and Video Processing</a> from Northwestern University
+        </li>
+        <li><a href="https://www.coursera.org/learn/image-processing">Image and Video Processing</a> from Duke University
+        </li>
+        <li><a href="https://www.coursera.org/learn/dsp">DSP</a> from Ecole Polytechnique Federale de Lausanne
+        </li>
+      </ul>
+    </li>
+  </ul>
+<h4>Description
+</h4>
+  <p>
+  </p>
+<h4>Detailed outline
+</h4>
+  <ul>
+    <li>Introduction
+    </li>
+    <li>Compression
+      <ul>
+        <li>Lossless compression: Huffman, Arithmetic, Lempel-Ziv (Dict)
+        </li>
+        <li>Motion estimation
+        </li>
+        <li>Predictive coding
+        </li>
+        <li>Image compression
+          <ul>
+            <li>Scalar/vector quantization
+            </li>
+            <li>PCM
+            </li>
+            <li>Fractal image compression
+            </li>
+            <li>Transform coding
+            </li>
+            <li>JPEG
+            </li>
+            <li>Subband image compression
+            </li>
+          </ul>
+        </li>
+        <li>Video compression
+          <ul>
+            <li>Block diagram, analysis by synthesis
+            </li>
+            <li>Goal of each standard: half the rate for the same quality
+            </li>
+            <li>H261 for wireline video conference, 90, ~128-384Kbps, QCIF/CIF
+            </li>
+            <li>MPEG1 for digital storage, 92, ~1.5Mbps, SIF, I/B/P frames, layering (block, macroblock, slice, picture, GOP, sequence) 
+            </li>
+            <li>MPEG2/H262 for digital TV/HDTV, 94, 20K-6Mbps, Rec 601, support interlacing
+            </li>
+            <li>H263 for wireless/desktop video conference, 96, ~20-384Kbps, QCIF/CIF, unrestricted/0.5pel motion vector, non-adaptive/non-binary arithmetic coding
+            </li>
+            <li>MPEG4 for web-aurthering, multimedia compression, wireless video phone, 99, QCIF/CIF/Rec601, scene/shape/texture
+            </li>
+            <li>MPEG4 part10/H264/H26L exploits computation power: up to 4K UHD, variable block size MC, arbitrary ref frame, 1/4-pel prediction, intra prediction; integer 4x4 DCT, loop deblocking filter, CABAC 
+            </li>
+            <li>MPEG-H part 2 or H265: up to 8K UHD, CTU/CTB (Coding Tree Unit/Block), No Huffman (VLC)
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Enhancement
+    </li>
+    <li>Restoration
+      <ul>
+        <li>Examples: motion blur, inpainting
+        </li>
+        <li>Matrix vector notation, eigen-vector for circulant matrices
+        </li>
+        <li>LS or inverse filter or zero-forcing
+        </li>
+        <li>Constrained LS or regularized LS or ridge regression (vs Lasso regression).
+          <ul>
+            <li>Iterative solutions and their benefits
+              <ul>
+                <li>Basic successive approximation algorithm
+                </li>
+                <li>Constrained LS iterative algorithm
+                </li>
+                <li>Spatially adaptive using weighted constrained LS
+                </li>
+              </ul>
+            </li>
+            <li>Choice of regularization parameter:
+              <ul>
+                <li>Prior knowledge of noise variance: min |Cx|<sup>2</sup>, s.t. |y - Hf| = &epsilon;<sup>2</sup>
+                </li>
+                <li>Visual inspection
+                </li>
+                <li>L-curve (elbow method)
+                </li>
+                <li>Generalized cross-validation
+                </li>
+              </ul>
+            </li>
+            <li>Non-quadratic regularization
+              <ul>
+                <li>Max entropy regularization
+                </li>
+                <li>Total variation regularization
+                </li>
+                <li>Lp norms with 1 &le; p &le; 2 (and convexity preserved)
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Set theoretic approach: finding a solution belonging to two solution sets with desired properties
+          <ul>
+            <li>Center of ellipsoid bounding the intersection of the two sets
+            </li>
+            <li>Alternate Projection Onto Convex Sets
+            </li>
+          </ul>
+        </li>
+        <li>Bayesian approach
+        </li>
+      </ul>
+    </li>
+    <li>Segmentation
+      <ul>
+        <li>Based on intensity discontinuity:
+          <ul>
+            <li>Gradient based
+            </li>
+            <li>Laplacian based
+            </li>
+            <li>Boundary: Hough transform for line, circle & ellipse
+            </li>
+          </ul>
+        </li>
+        <li>Based on intensity similarity:
+          <ul>
+            <li>Threshold method: Otsu: specify threshold to maximize between class variance
+            </li>
+            <li>Region based: 
+              <ul>
+                <li>region growing, seed
+                </li>
+                <li>region splitting/merging using a predicate function
+                </li>
+                <li>Watersheds algorithms that treat the image like a tomography map
+                </li>
+                <li>K-means algorithms, MRI image processing
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Advanced methods
+          <ul>
+            <li>Motion based:
+              <ul>
+                <li>Thresholding the difference image and using ADI to remove noise in the difference image and determine speed/direction of the motion
+                </li>
+                <li>Mean shift algorithm
+                </li>
+              </ul>
+            </li>
+            <li>Graph cut: pixel as vetex and similarity as edge weight, min-cut separates the graph into source and target regions, usually solve the dual max-flow problem to solve the min-cut problem
+            </li>
+          </ul>
+        </li>
+        <li>Interactive image segmentation. 
+        </li>
+      </ul>
+    </li>
+    <li>Geometric PDEs
+    </li>
+    <li>Image and video inpainting
+    </li>
+    <li>Sparse modeling
+      <ul>
+        <li>Applications
+          <ul>
+            <li>Compressive sensing
+            </li>
+            <li>Video surveillance: separate image into foreground & background
+            </li>
+            <li>Robust face recognition
+            </li>
+            <li>Image denoising
+            </li>
+            <li>Image inpainting
+            </li>
+            <li>Robust (Lasso) regression
+            </li>
+            <li>Matrix completion or Netflix problem: recommender system
+            </li>
+            <li>Genetics
+            </li>
+            <li>Neuro-science
+            </li>
+            <li>Econometrics
+            </li>
+          </ul>
+        </li>
+        <li>Sphere shape of |x|<sub>p</sub> = 1 for 0 &le; p &le; 1
+          <ul>
+            <li>2D illustration why they tend to result in sparse solution
+            </li>
+            <li>|x|<sub>1</sub> is popular because the unit sphere is convex.
+            </li>
+            <li>Using |x|<sub>0</sub> results in an NP hard problem
+            </li>
+            <li>|x|<sub>0</sub> is a pseudo norm because it does not have scaling property
+            </li>
+          </ul>
+        </li>
+        <li>Min |x|<sub>0</sub> s.t. Ax = b
+          <ul>
+            <li>Reformulation in the presence of noise
+              <ul>
+                <li>Min |x|<sub>0</sub> s.t. |Ax - b|<sub>2</sub> &lt; &epsilon;
+                </li>
+                <li>Min |Ax - b|<sub>2</sub> s.t. |x|<sub>0</sub> &le; S
+                </li>
+              </ul>
+            </li>
+            <li>Approximate solution of both problems above using matching pursuit or orthogonal matching pursuit (OMP)
+            </li>
+            <li>Stagewise OMP
+            </li>
+            <li>Compessive Sampling Matching Pursuit
+            </li>
+          </ul>
+        </li>
+        <li>Min |x|<sub>1</sub> s.t. Ax = b
+          <ul>
+            <li>Solution using linear programming after positive negative splitting of x = p - n
+            </li>
+            <li>Reformulation in the presence of noise
+              <ul>
+                <li>Min |x|<sub>1</sub> s.t. |Ax - b|<sub>2</sub> &lt; &epsilon;
+                </li>
+                <li>Min |Ax - b|<sub>2</sub> s.t. |x|<sub>1</sub> &le; S (Lasso regression)
+                </li>
+              </ul>
+            </li>
+            <li>Lasso regression can be solved using linear programming after converting it to LP using 'suppression' trick
+            </li>
+            <li>Fast Iterative Shrikage Algorithm
+            </li>
+          </ul>
+        </li>
+        <li>Dictionary learning: Min |Ax - b|<sub>F</sub> over A and X, s.t. |x<sub>i</sub>|<sub>p</sub> &le; S for every i. Solutin by alternating min A and X:
+          <ul>
+            <li>p = 0: Method of optimal direction
+            </li>
+            <li>p = 1: Bi-convex dictionary learning
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Medical images
+    </li>
+  </ul>
+
+  </body>
+</html>

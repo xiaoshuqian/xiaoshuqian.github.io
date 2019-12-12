@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Image Signal Processing
+    </title>
+  </head>
+  <body>
+    <h1>Image Signal Processing
+    </h1>
+<h4>References
+</h4>
+  <ul>
+    <li>Digital Processing of Speech Signals, Lawrence R. Rabiner, Ronald W. Schafer
+    </li>
+  </ul>
+<h4>Description
+</h4>
+  <p>
+  </p>
+<h4>Detailed outline
+</h4>
+  <ul>
+    <li>Introduction
+    </li>
+    <li><a href="https://www.youtube.com/watch?v=GlKu8QTrK8Y">Waveform codec</a>
+      <ul>
+        <li>DM: Delta Modulation. Key idea: Analysis by Synthesis. Delay in the feedback loop.
+        </li>
+        <li>ADM: Adaptive Delta Modulation. Key idea: Overcome
+          <ul>
+            <li>Slope overloading: reconstructed signal cannot increase as fast as the original signal
+            </li>
+            <li>Granular noise: quantized noise. In particular, the resulting quantization error when step size is too big and the signal change is slow.
+            </li>
+          </ul>
+        </li>
+        <li><a href="https://en.wikipedia.org/wiki/Differential_pulse-code_modulation">DPCM</a>: Differential PCM. Generalization of DM
+        </li>
+        <li>ADPCM: Generalization of ADPCM and ADM. Key ideas:
+          <ul>
+            <li>Predictor output depends both on past reconstructed signal AND current quantized error signal
+            </li>
+            <li>Step size is adaptive.
+            </li>
+          </ul>
+        </li>
+        <li>Subband ADPCM: Key idea: Using Quadrature Mirror filters and allocate more bits to signals in the lower halfband 
+        </li>
+      </ul>
+    </li>
+    <li>Parametric codec
+      <ul>
+        <li>Speech production model
+        </li>
+        <li>Linear Predictive Coding (LPC) of speech
+        </li>
+        <li>Codec used in switched network: CELP
+        </li>
+        <li>Codec used in packet network: ROCH
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  </body>
+</html>

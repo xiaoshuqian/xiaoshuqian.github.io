@@ -81,7 +81,27 @@ Parameter Estimation: Principles and Problems, by Haorld W. Sorenson
         </p>
         <h4> Detailed outline </h4>
         <ul>
-            <li> Estimation vs detection
+          <li><a href="https://en.wikipedia.org/wiki/Inference">Inference</a>: reasoning from premises to logical consequences
+              <ul>
+                <li>Philosophical:
+                  <ul>
+                    <li>Deduction: from universals to particulars
+                    </li>
+                    <li>Induction: from particulars to universals
+                    </li>
+                    <li>Abduction: from evidence to best explaination
+                    </li>
+                  </ul>
+                </li>
+                <li>Statistical inference
+                  <ul>
+                    <li>Estimation vs
+                    </li>
+                    <li>Detection (Hypothesis Testing)
+                    </li>
+                  </ul>
+                </li>
+              </ul>
             </li>
             <li> Detection overview [HVP chap1]
                 <ul>
@@ -184,7 +204,34 @@ Parameter Estimation: Principles and Problems, by Haorld W. Sorenson
                     <li>BLUE [SMK chap 6]</li>
                     <li>ML [SMK chap 7]</li>
                     <li>MVUE [SMK chap 2]</li>
-                    <li>CR bound [SMK chap 3]</li>
+                    <li>CR bound [SMK chap 3]
+                    <ul>
+                      <li>Based on Schwartz Inequality, which also provides a necessary and sufficient condition for the equality (efficient estimator) to hold.
+                      </li>
+                      <li>Variance of a MVUE cannot exceeds reciprocal of Fisher Info: 1/I(&theta;)
+                      </li>
+                      <li>Two expressions of Fisher Info to show nonnegativity and linearity
+                      </li>
+                      <li>Example: estimate parameters in signal plus noise
+                        <ul>
+                          <li>Fish info = sum of squares of partial derivative of signals, divided by noise variance
+                          </li>
+                          <li>To improve estimate, increase the dependency of the signal on parameters (i.e. increase the derivative)
+                          </li>
+                          <li>Examples: estimating DC, amplitude, phase, delay. More averaging &rarr; larger Fisher Info
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                    </li>
+                    <li>Sufficient statistic
+                      <ul>
+                        <li>Factorization theorem
+                        </li>
+                        <li>Rao-Blackwell-Lehmann-Scheffe theorem
+                        </li>
+                      </ul>
+                    </li>
                 </ul>
             </li>
             <li> Estimation and detection using EM
