@@ -75,7 +75,13 @@
         </li>
       </ul>
     </li>
-    <li>Bernoulli, B(n,p)/P(&lambda;T)
+    <li>Binomial(n,p)/Poisson(&lambda;T=1)
+      <ul>
+        <li>Poisson examples: number of chocolate chips in a cookie, number of arrivals in a given period. 
+        </li>
+        <li>mean and variance: np, np(1-p), &lambda;, &lambda; 
+        </li>
+      </ul>
     </li>
     <li>Geometric/E(&lambda;), NB(m,p)/&Gamma;(m, &lambda;)
       <ul>
@@ -90,14 +96,56 @@
       </ul>
     </li>
     <li>Normal, Chi-square, t(n) and F(m,n), non-central versions (see Stevens Kay's detection book)
+      <ul>
+        <li>Sum(x<sub>i</sub> - x&#772;)<sup>2</sup> is Chi-square distributed with n-1 deg of freedom and is independent of x&#772;
+          <ul>
+            <li>Key equation: Sum(x<sub>i</sub> - x&#772;)<sup>2</sup> =  Sum(x<sub>i</sub><sup>2</sup>) - n*x&#772;<sup>2</sup>
+            </li>
+            <li>Two proofs: Use MMG function (Hogg) or Gram-Schmidt (Math551 notes)
+            </li>
+          </ul>
+        </li>
+      </ul>
     </li>
     <li>Conjugate prior to exponential family is also an exponential family (ref: Bickel & Docksum). Special cases (Ref: MIT course notes and Bayesian statistics UCSD coursera):
       <ul>
-        <li>Beta(a,b) is conjugate prior to Bernoullli vector or B(n,p)
+        <li>Beta(a,b) is the conjugate prior distribution of p in Binomial(n,p)
+          <ul>
+            <li>The posterior is Beta(a+k, b+n-k) if k out of n observations are successes. That is, the effective size (a+b) is increased by n and a is increased by k. 
+            </li>
+            <li>Mean of Beta(a,b) is a/(a+b) and the variance is ab/[(a+b)<sup>2</sup>(a+b+1)]
+            </li>
+          </ul>
         </li>
-        <li>Dirichlet is conjugate prior to Multi-nomial
+        <li>Dirichlet is the conjugate prior to Multi-nomial
         </li>
-        <li>&Gamma;(k,&lambda;) is conjugate prior to E(&lambda)
+        <li>&Gamma;(a,b) is the conjugate prior distribution of &lambda; in Poisson(&lambda;)
+          <ul>
+            <li>The posterior is &Gamma;(a+k, b+1) if k successes are observed in the trial. That is, the effective size (b) is increased by 1 and the number of arrivals a is increased by k. 
+            </li>
+            <li>Mean of &Gamma;(a,b) is a/b and the variance is a/b<sup>2</sup>
+            </li>
+          </ul>
+        </li>
+        <li>&Gamma;(a,b) is the conjugate prior distribution of &lambda; in Exponential E(&lambda;)
+          <ul>
+            <li>The posterior is &Gamma;(a+1, b+t), where t is the inter-arrival time observed. That is, the effective size or the observed time is increased by t and a is increased by 1. 
+            </li>
+            <li>Mean of E(&lambda;) is 1/&lambda; and the variance is 1/&lambda;<sup>2</sup> (Note: E(&lambda;) is a special case of Gamma: &Gamma;(a,&lambda;) with a = 1)
+            </li>
+          </ul>
+        </li>
+        <li>&Gamma;(a,b) is the conjugate prior distribution of &lambda; in &Gamma;(a',&lambda;)
+          <ul>
+            <li>The posterior is &Gamma;(a+a', b+t), where t is the time it takes to get the a'<sup>th</sup> arrival. That is, the effective size or the observed time is increased by t and the number of arrivals a is increased by a'. 
+            </li>
+          </ul>
+        </li>
+        <li>N(m, s<sup>2</sup>) is the conjugate prior distribution of &mu; in N(&mu;,&sigma;<sup>2</sup>)
+          <ul>
+            <li>The posterior is N(M, S<sup>2</sup>), where 1/S<sup>2</sup> = 1/&sigma;<sup>2</sup> + 1/s<sup>2</sup> (Posterior Info = Info gained from data + Prior Info) and M = S<sup>2</sup>(&mu;/&sigma;<sup>2</sup> + x/s<sup>2</sup>) (Posterior mean = weighted avarage of prior mean and mean observed from data. Note if we replace x by ave(x), then we need to replace &sigma;<sup>2</sup> by &sigma;<sup>2</sup>/N where N is the number of independent observations)
+            </li>
+          </ul>
         </li>
       </ul>
     </li>
