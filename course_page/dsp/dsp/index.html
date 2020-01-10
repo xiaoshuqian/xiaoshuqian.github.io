@@ -285,7 +285,7 @@ table, th, td {
             </tr>
           </table>
           <ul>
-            <li>2<sup>4</sup> = 16 identities can be derived from the above tables:
+            <li>4*4 = 16 identities can be derived (4 cells x 4 identities/cell):
             </li>
             <li>Aliasing-Period * Sampling-interval = 1
             </li>
@@ -524,7 +524,7 @@ table, th, td {
               <ul>
                 <li>Rotate (x,y) to (r, 0) while accumulating the rotated angle. The latter is the phase of (x,y) and r is the magnitude after the gain is compensated. The gain value depends on the # of iterations used and is stored in LUT.
                 </li>
-                <li>Rotate 90 degrees can be achieved by multiplying (0, &pm;j). Rotating successively smaller angles (stored in LUT) are achieved by multiplying (0, &pm;2<sup>-n</sup>). Each angle is roughly half of the one before.
+                <li>Rotate 90 degrees can be achieved by multiplying (0, &pm;j). Rotating successively smaller angles (stored in LUT) are achieved by multiplying (1, &pm;2<sup>-n</sup>), n = 0, 1, .... Each angle is roughly half of the one before.
                 </li>
               </ul>
             </li>

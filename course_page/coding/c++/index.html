@@ -125,7 +125,7 @@ ASIN: 0133252817 Prentice.
             <li>explicit cast: int(a) or (int)a</li>
         </ul>
     </li>
-    <li>Preprocessor. #include, #define, #undef, #ifdef, #ifndef, #if, #endif, #else, #elif
+    <li>Preprocessor. #include &lt;bits/stdc++.h&gt;, #define, #undef, #ifdef, #ifndef, #if, #endif, #else, #elif
     </li>
 </ul>
         <h5>Program structure</h5>
@@ -168,7 +168,7 @@ ASIN: 0133252817 Prentice.
                 <ul>
                     <li> C-string to string: string mystring = a_cstr;</li>
                     <li> String to C-string: cout &lt &lt mystring.c_str();</li>
-                    <li> String to int: stoi(str)</li>
+                    <li> String from/to int: to_string(i), stoi(str)</li>
                     <li>stringstream. &lt sstream&gt, string s("12"); int i; stringstream(s) >> i;</li>
                     <li>Raw string: R"(string w/ \backslash)", R&%(string)&%"</li>
                     <li> Common methods (<a href="http://www.cplusplus.com/reference/string/string/">cpluscplus link</a>):
@@ -196,7 +196,9 @@ s1.find(str) // find start index of str in s1
                         <li>If const and int are not separated by *, then the order can reversed, i.e. "const int*" = "int const*"
                         </li>
                     </li>
-                    <li>pointer to the function ~ function name: e.g. int (* minus)(int,int) = subtraction;</li>
+                    <li>pointer to the function ~ function name: e.g. int (* minus)(int,int) = subtraction; Note that syntax is easy to remember because minus is a pointer to a function that have a prototype: int minus(int, int);</li>
+                    <li>typedef int int_fun_t();   int_fun_t *ptr; // ptr is a pointer to a function that takes no input arguments
+                    </li>
                     <li>passing function name as an arguments to a function:
                         <a href="https://stackoverflow.com/questions/6356303/passing-function-name-as-arguments-to-a-function">stackflow</a>
                     </li>
@@ -233,7 +235,7 @@ delete[] foo; // use delete foo if foo is used to allocate a scalar
                         </pre>
                         </code>
                     </li>
-                    <li>Using smart pointer: std::unique_ptr<int[]> ptr( new int[5])
+                    <li>Using smart pointer: unique_ptr<int[]> ptr(new int[5]) or shared_ptr<int[]> ptr(new int[5])
                         <ul>
                             <li>Use unique_ptr when you want a single pointer to an object that will be reclaimed when that single pointer is destroyed.</li>
                             <li>Use shared_ptr when you want multiple pointers to the same resource</li>
@@ -373,7 +375,7 @@ baz = MyClass();      // move assignment
             </li>
             <li>Exceptions
             </li>
-            <li>Input output with files
+            <li>Input output with files: ifstream infile("fname"); infile >> v; infile.close();
             </li>
             <li><a href="https://en.cppreference.com/w/cpp/utility/variadic">Variadic functions</a>
             </li>

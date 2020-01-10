@@ -38,6 +38,8 @@
                 </li>
               </ul>
             </li>
+            <li><a href="https://www.mathworks.com/moler/chapters.html">Book and matlab scripts by Steve Moler</a>
+            </li>
         </ul>
         <h4>
             Description
@@ -98,6 +100,58 @@ On the other hand, if you first subtract q0 (times the right coefficient), it in
           </li>
         </ul>
       </li>
+    </ul>
+  </li>
+  <li>Iterative methods for linear systems
+    <ul>
+      <li>Jacobi
+      </li>
+      <li>Gauss-Seidel
+      </li>
+      <li>SOR: Successive-Over-relaxation
+      </li>
+      <li>Conjugate gradient for positive definite symmetric matrix, MINRES for SPD matrix
+      </li>
+      <li>GMRES, CGN for non-symmetric matrix
+      </li>
+    </ul>
+  </li>
+  <li>Iterative methods for Eigen-value system
+    <ul>
+      <li>Power and inverse power with shift
+      </li>
+      <li>QR with 1) shift 2)get more zeros in off-diagonal positions (make it Hessenberg)
+      </li>
+      <li>Lanczos algorithm for Hermitian matrix
+      </li>
+      <li>Arnoldi iteration for non-hermitian matrix
+      </li>
+    </ul>
+  </li>
+  <li><br>
+  <table>
+    <ul>
+                    <caption>Iterative Methods</caption>
+                    <tr>
+                        <th></th>
+                        <th>Linear Eq</th>
+                        <th>Eigen-values</th>
+                    </tr>
+                    <tr>
+                        <td>Hermitian</td>
+                        <td>Conjugate Grad<br>
+                          MINRES (SPD matrix)
+                        </td>
+                        <td>Lanczos</td>
+                    </tr>
+                    <tr>
+                        <td>Non-hermitian</td>
+                        <td>GMRES<br>
+                          CGN
+                        </td>
+                        <td>Arnoldi</td>
+                    </tr>
+                </table>
     </ul>
   </li>
 </ul>

@@ -3,19 +3,13 @@
     <head>
         <meta charset="UTF-8">
         <title>
-            CSC 520 Python Programming
+            Optimization (numerical algorithms)
         </title>
     </head>
     <body>
         <h1>
-            CSC 520 Python Programming
+            Optimization (numerical algorithms)
         </h1>
-        <h2>
-            Quarter offered
-        </h2>
-        <p>
-        Fall 2017, 9/30, 10/1, 11/4, 11/5, 12/9, 12/10, noon-8pm, Room 204
-        </p>
         <h2>
             Course description
         </h2>
@@ -40,14 +34,50 @@ ISBN: 9781449361167
             Description
         </h4>
         <p>
-        From ITU course catalog: Emphasizes principles of software development, style, and testing. Topics include procedures and functions, iteration, recursion, arrays and vectors, strings, an operational model of procedure and function calls, algorithms, exceptions, object-oriented programming.
         </p>
         <h4>
             Detailed outline
         </h4>
 <ul>
-    <li>LEGB rule for scoping: Local->Enclosed->Global->Built-in
+    <li>LS
+      <ul>
+        <li>Regularized LS: How to choose &lambda;?
+        </li>
+      </ul>
     </li>
+    <li>Gradient descent: repeat {determine search dir; line search to get new point}
+      <ul>
+        <li>Steepest descent: -g
+        </li>
+        <li>Newton method: -H<sup>-1</sup>g
+        </li>
+        <li>Varaible metric methods (Quasi-Newton): -Bg, B ~ H<sup>-1</sup>: generalization of the secant method to find the root of the first derivative for multidimensional problems.
+          <ul>
+            <li>See popular update <a href="https://en.wikipedia.org/wiki/Quasi-Newton_method">formulas</a>: BFGS, Broyden, DFP, SR1
+            </li>
+          </ul>
+        </li>
+        <li>Conjugate gradient: s' = -g + &beta;s, where &beta; = r'<sup>T</sup>r' / (r<sup>T</sup>r)
+        </li>
+          <ul>
+            <li>Residuals are orthogonals to each other and are orthogonals to all previous search directions
+            </li>
+            <li>Search directions are conjugate-orthogonals to each other
+            </li>
+            <li>Preconditioning is typically used when using CG for large matrix
+            </li>
+          </ul>
+      </ul>
+    </li>
+    <li>Direct search methods:
+      <ul>
+        <li>Down-hill simplex (Nelder-Mead)
+        </li>
+        <li>Conjugate direction
+        </li>
+      </ul>
+    </li>
+    <li>Constrained optimization methods
     </li>
 </ul>
     </body>

@@ -108,6 +108,8 @@ ASIN: 0984782850
               </li>
               <li><a href="https://www.coderbyte.com/">codebyte</a>
               </li>
+              <li><a href="https://practice.geeksforgeeks.org/">geeksforgeeks</a>
+              </li>
             </ul>
           </li>
           <li>Online compilers:
@@ -245,9 +247,9 @@ ASIN: 0984782850
           <li>Examples: Knapsack, money change, signature collection, max ad revenue, max # of prizes, max salary</li>
         </ul>
     </li>
-    <li>Dynamic programing: Recurrence solution + Avoid overlapping/redundant computation by storing the solutions needed later
+    <li>Dynamic programming: Recurrence solution + Avoid overlapping/redundant computation by storing the solutions needed later
         <ul>
-          <li>Keys: DAG (sub-problems as nodes, directed path as ordering)
+          <li>Keys: DAG (sub-problems as nodes, directed path as ordering/dependency among sub-problems)
           </li>
           <li>Common pattens:
             <ul>
@@ -281,6 +283,10 @@ ASIN: 0984782850
                 </ul>
               </li>
             </ul>
+          </li>
+          <li>Time complexity: number of edges in the DAG representing the problem structure: Bellman algorithm for computing the shortest paths in a DAG follows the nodes in topological order
+          </li>
+          <li>Space complexity: In the worst case, it's proportional to the number of nodes (sub-problems) in the DAG but can often do better since we only need to save the solution to a sub-problem until it's not needed any more.
           </li>
         </ul>
     </li>
@@ -341,7 +347,7 @@ For each node (partial solution) of a state-space tree, computes a bound on the 
         <ul>
             <li>sorting: selection, insertion, quick, merge, heap</li>
             <li>searching: BST, balanced tree, B-tree, hash</li>
-            <li>graph: topological sort, MST, shortest path (Bellman, Dijkstra, Bellman-Ford, Washall-Floyd), network flow</li>
+            <li>graph: topological sort, MST, shortest path (Bellman, Dijkstra, Bellman-Ford, Floyd-Warshall), network flow</li>
             <li>String: string sort, suffix tree, trie, substring search, regular expression, compression</li>
         </ul>
     </li>
