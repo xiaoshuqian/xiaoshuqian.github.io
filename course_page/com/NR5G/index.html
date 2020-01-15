@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            5G: The Next Generation Wireless Technology
+        </title>
+    </head>
+    <body>
+        <h1>
+            5G: The Next Generation Wireless Technology
+        </h1>
+        <h2>
+            Quarter offered
+        </h2>
+        <p>
+        
+        </p>
+        <h2>
+            Course description
+        </h2>
+        <h4>
+            Instructor
+        </h4>
+        <p>
+        Dr. Xiaoshu Qian
+        </p>
+        <h4>
+            Reference textbook(s)
+        </h4>
+        <ul>
+          <li><a href="https://www.sciencedirect.com/book/9780128143230/5g-nr#book-description">5G NR: The Next Generation Wireless Access Technology</a> from <a href=https://www.elsevier.com/books/5g-nr-the-next-generation-wireless-access-technology/dahlman/978-0-12-814323-0">Elsevier</a>
+          </li>
+          <li>Digital Communication 3rd Edition by John R. Barry, Edward A. Lee, David G. Messerschmitt
+          </li>
+          <li>David Forney
+            <ul>
+              <li><a href="https://web.stanford.edu/class/ee392d/">Stanford course</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <h4>
+            Description
+        </h4>
+        <p>
+        </p>
+        <h4>
+            Detailed outline
+        </h4>
+<ul>
+  <li>Digital front end, Tx and Rx
+    <ul>
+      <li>Single component carrier case: freq down conversion, down-sampling
+        <ul>
+          <li>IQ and DC estimation and compensation
+          </li>
+          <li>AGC
+          </li>
+          <li>Digital pre-distortion
+          </li>
+        </ul>
+      </li>
+      <li>Two and more CC cases
+      </li>
+    </ul>
+  </li>
+  <li>Transport layer
+  </li>
+  <li>Demod
+    <ul>
+      <li><a href="https://arxiv.org/pdf/1507.05138.pdf">MIMO detection</a>
+        <ul>
+          <li>ZF
+          </li>
+          <li>MMSE
+          </li>
+          <li>Sphere-decoding: Tree Search Detection (TSD)
+            <ul>
+              <li>QR Decomponsition pre-processing: GS, Modified GS, Householder
+              </li>
+              <li>Traditional <a href="https://www.researchgate.net/publication/3236239_Algorithm_and_implementation_of_the_K-best_Sphere_decoding_for_MIMO_detection">K-best search</a> (problems to be solved at each layer): Additive distance metric, Manhattan (L1) norm, addressing missing counter-hypothesis
+              </li>
+              <li>Reduced complexity methods<a href="https://ieeexplore.ieee.org/abstract/document/5661890">I</a>, <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=6200359">II</a> (again focus on problems to be solved at each layer)
+                <ul>
+                  <li>Slicing to obtain inherited best candidate
+                  </li>
+                  <li>Best candidate's sibling, <a href="https://link.springer.com/article/10.1007/BF01581144">1D Schnorr-Euchner (SE) enumeration</a> (see picture <a href="https://www.researchgate.net/publication/281472406_Algorithms_and_architectures_for_the_detection_of_MIMO_signals?enrichId=rgreq-ae8f00c368976f9adf5df194d66991ef-XXX&enrichSource=Y292ZXJQYWdlOzI4MTQ3MjQwNjtBUzoyOTkyNTg4ODU0OTI3NDJAMTQ0ODM2MDI4NjYxMA%3D%3D&el=1_x_3&_esc=publicationCoverPdf">here</a>)
+                  </li>
+                </ul>
+              </li>
+              <li>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Channel estimation
+  </li>
+  <li>Cell search
+    <ul>
+      <li>Parallel concatenated Turbo code
+      </li>
+      <li>Turbo block code
+      </li>
+      <li>Serial concatenated Turbo code
+      </li>
+      <li>RA (Repeat-Accumulator)
+      </li>
+        <ul>
+          <li>Regular
+          </li>
+          <li>Irregular
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+    </body>
+</html>
