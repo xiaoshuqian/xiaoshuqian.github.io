@@ -118,8 +118,16 @@ Machine learning is a fast-moving field with many recent real world commercial a
                     </li>
                     <li>ML techniques
                         <ul>
-                            <li>Supervised</li>
-                            <li>Unsupervised</li>
+                            <li>Supervised:
+                              <ul>
+                                <li>Regression/Estimation: k-NN, Naive-Bayes, SVM or SVR (SV Regression), Linear Regression, Neuron Network
+                                </li>
+                                <li>Classification/Detection: k-NN, Naive-Bayes, Decision Tree, SVM, Logistic Regression, Neuron Network
+                                </li>
+                              </ul>
+                            </li>
+                            <li>Unsupervised: k-mean, soft k-mean
+                            </li>
                             <li>Reinforcement</li>
                         </ul>
                     </li>
@@ -151,12 +159,124 @@ Machine learning is a fast-moving field with many recent real world commercial a
                     <li>Naive Bayes: <a href="https://www.youtube.com/watch?v=7yB26ObUT6Y">NB using sklearn</a>: <a href="https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html">Gaussian</a>, <a href="https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.BernoulliNB.html">Bernoulli</a>, <a href="https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.MultinomialNB.html">Multinomial</a>, <a href="https://scikit-learn.org/stable/modules/classes.html">API ref</a>
                     </li>
                     <li>K-Nearest neighbor: <a href="https://www.youtube.com/watch?v=HVXime0nQeI">A primer</a> and <a href="https://www.youtube.com/watch?v=4HKqjENq9OU">K-NN using sklearn</a>
+                      <ul>
+                        <li>KNN can be used for both classification and regression
+                        </li>
+                        <li>Idea: Find K nearest neighbors and use the majority/median of its neighbors' labels as the predictor
+                        </li>
+                        <li>Algorithm:
+                          <ul>
+                            <li>Select K based on tests on a subset of data (typically a too small K causes sensitivity to noise and over-fitting while a too large K is prone to bias towards more probable labels)
+                            </li>
+                            <li>Select distance metric
+                            </li>
+                            <li>Find the distances of the unknown case from all other cases
+                            </li>
+                            <li>Find K nearest neighbors of the unknown case
+                            </li>
+                            <li>Use the majority/median of its neighbors' labels as the predictor for the unknown case
+                            </li>
+                          </ul>
+                        </li>
+                        <li>Pros
+                          <ul>
+                            <li>Simple: almost no training needed
+                            </li>
+                            <li>Can outperform more complex parametric (or model-based) methods when decision boundary is complex and difficulty to model
+                            </li>
+                          </ul>
+                        </li>
+                        <li>Cons
+                          <ul>
+                            <li>Can be more computation/storage expensive during query/prediction time if the training data set is large
+                            </li>
+                            <li>When the dimension is large or some features are irrelevant, nearest neighbors may not be the best predictors (the closest points may not be in the same category as the input data)
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
                     </li>
                     <li>K-mean: <a href="https://www.pyimagesearch.com/2014/05/26/opencv-python-k-means-color-clustering/">k-mean using scikit-learn</a>
+                      <ul>
+                        <li>Soft K-mean from mixture Gaussian model (see David MacKay's book)
+                        </li>
+                      </ul>
                     </li>
-                    <li>Vector support
+                    <li>SVM: Support Vector Machine (See <a href='https://www.coursera.org/learn/machine-learning-with-python/home/welcome'>Coursera lectures from IBM</a>):
+                      <ul> 
+                        <li>Need to answer two questions:
+                          <ul>
+                            <li>Kernelling: How to transform the data to a higher dim such that the data becomes linearly separable? Linear, Poly, Sigmoid, RBF (Radial Basis Function) (cf RBM: Restricted Boltman Machine)
+                            </li>
+                            <li>Total least square (w<sup>T</sup>x + b = 0): Maximize the distance between the clusters using only the boundary points, known as support vectors (hence they are memory efficient).
+                            </li>
+                          </ul>
+                        </li>
+                        <li>Pros:
+                          <ul>
+                            <li>Acurate in high dim space
+                            </li>
+                            <li>Memory efficient
+                            </li>
+                          </ul>
+                        </li>
+                        <li>Cons:
+                          <ul>
+                            <li>Prone to over-fitting if number of features is large compared with the size of the training set
+                            </li>
+                            <li>Computational intensive for large data set
+                            </li>
+                            <li>Do not directly provide probability/confidence of the classification for each point
+                            </li>
+                          </ul>
+                        </li>
+                        <li>Applications
+                          <ul>
+                            <li>Image recognition: e.g. classification such as hand-written digit recognition
+                            </li>
+                            <li>Text category assignment
+                            </li>
+                            <li>Spam detection
+                            </li>
+                            <li>Sentiment analysis
+                            </li>
+                            <li>Gene expression classification
+                            </li>
+                            <li>Regression, outlier detection and clustering
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
                     </li>
-                    <li>Classification and decision tree, random forest
+                    <li>Decision tree
+                      <ul>
+                        <li>Overall algorithm: Start with root that encompass all training data and then recursively (depth or breadth first) apply the following for each node until no nodes can be split:
+                          <ul>
+                            <li>For each attribute, assess the metric of splitting the node based on it
+                            </li>
+                            <li>Split the node based on the best attribute selected
+                            </li>
+                          </ul>
+                        </li>
+                        <li>Which attribute should be used to split a node?
+                          <ul>
+                            <li>Selection criterion: Maximize the decrease in entropy, aka information gain, or (entropy of the parent node - average conditional entropy of the children nodes)
+                            </li>
+                            <li>Intuition behind the above splitting criterion: A child node should be
+                              <ul>
+                                <li>More predictive or less random: A child node should be better for prediction than the parent node
+                                </li>
+                                <li>More pure or less impurity: Samples in a child node should be more pure than the parent node
+                                </li>
+                                <li>Lower entropy: A child node should have lower (conditional) entropy than entropy of the parent node
+                                </li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>Classification and random forest
                     </li>
                     <li>Boosting and AdaBoosting
                     </li>

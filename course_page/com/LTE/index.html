@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            LTE and LTE-A
+        </title>
+    </head>
+    <body>
+        <h1>
+            LTE and LTE-A
+        </h1>
+        <h2>
+            Quarter offered
+        </h2>
+        <p>
+        </p>
+        <h2>
+            Course description
+        </h2>
+        <h4>
+            Instructor
+        </h4>
+        <p>
+        Dr. Xiaoshu Qian
+        </p>
+        <h4>
+            References
+        </h4>
+        <ul>
+          <li>Tutorials from mathworks.com
+            <ul>
+              <li><a href="https://www.mathworks.com/videos/acquiring-system-information-from-an-lte-signal-99565.html">Acquiring System Info in LTE</a>
+              </li>
+              <li> from <a href="https://www.mathworks.com/videos/acquiring-system-information-from-an-lte-signal-99565.html">LTE grid</a>
+              </li>
+            </ul>
+          <li>LTE related Books
+            <ul>
+              <li><a href="https://www.sciencedirect.com/book/9780128045756/4g-lte-advanced-pro-and-the-road-to-5g">4G, LTE-Advanced Pro and The Road to 5G</a> from Elsevier.
+              </li>
+              <li><a href="http://www.aldraji.com/download/The_UMTS_Long_Term_EvolutionB.pdf">LTE : The UMTS Long Term Evolution : From Theory to Practice</a> 2nd ed.
+              </li>
+            </ul>
+          <li>General COM related Books
+            <ul>
+              <li>Digital Communication 3rd Edition by John R. Barry, Edward A. Lee, David G. Messerschmitt
+              </li>
+              <li>David Forney
+                <ul>
+                  <li><a href="https://web.stanford.edu/class/ee392d/">Stanford course</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <h4>
+            Description
+        </h4>
+        <p>
+        </p>
+        <h4>
+            Detailed outline
+        </h4>
+<ul>
+  <li>Digital front end, Tx and Rx
+    <ul>
+      <li>Single component carrier case: freq down conversion, down-sampling
+        <ul>
+          <li>IQ and DC estimation and compensation
+          </li>
+          <li>AGC
+          </li>
+          <li>Digital pre-distortion
+          </li>
+        </ul>
+      </li>
+      <li>Two and more CC cases
+      </li>
+    </ul>
+  </li>
+  <li>Transport layer
+  </li>
+  <li>Demod
+    <ul>
+      <li><a href="https://arxiv.org/pdf/1507.05138.pdf">MIMO detection</a>
+        <ul>
+          <li>ZF
+          </li>
+          <li>MMSE
+          </li>
+          <li>Sphere-decoding: Tree Search Detection (TSD)
+            <ul>
+              <li>QR Decomponsition pre-processing: GS, Modified GS, Householder
+              </li>
+              <li>Traditional <a href="https://www.researchgate.net/publication/3236239_Algorithm_and_implementation_of_the_K-best_Sphere_decoding_for_MIMO_detection">K-best search</a> (problems to be solved at each layer): Additive distance metric, Manhattan (L1) norm, addressing missing counter-hypothesis
+              </li>
+              <li>Reduced complexity methods<a href="https://ieeexplore.ieee.org/abstract/document/5661890">I</a>, <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=6200359">II</a> (again focus on problems to be solved at each layer)
+                <ul>
+                  <li>Slicing to obtain inherited best candidate
+                  </li>
+                  <li>Best candidate's sibling
+                    <ul>
+                      <li><a href="https://link.springer.com/article/10.1007/BF01581144">1D Schnorr-Euchner (SE) enumeration</a> (see a picture <a href=https://www.researchgate.net/profile/Micaela_Troglia_Gamba/publication/281472406/figure/fig2/AS:669383554785305@1536604884959/Schnorr-Euchner-enumeration-around-Babai-Point.png>here</a> or <a href="https://www.researchgate.net/publication/281472406_Algorithms_and_architectures_for_the_detection_of_MIMO_signals?enrichId=rgreq-ae8f00c368976f9adf5df194d66991ef-XXX&enrichSource=Y292ZXJQYWdlOzI4MTQ3MjQwNjtBUzoyOTkyNTg4ODU0OTI3NDJAMTQ0ODM2MDI4NjYxMA%3D%3D&el=1_x_3&_esc=publicationCoverPdf">here</a>)
+                      </li>
+                      <li>2D search: See figure 2 in this <a href=https://www.mdpi.com/2079-9268/6/3/12/htm>ref</a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Channel estimation
+  </li>
+  <li><a href="https://www.sciencedirect.com/book/9780128045756/4g-lte-advanced-pro-and-the-road-to-5g">Access procedure</a>
+    <ul>
+      <li>Synchronization, acquisition and cell search: DL power (AGC), time, freq, beam, cell ID
+        <ul>
+          <li>PSS: 5W: <a href=https://en.wikipedia.org/wiki/Zadoff%E2%80%93Chu_sequence>SC seq</a>, 3 possible roots, last sym of the first slot of every half frame, (for TDD, it's the 3rd symbol in DwPTS), length 63 SC seq is placed on the 31 REs on each side of the DC. Non-coherent detection using MF
+          </li>
+          <li>SSS: 5W: Interlacing two SS codes, 168, right before PSS, (for TDD, it's 3 symbol before PSS because the first two symbols of DwPTS contains PCFICH, PHICH), length 62 seq is placed on the 31 REs on each side of the DC. Coherent detection using FHT?
+          </li>
+          <li>MIB and PBCH: BW, PHICH info, Sys Frame Num, # of Tx antennas
+          </li>
+        </ul>
+      </li>
+      <li>System info (MIB & SIBs)
+      </li>
+      <li><a href="https://www.sharetechnote.com/html/RACH_LTE.html#How_the_information_is_encoded_into_PRACH">PRACH</a>
+        <ul>
+          <li>Freq-time location
+          </li>
+          <li>Generation of RA PA
+          </li>
+        </ul>
+      </li>
+      <li>Paging
+      </li>
+    </ul>
+  </li>
+</ul>
+    </body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Data Structures
+    </title>
+  </head>
+  <body>
+    <h1>Database
+    </h1>
+<h4>References
+</h4>
+  <ul>
+    <li>Cheatsheet: <a href="https://www.sqltutorial.org/sql-cheat-sheet/">I</a>
+    </li>
+  </ul>
+<h4>Description
+</h4>
+  <p>
+  </p>
+<h4>Detailed outline
+</h4>
+  <ul>
+    <li>Dynamic array, amortized analysis
+    </li>
+    <li>Linked list
+    </li>
+    <li>Stack, queue, priority queue
+    </li>
+    <li>Hashing: inverse mapping of a list of strings/integers. e.g. a phone book
+      <ul>
+        <li>Applications: info retrieval, check computation (casting out nine), as file checksum (detecting if two files are the same), tampering detection (security check)
+        </li>
+        <li>Naive solutions: LUT (too much storage), Linked list (too time consuming), alphbetical list (requires list values to be ordered, insertion is time consuming
+        </li>
+        <li>Collision handling:
+          <ul>
+            <li>Chaining
+            </li>
+            <li>Open address
+              <ul>
+                <li>Linear probing
+                </li>
+                <li>Double hashing: if collision happens, second hasing function is used to find the increment
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Compute the probability of the collision
+        </li>
+        <li>Universal family of hashing functions: Given ANY pair (x, y), the probability of h(x) = h(y) is smaller than or equal to 1/m if h is selected randomly from the family of functions. That is, given the input pair, no more than 1/m of the functions in the family will cause collision.
+          <ul>
+            <li>Compare (Universal hashing also selects a function randomly):
+              <ul>
+                <li>Source coding: f(x) = a label, such that the average length of the labels is much smaller than the average length of x's
+                </li>
+                <li>Channel coding: f(x) = y, where ave_len(y) > ave_len(x). Using a 'random' code to attain channel capacity
+                </li>
+              </ul>
+            </li>
+            <li>Examples: 
+              <ul>
+                <li>int hashing: ax + b (see coursera course)
+                </li>
+                <li>(Java) string hashing: poly hashing before int hashing (see coursera course)
+                </li>
+                <li>hashing a tuple of int: a<sub>1</sub>x<sub>1</sub> + a<sub>2</sub>x<sub>2</sub> + ... + a<sub>k</sub>x<sub>k</sub> (see IP address log example in DPV algorithms book)
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Disjoint set or union-find (UF)
+      <ul>
+        <li>I/F:
+          <ul>
+            <li>UF(N): Initially there are N components with IDs 0, 1, ..., N-1. Each component has only one node.
+            </li>
+            <li>find(i) returns ID of the conponent containing i, which can change after each union operation
+            </li>
+            <li>void union(i, j)
+            </li>
+            <li>connected(i, j) returns True or False
+            </li>
+            <li>size(i) returns the size of the component containing i
+            </li>
+          </ul>
+        </li>
+        <li>Weighted UF, Weighted UF with path compression, QuickUnion, QuickFind
+        </li>
+      </ul>
+    </li>
+    <li>Trees, binary search tree (BST), heap, tries, Graph
+    </li>
+    <li>Set, map (dict, ST: symbol table)
+    </li>
+    <li>SP: shortest path
+    </li>
+    <li>FlowE, FlowNW, FordFulkerson
+    </li>
+  </ul>
+
+  </body>
+</html>
