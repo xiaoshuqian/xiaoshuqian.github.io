@@ -47,15 +47,38 @@
             Detailed outline
         </h4>
 <ul>
-    <li>Digital front end
-      <ul>
-        <li>Two ways of doing down-conversion
-          <ul>Analytical signal, unitary signal, 
-          </ul>
-        </li>
-      </ul>
-    </li>
-    </li>
+  <li>Key facts
+    <ul>
+      <li>Max 2D symbol rate = One-sided passband BW
+      </li>
+      <li>Spectral efficiency in bits/2D ~ Bits/Hz
+      </li>
+      <li>NSNR = SNR / (2<sup>&rho;</sup> - 1)
+      </li>
+      <li>Symbol Error Rate for QAM = K * Q((3*NSNR)<sup>1/2</sup>)
+      </li>
+      <li>Symbol Enery or constellation variance for PAM =  d<sup>2</sup>(M<sup>2</sup> - 1)/12;   Es for QAM = d<sup>2</sup>(M - 1)/6, where d = distance between nearest constellatin points
+      </li>
+      <li>Channel capacity for AWGN: NSNR > 1 or &rho; (bits/Hz) < lg(1+SNR)
+      </li>
+      <li>Need an additional 3dB in SNR for each bit/sym increase. For example, need 6dB increase to go from 16QAM to 64QAM
+      </li>
+      <li>SNR = EbNo * bits_per_symbol. Thus, need 3dB increase in EbNo to go from QPSK to 16QAM and need 9dB increase in EbNo to go from 16QAM to 256QAM.
+        <ul>
+          <li>Let EbNo for QPSK be a/2. Then EbNo for 16QAM must be 4a/(2+2) = a and EbNo for 256QAM must be (4**3)a/(2+2*3) = 64a/8 = 8a (i.e 9dB from a)
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Digital front end
+    <ul>
+      <li>Two ways of doing down-conversion
+        <ul>Analytical signal, unitary signal, 
+        </ul>
+      </li>
+    </ul>
+  </li>
 </ul>
     </body>
 </html>
