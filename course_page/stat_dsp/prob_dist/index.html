@@ -87,7 +87,42 @@
           <ul>
             <li>Binomial(n,p) / Bernoulli(p): mean np, variance np(1-p)
             </li>
-            <li><a href="https://www.johndcook.com/negative_binomial.pdf">Neg-Binomial(m,p)</a> / Geometric(p): mean m(1-p)/p, variance m(1-p)/p<sup>2</sup>
+            <li><a href="https://www.johndcook.com/negative_binomial.pdf">Neg-Binomial(m,p)</a> / Geometric(p):
+              <ul>
+                <li>var(NB) = mq/p<sup>2</sup> = m * var(geometric_variable), where q = 1-p. 
+                  <ul>
+                    <li>The variance expression above is applicable regardless of which of the two definitions below is used since the two definitions differ by a constant offset.
+                    </li>
+                  </ul>
+                </li>
+                <li>Defn 1: X = # of trials at which the m<sup>th</sup> success occurs.
+                  <ul>
+                    <li>mean = m/p, since p is the success rate and thus 1/p is the average number of trials needed to get one success.
+                    </li>
+                    <li>pmf = C(x-1,m-1)p<sup>m</sup>q<sup>x-m</sup>, since the probability of getting (m-1) successes in (x-1) trials is C(x-1,m-1)p<sup>m-1</sup>q<sup>x-m</sup>.
+                    </li>
+                  </ul>
+                </li>
+                <li>Defn 2: X = # of failures before the m<sup>th</sup> success.
+                  <ul>
+                    <li>mean = mq/p, since the two definitions are related by X1 = X2 + m and thus, mean1 = m/p = mean2 + m or mean2 = mq/p.
+                    </li>
+                    <li>p = m/(mean + m) = #Succ / (#Succ + #Fail)
+                    </li>
+                    <li>var = mean + mean<sup>2</sup>/m or m = mean/(var - mean<sup>2</sup>). Thus, the var is always bigger than mean (unlike Poison variable whose var = mean)
+                    </li>
+                    <li>pmf = C(m+x-1,x)p<sup>m</sup>q<sup>x</sup>, since the probability of getting (m-1) successes in (m+x-1) trials is C(m+x-1,m-1)p<sup>m-1</sup>q<sup>x</sup>.
+                    </li>
+                </li>
+                <li>Benefits of defn 2:
+                  <ul>
+                    <li>The range of X is non-negative integers.
+                    </li>
+                    <li>No need for m to appear at the bottom of combinatorial coefficient and thus it is easy to generalize m to all non-negative reals.
+                    </li>
+                  </ul>
+                </li>
+              </ul>
             </li>
             <li>Multi-nomial(n,p<sub>1</sub>, ...): mean np<sub>1</sub>, ...
             </li>
