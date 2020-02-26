@@ -109,7 +109,7 @@
                     </li>
                     <li>p = m/(mean + m) = #Succ / (#Succ + #Fail)
                     </li>
-                    <li>var = mean + mean<sup>2</sup>/m or m = mean/(var - mean<sup>2</sup>). Thus, the var is always bigger than mean (unlike Poison variable whose var = mean)
+                    <li>var = mean + mean<sup>2</sup>/m or m = mean/(var - mean<sup>2</sup>). Thus, the var is always bigger than mean (unlike Poison variable whose var = mean). Note that for a Poisson variable with a gamma conjugate prior for its mean, its prior predictive distribution is NB. As the prior distribution becomes more and more concentrated around the mean, the NB approaches the Posson and vice versa.
                     </li>
                     <li>pmf = C(m+x-1,x)p<sup>m</sup>q<sup>x</sup>, since the probability of getting (m-1) successes in (m+x-1) trials is C(m+x-1,m-1)p<sup>m-1</sup>q<sup>x</sup>.
                     </li>
