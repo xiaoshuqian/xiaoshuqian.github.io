@@ -81,7 +81,9 @@
         </li>
       </ul>
     </li>
-    <li>Arrival processes
+    <li><a href=https://en.wikipedia.org/wiki/Beta-binomial_distribution#Beta-binomial_as_an_urn_model>Urn model</a> is good for modeling binomial, hypergeometric and beta-binomial distributions.
+    </li>
+    <li>Arrival processe and 'successes in repeated trials' are good models for binmomial (Bernoulli), NB (Geometric), Poisson, Gamma (Exponential) and Beta distributions. Binomial and NB become Poisson and Gamma respectively when the observation time goes from discrete to continuous. Beta and Gamma can be used to model respectively success rate in repeated trials and success rate over continous time, where the parameters a and b in Beta and Gamma distributions can be interpreted respectively as 'a successes out of b trials' and 'a successes over duration b'.
       <ul>
         <li>Discrete (Num of trials): Num of arrivals out of n trials or number of extra (in addition to m) trials to get m arrivals
           <ul>
@@ -113,6 +115,7 @@
                     </li>
                     <li>pmf = C(m+x-1,x)p<sup>m</sup>q<sup>x</sup>, since the probability of getting (m-1) successes in (m+x-1) trials is C(m+x-1,m-1)p<sup>m-1</sup>q<sup>x</sup>.
                     </li>
+                  </ul>
                 </li>
                 <li>Benefits of defn 2:
                   <ul>
