@@ -63,9 +63,9 @@
       </li>
     </ul>
   </li>
-  <li><a href="https://blogs.mathworks.com/cleve/2016/07/25/compare-gram-schmidt-and-householder-orthogonalization-algorithms/">QR decomposition using GS, MGS and Householder</a>
+  <li><a href="https://blogs.mathworks.com/cleve/2016/07/25/compare-gram-schmidt-and-householder-orthogonalization-algorithms/">QR decomposition using GS, MGS, Householder</a> and Givens
     <ul>
-      <li>All three algorithms compute Q and R that do a good job of reproducing the data A (i.e. norm(A-Q*R,inf)/norm(A, inf) is small).
+      <li>All four algorithms compute Q and R that do a good job of reproducing the data A (i.e. norm(A-Q*R,inf)/norm(A, inf) is small).
       </li>
       <li>Their behavior is very different when it comes to producing orthogonality (i.e. norm(Q'*Q - eye(n), inf) = ?).
         <ul>
@@ -73,7 +73,17 @@
           </li>
           <li>Modified Gram-Schmidt. Depends upon condition of A. Fails completely when X is singular.
           </li>
-          <li>Householder. Always good orthogonality.
+          <li>Householder and Givens. Always good orthogonality.
+          </li>
+        </ul>
+      </li>
+      <li><a href=https://books.google.com/books?id=-tW8-FUoxWwC&pg=PA207&lpg=PA207&dq=Householder+transformation+vs+MGS+table&source=bl&ots=9XXZmQmQBb&sig=ACfU3U1lDSDc31we1BRPq7N0XOR0pm3Ncw&hl=en&ppis=_e&sa=X&ved=2ahUKEwjPlLLA4aLoAhUYpp4KHZuPDa4Q6AEwAHoECAkQAQ#v=onepage&q=Householder%20transformation%20vs%20MGS%20table&f=false>Complexity</a> (<a href=https://my.siam.org/Store/Product/viewproduct/?ProductId=1016>Numerical Linear Algebra and Applications, 2nd Edition</a>):
+        <ul>
+          <li>CGS and MGS: 2mn<sup>2</sup>
+          </li>
+          <li>HT: 2(m-n/3)n<sup>2</sup>
+          </li>
+          <li>Givens: 3(m-n/3)n<sup>2</sup>
           </li>
         </ul>
       </li>
@@ -99,6 +109,10 @@ On the other hand, if you first subtract q0 (times the right coefficient), it in
           <li>Q
           </li>
         </ul>
+      </li>
+      <li>Householder for solving LS problem y = Hx: Append y to the columns in H to form matrix [H, y] before applying the QR to obtain an m by (m+1) R matrix. The resulting R triangular matrix equation z = R'x can be obtained by extracting R' and z from the first m columns and last column in R respectively. This removes the need to save the Q matrix.
+      </li>
+      <li>Householder for solving MMSE or regularized LS problem y = Hx: Append a diagonal matrix whose diagonal elements are noise std dev (assumming uncorrelated noise) at the bottom of H and then apply QR. Note at each of n steps of the QR procedure, we need only to apply HT on a column vector of size m since the 0's below the diagonal element of the appended diagonal matrix can be ignored while applying HT.
       </li>
     </ul>
   </li>
