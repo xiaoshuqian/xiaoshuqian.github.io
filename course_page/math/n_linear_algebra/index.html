@@ -110,9 +110,9 @@ On the other hand, if you first subtract q0 (times the right coefficient), it in
           </li>
         </ul>
       </li>
-      <li>Householder for solving LS problem y = Hx: Append y to the columns in H to form matrix [H, y] before applying the QR to obtain an m by (m+1) R matrix. The resulting R triangular matrix equation z = R'x can be obtained by extracting R' and z from the first m columns and last column in R respectively. This removes the need to save the Q matrix.
+      <li>Householder for solving LS problem y = Hx: Append y to the columns in H to form matrix [H, y] before applying the QR to obtain an m by (m+1) R matrix. The resulting triangular matrix equation z = R'x can be obtained by extracting R' and z from the first m columns and last column in R respectively. <em>This removes the need to save the Q matrix</em>.
       </li>
-      <li>Householder for solving MMSE or regularized LS problem y = Hx: Append a diagonal matrix whose diagonal elements are noise std dev (assumming uncorrelated noise) at the bottom of H and then apply QR. Note at each of n steps of the QR procedure, we need only to apply HT on a column vector of size m since the 0's below the diagonal element of the appended diagonal matrix can be ignored while applying HT.
+      <li>Householder for solving MMSE or regularized LS problem y = Hx: Append a diagonal matrix whose diagonal elements are noise std dev (assumming uncorrelated noise) at the bottom of H and then apply QR. Note at each of the n steps of the QR procedure, we <em>need only to apply HT on a column vector of size m</em> since the 0's below the diagonal element of the appended diagonal matrix can be ignored while applying HT.
       </li>
     </ul>
   </li>

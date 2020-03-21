@@ -47,6 +47,18 @@
             Detailed outline
         </h4>
 <ul>
+  <li>Modifying linear codes (See Wicker's or Blahut's FEC book):
+    <ul>
+      <li>Shortening or lengthening: Fixing (n-k), decreasing or increasing k. e.g: shortened CRC code
+      </li>
+      <li>Puncturing or extending: Fixing k, decreasing or increasing n - k. e.g: punctured convolutional code, extended RS code
+      </li>
+      <li>Expurgating or augmenting: Fixing n, decreasing or increasing k. e.g. RS code has many BCH codes as subcodes (e.g. cf book <a href=https://link.springer.com/chapter/10.1007/978-3-540-77224-8_26>Subcodes of Reed-Solomon Codes Suitable for Soft Decoding</a>. A subcode is formed after deleting or expurgating some codewords from the original code. Oftentimes, a subcode forms a subspace of the spaced spanned by the original code. Virtually all CRC code has even parity code as a supercode.
+      </li>
+      <li>Lengthening and extending are called expanding while shortening and puncturing are called restricting (Blahut): these modifications change code length n
+      </li>
+    </ul>
+  </li>
   <li>Cyclic codes
     <ul>
       <li>Two ways of doing down-conversion
