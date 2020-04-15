@@ -44,13 +44,36 @@
             Detailed outline
         </h4>
 <ul>
-  <li>LTE PDSCH transport layer: ABCDEFGK (Ref: Farooq Khan, 36.212)
+  <li>LTE DL-SCH transport layer: ABCDEFGK (Ref: Farooq Khan, 36.212)
     <ul>
+      <li>Param
+        <ul>
+          <li>TB level param
+            <ul>
+              <li>TBS: as a function of I<sub>TBS</sub> and N<sub>PRB</sub>, see tables in 36.213
+              </li>
+              <li>G = TB output size = N<sub>PRB</sub> * 12 * 14 - CRE overhead - other potential overhead, possible overhead factor 0.82, 0.75, etc based on the googling on lte capacity calculation or REs used for data  
+              </li>
+              <li>N. layers, QAM order, rv
+              </li>
+            </ul>
+          <li>Derived parameters
+            <ul>
+              <li>CB segmentation: Cp, Cm, Kp, Km: max K value = 6144, possible K values are 40+8t, 512+16t, 1024+32t, 2048+64t, see table in 36.212 of possible Quadrature Poly Interleaver Size
+              </li>
+              <li>Rate match: offset (2, 26, 50 or 74) as a fun of rv, Ep, Em, nEm as a fun of C, G, QAM order, N layers 
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>matlab code: see 5G/FEC/matlab/lte/DL-SCH tab
+      </li>
       <li>A = TBS, B = A + L: TB CRC24A
       </li>
       <li>Segmentation and CB CRC: output is c<sub>r,j</sub>, K<sub>r</sub> is the output length per CB (K<sub>-</sub>, K<sub>+</sub>) 
         <ul>
-          <li>if B &le; Z = 6441, L = 0, C = 1, B' = B
+          <li>if B &le; Z = 6144, L = 0, C = 1, B' = B
           </li>
           <li>OW, L=24, C = ceil(B / (Z - L)), B' = B + C*L
           </li>
@@ -90,6 +113,8 @@
           </li>
           <li>Block interleaving and bit-reverse column permutation:
             <ul>
+              <li>Circularly left-shift parity 2 bits by 1 bit.
+              </li>
               <li>For each stream of encoder output (i.e. systematic, parity1 and parity2), write row-wise the encoder output to a 32 column matrix with dummy (0) bits prepended at the begining if needed (these will be removed at the RM output)
               </li>
               <li>Permutate the columns of the matrix using a bit-reversing order
@@ -134,8 +159,21 @@
       </li>
     </ul>
   </li>
-  <li>NR PDSCH transport layer: ABCDEFGK (Ref: 38.212)
+  <li>NR DL-SCH transport channel: ABCDEFGK (Ref: 38.212)
     <ul>
+      <li>Param
+        <ul>
+          <li>TB level param
+            <ul>
+              <li>TB length thresholds: A = 292, 3824
+              </li>
+            </ul>
+          <li>Derived parameters
+          </li>
+        </ul>
+      </li>
+      <li>matlab code: see 5G/FEC/matlab tab
+      </li>
       <li>A = TBS, B = A + L: TB CRC24A or CRC16. If A &le& 3824, L = 16, else L = 24
       </li>
       <li>Segmentation and CB CRC: output is c<sub>r,j</sub>, K = 22Zc and 10Zc are the output length per BG1 and BG2 CBs resp.
