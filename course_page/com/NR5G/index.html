@@ -59,6 +59,94 @@
             Detailed outline
         </h4>
 <ul>
+  <li>Numerology
+    <ul>
+      <li>Overview
+        <ul>
+          <li>A subframe always spans 1ms and a slot always spans 14 symbols (except mini-slot). SlotsPerSF = SCS/15 and a subframe contains 14*SCS/15 symbols
+          </li>
+          <li>A long OFDM symbol with large SCS always contains an integer number of short OFDM symbols associaed with smaller SCS and its two end points are aligned with those of the short OFDM symbols. 
+          </li>
+          <li>Each half-subframe has a long CP at the beginning. Symbols with short CPs for all SCPs are aligned.
+          </li>
+          <li>Short CPs are proportional to short LTE CPs: 9*Tu/128 or 144 samples when FFTsize = 2048.
+          </li>
+          <li>The long CP of each half SF = (SCS/15 + 9)*Tu/128 because each SF contains SCS Tu and SCP*14/15 Tsym and the time taken up by all CPs per SF is SCP/15 and by short CPs is SCP/15 - (14*SCP/15 - 2)*9*Tu/128 = (SCP/15 + 9)*2*Tu/128.
+          </li>
+        </ul>
+      </li>
+      <li>For NR, two of (BW, SCS, N<sub>FFT</sub>) are independent and the other dependent since BWn = N<sub>FFT</sub>SCS
+      </li>
+      <li>Different BW are proportional to each other
+        <ul>
+          <li>Nominal BW: BWn = N<sub>FFT</sub>SCS
+          </li>
+          <li>Used BW: BWu = 12*N<sub>RB</sub>*SCS
+          </li>
+          <li>BWn/BW = r<sub>os</sub> = over-sampling ratio
+          </li>
+          <li>BWu/BW = r<sub>su</sub> = spectrum utilization ratio
+          </li>
+        </ul>
+      </li>
+      <li>Tput = TBS/TTI &lt; b * BWu * 14/15;  Tput/BW = spectral efficiency &lt; b*14/15
+      </li>
+      <li>TBS = Tput * TTI &lt; 14*b*BWu/SCS = b * REsPerTTI
+        <ul>
+          <li>TTI = 14*Tsym, where Tsym (= Tcp + Tu) differs when short or long CP is used. But
+            <ul>
+              <li>On average, TTI = 15*Tu = 15/SCS, Tu/Tsym = 14/15, Tcp/Tsym = 1/15, Tcp/Tu = 1/14, Ncp = N<sub>FFT</sub>/14 ~ 153 for N<sub>FFT</sub> = 2k
+              </li>
+              <li>More precisely, short CP length = Tu*9/128 and long CP length = Tu*(9 + SCS/15)/128 (see numerology.pptx)
+              </li>
+            </ul>
+          </li>
+          <li>TBS = a * b * N<sub>RB</sub> &lt; 14*b*BWu/SCS, N<sub>RB</sub> = BWu / (12*SCS), where
+            <ul>
+              <li><i>a</i> depends on the overhead: a = nRE/RB/TTI, min(a) = 150 = 13*12 - 6 for LTE, min(a) = 156 = 12*14 - 12 for NR
+              </li>
+              <li>b = nInfo/RE = qam_ord * nLayer * coding_rate
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Both TBS and Tput are proportional to b (qam_ord, nLayer and coding_rate). But
+      </li>
+      <li>TBS is proportional to BWu/SCS because TBS = bits in a fixed number (14) of symbols and RE/sym = BWu/SCS: TBS = a * b * BWu / (12*SCS) 
+      </li>
+      <li>Tput is proportional to BWu but is relatively independent of SCS since both TBS and TTI are inversely proportional to SCS. Tput = a * b * BWu / 180 &lt; b * BWu * 14/15
+        <ul>
+          <li>For a fixed BW, increasing SCS reduces TTI or Tu and thus increases symbol rate. But it also reduces the number of REs in a symbol and thus reduces the bits transmitted in each symbol. Roughly, REs/sym = BWu/SCS, sym/sec = 1/Tsym = k*SCS, thus REs/sec = k*BWu, where k = 14/15
+          </li>
+          <li>When BW is increased, if SCS stays the same, then RE/sym increases while Tu or Tsym stays the same and thus tput increase. On the other hand, if SCS increases proportional to the increase in BW, then RE/sym stays the same while symbol duration decreases inversely proportion to BW, making tput increases proportional to BW also.
+          </li>
+        </ul>
+      </li>
+      <li>When BW increases, Tput increases in both LTE and NR but in different ways:
+        <ul>
+          <li>LTE way (see Fig 1 in <a href=https://home.zhaw.ch/kunr/NTM1/literatur/LTE%20in%20a%20Nutshell%20-%20Physical%20Layer.pdf>LTE in a Nutshell</a>): As BW grows, FFT size and tput grow while SCS or slot/sf duration stays the same
+            <ul>
+              <li>Number of RBs/subcarriers and TBS grow also. RBs used are 6, 13, 25, 50, 75, 100 when BW are 1.4, 3, 5, 10, 15 and 20MHz resp.
+              </li>
+              <li>This is typical as the BW increases from 1.4MHz to 50MHz. Note as the BW increases from 1.4, 3, 5, 10, 15, 20, to 40MHz the oversampling rate (or BW<sub>nominal</sub>/BW<sub>actual</sub>) stays roughly the same as the FFT size and the BW grow proportionally (FFT size is 1536 when BW is 15MHz). But as the BW increases from from 40MHz to 50MHz, the oversampling rate decreases while the FFT sizes stays the same.
+              </li>
+              <li>Roughly, the percentage of useful time is Tu/Tsym = 14/15, as SCS = 15kHz, Tu = 1/15 ms = 71us but Tsym = 1/14 ms = 67 us. Thus, the CP percentage is 1/15 or Tcp = Tsym - Tu = 1/(14*15) ms ~ 4.8us.
+              </li>
+              <li>When BW is 20MHz, the FFT size = 2K, short & long CP lengths are 144 & 160 resp. As the FFT size halves, the CP length halves accordingly.
+              </li>
+            </ul>
+          </li>
+          <li>Typical NR way: As BW grows from 50, 100, 200 to 400MHz, SCS and tput can grow proportionally while FFT size duration stays at 4096.
+            <ul>
+              <li>Number of RBs (~ 264) and TBS stays about the same assuming TBS always spans one 14-symbols slot. However, the tput increases because TTI/slot/symbol duration decreases as SCS increases.
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
   <li>Digital front end, Tx and Rx
     <ul>
       <li>Single component carrier case: freq down conversion, down-sampling

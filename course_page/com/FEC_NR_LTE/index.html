@@ -48,15 +48,32 @@
     <ul>
       <li>Param
         <ul>
-          <li>TB level param
+          <li>BW (determining max PRD, e.g. 100PRB/20MHz), N. layers, MCS (QAM order, coding rate), NRB, rv 
+          </li>
+          <li>Interesting max
             <ul>
-              <li>TBS: as a function of I<sub>TBS</sub> and N<sub>PRB</sub>, see tables in 36.213
+              <li>Max thourhput = max SCH input rate = TBS/1ms
               </li>
-              <li>G = TB output size = N<sub>PRB</sub> * 12 * 14 - CRE overhead - other potential overhead, possible overhead factor 0.82, 0.75, etc based on the googling on lte capacity calculation or REs used for data  
+              <li>Max SCH input rate = [(max # of REs in a subframe) * (QAM order) * (max # of layers)]/1ms
               </li>
-              <li>N. layers, QAM order, rv
+              <li>HARQ memory size = (# of HARQ processes) * (max circular buffer size)
+                  <ul>
+                      <li>max circular buffer size = 3*TBS + filler bits + termination bits
+                      </li>
+                  </ul>
+              </li>
+              <li>HARQ/DDR BW = (max circular buffer size) / 1ms
+              </li>
+              <li>TBS: as a function of MCS, N. layers, NRB
+                  <ul>
+                      <li>MCS determines I<sub>TBS</sub>, which together with and N<sub>PRB</sub> determines TBS, see tables in 36.213
+                      </li>
+                  </ul>
+              </li>
+              <li>G = TB output size = N<sub>PRB</sub> * 12 * 14 * mod_order * n_layers * overhead_factor, possible overhead factor 0.82, 0.75, etc based on the googling on lte capacity calculation or REs used for data  
               </li>
             </ul>
+          </li>
           <li>Derived parameters
             <ul>
               <li>CB segmentation: Cp, Cm, Kp, Km: max K value = 6144, possible K values are 40+8t, 512+16t, 1024+32t, 2048+64t, see table in 36.212 of possible Quadrature Poly Interleaver Size
@@ -101,7 +118,7 @@
           </li>
         </ul>
       </li>
-      <li>Rate matching: output is e<sub>r,j</sub>, E<sub>r</sub> is the output length per CB (E<sub>-</sub>, E<sub>+</sub>) 
+      <li><a href=https://ltebasics.wordpress.com/2013/12/24/rate-matching-in-pdsch/>Rate matching</a>: output is e<sub>r,j</sub>, E<sub>r</sub> is the output length per CB (E<sub>-</sub>, E<sub>+</sub>) 
         <ul>
           <li>Note
               <ul>
@@ -161,20 +178,49 @@
   </li>
   <li>NR DL-SCH transport channel: ABCDEFGK (Ref: 38.212)
     <ul>
+      <li>Ref
+        <ul>
+          <li><a href=https://ieeexplore.ieee.org/document/8417496>5G RM Design</a>
+            <ul>
+              <li>The first two columns of the BG1 or BG2 do not go into circular buffer
+              </li>
+              <li>The best RV order is 0231 or 0213. The self decodability ordering is 0321.
+              </li>
+              <li>Offsets for RV 0, 1, 2, 3 are (0, 17, 33, 56) and (0, 13, 25, 43) resp.
+              </li>
+              <li>The above offsets are scaled by 2/3 when LBRM is used (for large TBSs)
+              </li>
+            </ul>
+          <li>Ref 2..
+          </li>
+        </ul>
+      </li>
       <li>Param
         <ul>
           <li>TB level param
             <ul>
-              <li>TB length thresholds: A = 292, 3824
+              <li>TBS: as a function of N<sub>RB</sub>, num of layers, QAM order, coding rate, etc see NR in bullets
+              </li>
+              <li>G = TB output size = N<sub>PRB</sub> * 12 * 14 * mod_order * n_layers * overhead_factor, possible overhead factor 0.82, 0.75, etc based on the googling on lte capacity calculation or REs used for data  
+              </li>
+              <li>N. layers, QAM order, rv
               </li>
             </ul>
           <li>Derived parameters
+            <ul>
+              <li>TB CRC: CRC16 if TBS &le; 3824, CRC24A ow
+              </li>
+              <li>BG: BG2 if TBS &le; 292 or (TBS &le; 3824 and r &le; 2/3) or r &le; 1/4, BG1 ow
+              </li>
+              <li>Max CB length K<sub>cb</sub> selection: K<sub>cb</sub> = 8448 = 22*384 if BG1. K<sub>cb</sub> = 3840 = 10*384 if BG2
+              </li>
+            </ul>
           </li>
         </ul>
       </li>
       <li>matlab code: see 5G/FEC/matlab tab
       </li>
-      <li>A = TBS, B = A + L: TB CRC24A or CRC16. If A &le& 3824, L = 16, else L = 24
+      <li>A = TBS, B = A + L: TB CRC24A or CRC16. If A &le; 3824, L = 16, else L = 24
       </li>
       <li>Segmentation and CB CRC: output is c<sub>r,j</sub>, K = 22Zc and 10Zc are the output length per BG1 and BG2 CBs resp.
         <ul>
@@ -250,7 +296,36 @@
       </li>
     </ul>
   </li>
-  <li>NR transport layer
+  <li>LTE HARQ
+    <ul>
+      <li>Max number of HARQ process = 8, assuming in the worst case, eNB can receive ACK 4 SF later after transmitting the original PDSCH TB and UE will receive the retransmission 4 SFs later. Thus, 8 parallel SAW (Stop-And-Wait) processes suffices. 
+      </li>
+    </ul>
+  </li>
+  <li>NR HARQ
+    <ul>
+      <li>Max number of HARQ process = 16
+      </li>
+      <li><a href=https://arxiv.org/pdf/1809.10443.pdf>K0, K1, K2, K3, K4, N1, N2</a> (Ref: 5G NR by Erik Dahlman, et al., NR in bullets, table 5.3-1 and 5.3-2 in sec 5.3 in 38.234):
+        <ul>
+          <li>K0, K2: delay from PDCCH to PDSCH and PUSCH resp at UE
+          </li>
+          <li>K3: delay in slot from ACK/NACK Rx in PUCCH to PDSCH retransmission at gNB
+          </li>
+          <li>K1: delay in slot from PDSCH Rx to ACK/NACK Tx in PUCCH at UE
+          </li>
+          <li>K4: delay in slot from PUSCH Rx Rx to ACK/NACK Tx in PDCCH at gNB
+          </li>
+          <li>N1: delay in symbols from PDSCH to ACK/NACK in PUCCH:
+            <ul>
+              <li>depneding processing capability 1 or 2, mapping type A or B (front loaded DMRS or not) and SCS
+              </li>
+            </ul>
+          </li>
+          <li>N2: delay in symbols from PDCCH to PUSCH
+        </ul>
+      </li>
+    </ul>
   </li>
   <li>Polar encoding
     <ul>
