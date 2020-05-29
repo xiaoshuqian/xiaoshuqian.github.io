@@ -89,6 +89,48 @@
           </li>
         </ul>
       </li>
+      <li>Tput and TBS interpretation 1:
+        <ul>
+          <li>Tput (analogy: Tput = bitsPerSym * SymRate for single carrier case):
+            <ul>
+              <li>SymRate = RErate = 1/Tsym * Nsc = 14/15 * SCS * BWu / SCS = 14/15 * BWu
+              </li>
+              <li>bitsPerRE = b * percentage of RE used for data = b * a/168
+                <ul>
+                  <li>b = nInfo/RE = qam_ord * nLayer * coding_rate
+                  </li>
+                  <li>168 = 12 * 14 = total number of REs per TTI per RB (1 RB = 12 RE)
+                  </li>
+                  <li>a = nRE/RB/TTI used for data: min(a) = 150 = 13*12 - 6 for LTE, min(a) = 156 = 12*14 - 12 for NR
+                  </li>
+                </ul>
+              </li>
+              <li>Tput = b * a/168 * 14/15 * BWu = a * b * BWu / 180, where a/180 includes overhead in both freq domain (a/168) due to data RE utilization rate and time domain due to CP (14/15)
+              </li>
+              <li>Tput/BW = spectral efficiency = b * a/180 * BWu / BW,
+                <ul>
+                  <li>coding_rate in b is overhead used for coding (or for noise/impairment)
+                  </li>
+                  <li>a/180 = overhead on CPs and RSs, SSB, etc
+                  </li>
+                  <li>BWu/BW = spectrum utilization = overhead on guard-band
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>TBS = info bits in 14 OFDM symbols
+            <ul>
+              <li>TBS = 14 * bitsPerSym
+              </li>
+              <li>bitsPerSym = bitsPerRE * REsPerSym = b * a / 168 * BWu/SCS
+              </li>
+              <li>TBS = a * b * BWu / SCS / 12
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
       <li>Tput = TBS/TTI &lt; b * BWu * 14/15;  Tput/BW = spectral efficiency &lt; b*14/15
       </li>
       <li>TBS = Tput * TTI &lt; 14*b*BWu/SCS = b * REsPerTTI

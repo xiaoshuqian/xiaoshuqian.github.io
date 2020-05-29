@@ -14,6 +14,19 @@
             Reference textbook(s)
         </h4>
         <ul>
+          <li><a href="https://www.cambridge.org/core/journals/apsipa-transactions-on-signal-and-information-processing/article/an-overview-of-channel-coding-for-5g-nr-cellular-communications/CF52C26874AF5E00883E00B6E1F907C7/core-reader">Channel Coding in 5G NR: an overview
+          </li>
+          <li><a href="https://ieeexplore.ieee.org/document/8477009?denied=">Channel Coding in 5G New Radio: A Tutorial Overview and Performance Comparison with 4G LTE</a>
+          </li>
+          <li><a href="https://eprints.soton.ac.uk/427712/1/Survey_of_Turbo_LDPC_and_Polar_Decoder_ASIC_Implementations.pdf">Survey of Turbo/LDPC/Polar Decoders ASIC in 5G/LTE</a>
+          </li>
+          <li><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7527192">HW polar decoders</a>
+          </li>
+          <li><a href="https://ieeexplore.ieee.org/document/8417496">5G RM</a>
+          </li>
+          <li><a href="https://www.sharetechnote.com/html/5G/5G_PDSCH.html">5G PDSCH</a>
+          </li>
+          <li><a href="http://solutionsproj.net/software/Signal_Processing_for_5G_Algorithms_and_Implementations.pdf">SIGNAL PROCESSING FOR 5G</a> 
           <li><a href="https://www.sciencedirect.com/book/9780128143230/5g-nr#book-description">5G NR: The Next Generation Wireless Access Technology</a> from <a href=https://www.elsevier.com/books/5g-nr-the-next-generation-wireless-access-technology/dahlman/978-0-12-814323-0">Elsevier</a>
           </li>
           <li><a href="http://solutionsproj.net/software/Signal_Processing_for_5G_Algorithms_and_Implementations.pdf">SIGNAL PROCESSING FOR 5G</a> 
@@ -48,27 +61,45 @@
     <ul>
       <li>Param
         <ul>
+          <li>TBS: as a function of MCS, N. layers, NRB
+            <ul>
+              <li>MCS determines I<sub>TBS</sub>, which together with and N<sub>PRB</sub> determines TBS, see tables in 36.213
+              </li>
+            </ul>
+          </li>
           <li>BW (determining max PRD, e.g. 100PRB/20MHz), N. layers, MCS (QAM order, coding rate), NRB, rv 
           </li>
           <li>Interesting max
             <ul>
+              <li>TBS: as a function of MCS, N. layers, NRB. Max TBS can be bounded as follows
+                <ul>
+                  <li>N<sub>PRB</sub> = 100, see 36.211, which determines the max size in freq domain
+                  </li>
+                  <li>A SF contains at most 13 data symbols. Three of these 13 symbols contains CRS. Thus, the max # of data REs per TBS is 100*(12*13 - 2*3) = 15000 REs.
+                  </li>
+                  <li>Each frame uses 2*2*6 PRBs for PSS and SSS and the same number of PRBs for PBCH. Among the PRBs used fro PBCH, 12 REs are used by CRS. Thus, the data RE overhead for them is 48*12 - 12 = 564. Thus the max # of data REs per TBS is 14436
+                  </li>
+                  <li>For category 5, # of layers, bits/qamsym, coding rate can be at most 2, 6, 8/9 respectively. Thus bits/TBS for category 5 is 14436*2*6*8/9 ~ 154kb. If we further take into account the overhead incurred by SIBs,PCH inside PDSCH, the max TBS and Tput for category 5 are about 150kb and 300Mbps respectively (see UE category 5 below). 
+                  </li>
+                  <li>If we further subtract overheads such as DMRS, CSIRS, the max TBS and Tput for category 10 are are about 1.5Mb and 3Gbps respectively (see UE category 10 below). 
+                  </li>
+                </ul>
+              </li>
               <li>Max thourhput = max SCH input rate = TBS/1ms
               </li>
               <li>Max SCH input rate = [(max # of REs in a subframe) * (QAM order) * (max # of layers)]/1ms
               </li>
               <li>HARQ memory size = (# of HARQ processes) * (max circular buffer size)
-                  <ul>
-                      <li>max circular buffer size = 3*TBS + filler bits + termination bits
-                      </li>
-                  </ul>
+                <ul>
+                  <li>Max number of HARQ process = 8, assuming in the worst case, eNB can receive ACK 4 SF later after transmitting the original PDSCH TB and UE will receive the retransmission 4 SFs later. Thus, 8 parallel SAW (Stop-And-Wait) processes suffices. 
+      </li>
+                  <li>Total # of HARQ soft bits is specified by Nsoft in 36.306 for each UE category. A UE category also determines # of CCs, # TBS/TTI/CC, # of layers/TBS, and bits/TBS. For example, these parameters are 1, 2, 2, 150kb for UE category 5 and 5, 2, 4, 1.5Mb for UE category 10.
+                  </li>
+                  <li>max circular buffer size = 3*TBS + filler bits + termination bits
+                  </li>
+                </ul>
               </li>
               <li>HARQ/DDR BW = (max circular buffer size) / 1ms
-              </li>
-              <li>TBS: as a function of MCS, N. layers, NRB
-                  <ul>
-                      <li>MCS determines I<sub>TBS</sub>, which together with and N<sub>PRB</sub> determines TBS, see tables in 36.213
-                      </li>
-                  </ul>
               </li>
               <li>G = TB output size = N<sub>PRB</sub> * 12 * 14 * mod_order * n_layers * overhead_factor, possible overhead factor 0.82, 0.75, etc based on the googling on lte capacity calculation or REs used for data  
               </li>
@@ -197,6 +228,47 @@
       </li>
       <li>Param
         <ul>
+          <li>TBS: as a function of MCS, N. layers, NRB
+            <ul>
+            </ul>
+          </li>
+          <li>BW (determining max PRD, e.g. 100PRB/20MHz), N. layers, MCS (QAM order, coding rate), NRB, rv 
+          </li>
+          <li>Interesting max/min
+            <ul>
+              <li>HARQ memory size = (# of HARQ processes) * (max circular buffer size)
+                <ul>
+                  <li>Max number of HARQ process = 16, assuming in the worst case, gNB can receive ACK 8 SF later after transmitting the original PDSCH TB and UE will receive the retransmission 8 SFs later. Thus, 16 parallel SAW (Stop-And-Wait) processes suffices. 
+                  </li>
+                  <li>Total # of HARQ soft bits is specified by C*min(N, Nref), where Nref = floor(TBS<sub>LBRM</sub>/C/R<sub>LBRM</sub>). (see 38.212). For DLSCH, R<sub>LBRM</sub> = 2/3 and TBS<sub>LBRM</sub> are computed using formula in 38.214 and assumptions about nRE, nPRB, mod order, coding rate, nLayers in 38.212 (nPRB in table 38.212, nRE = 156*nPRB, coding rate = 948/1024, etc).
+                  </li>
+                </ul>
+              </li>
+              <li>HARQ/DDR BW = (max circular buffer size) / TTI
+              </li>
+              <li><a href=https://arxiv.org/pdf/1809.10443.pdf>K0, K1, K2, K3, K4, N1, N2</a> (Ref: 5G NR by Erik Dahlman, et al., NR in bullets, table 5.3-1 and 5.3-2 in sec 5.3 in 38.234):
+                <ul>
+                  <li>Determination of K1 and K2 must take into account of N1 and N2 resp. K4 and K3 at gNB are analogous to K1 and K2 at UE resp.
+                  </li>
+                  <li>K0, K2: delay from PDCCH to PDSCH and PUSCH resp at UE
+                  </li>
+                  <li>K3: delay in slot from ACK/NACK Rx in PUCCH to PDSCH retransmission at gNB. cf K2 in UE
+                  </li>
+                  <li>K1: delay in slot from PDSCH Rx to ACK/NACK Tx in PUCCH at UE
+                  </li>
+                  <li>K4: delay in slot from PUSCH Rx to ACK/NACK Tx in PDCCH at gNB. cf K1 at UE
+                  </li>
+                  <li>N1: delay in symbols from PDSCH to ACK/NACK in PUCCH:
+                    <ul>
+                      <li>depending processing capability 1 or 2, mapping type A or B (front loaded DMRS or not) and SCS
+                      </li>
+                    </ul>
+                  </li>
+                  <li>N2: delay in symbols from PDCCH to PUSCH
+                </ul>
+              </li>
+            </ul>
+          </li>
           <li>TB level param
             <ul>
               <li>TBS: as a function of N<sub>RB</sub>, num of layers, QAM order, coding rate, etc see NR in bullets
@@ -296,89 +368,37 @@
       </li>
     </ul>
   </li>
-  <li>LTE HARQ
+  <li>Turbo decoding
     <ul>
-      <li>Max number of HARQ process = 8, assuming in the worst case, eNB can receive ACK 4 SF later after transmitting the original PDSCH TB and UE will receive the retransmission 4 SFs later. Thus, 8 parallel SAW (Stop-And-Wait) processes suffices. 
+      <li><a href="https://ieeexplore.ieee.org/document/1234244">Radix-4, 2003, Bell-lab</a>,
+          <a href="https://ieeexplore.ieee.org/document/4176863">Radix-4, 2006, Parhi</a>
       </li>
-    </ul>
-  </li>
-  <li>NR HARQ
-    <ul>
-      <li>Max number of HARQ process = 16
+      <li><a href="https://ieeexplore.ieee.org/document/6325191">Radix-4, Non-Sliding Window (NSW), Next iteration  initialization (NII) 2012</a>
       </li>
-      <li><a href=https://arxiv.org/pdf/1809.10443.pdf>K0, K1, K2, K3, K4, N1, N2</a> (Ref: 5G NR by Erik Dahlman, et al., NR in bullets, table 5.3-1 and 5.3-2 in sec 5.3 in 38.234):
-        <ul>
-          <li>K0, K2: delay from PDCCH to PDSCH and PUSCH resp at UE
-          </li>
-          <li>K3: delay in slot from ACK/NACK Rx in PUCCH to PDSCH retransmission at gNB
-          </li>
-          <li>K1: delay in slot from PDSCH Rx to ACK/NACK Tx in PUCCH at UE
-          </li>
-          <li>K4: delay in slot from PUSCH Rx Rx to ACK/NACK Tx in PDCCH at gNB
-          </li>
-          <li>N1: delay in symbols from PDSCH to ACK/NACK in PUCCH:
-            <ul>
-              <li>depneding processing capability 1 or 2, mapping type A or B (front loaded DMRS or not) and SCS
-              </li>
-            </ul>
-          </li>
-          <li>N2: delay in symbols from PDCCH to PUSCH
-        </ul>
+      <li><a href="https://eprints.soton.ac.uk/427712/1/Survey_of_Turbo_LDPC_and_Polar_Decoder_ASIC_Implementations.pdf">Survey of Turbo, LDPC and Polar Decoder ASIC
+Implementations</a>
       </li>
-    </ul>
-  </li>
-  <li>Polar encoding
-    <ul>
-      <li><a href="https://arxiv.org/pdf/1507.05138.pdf">MIMO detection</a>
-        <ul>
-          <li>ZF
-          </li>
-          <li>MMSE
-          </li>
-          <li>Sphere-decoding: Tree Search Detection (TSD)
-            <ul>
-              <li>QR Decomponsition pre-processing: GS, Modified GS, Householder
-              </li>
-              <li>Traditional <a href="https://www.researchgate.net/publication/3236239_Algorithm_and_implementation_of_the_K-best_Sphere_decoding_for_MIMO_detection">K-best search</a> (problems to be solved at each layer): Additive distance metric, Manhattan (L1) norm, addressing missing counter-hypothesis
-              </li>
-              <li>Reduced complexity methods<a href="https://ieeexplore.ieee.org/abstract/document/5661890">I</a>, <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=6200359">II</a> (again focus on problems to be solved at each layer)
-                <ul>
-                  <li>Slicing to obtain inherited best candidate
-                  </li>
-                  <li>Best candidate's sibling, <a href="https://link.springer.com/article/10.1007/BF01581144">1D Schnorr-Euchner (SE) enumeration</a> (see picture <a href="https://www.researchgate.net/publication/281472406_Algorithms_and_architectures_for_the_detection_of_MIMO_signals?enrichId=rgreq-ae8f00c368976f9adf5df194d66991ef-XXX&enrichSource=Y292ZXJQYWdlOzI4MTQ3MjQwNjtBUzoyOTkyNTg4ODU0OTI3NDJAMTQ0ODM2MDI4NjYxMA%3D%3D&el=1_x_3&_esc=publicationCoverPdf">here</a>)
-                  </li>
-                </ul>
-              </li>
-              <li>
-              </li>
-            </ul>
-          </li>
-        </ul>
+      <li><a href="https://www.springer.com/gp/book/9783319105680">Chapter 2 in Advanced Hardware Design for Error Correcting Codes</a>
       </li>
-    </ul>
-  </li>
-  <li>Polar decoding
-  </li>
-  <li>LDPC encoding
-    <ul>
-      <li>Parallel concatenated Turbo code
-      </li>
-      <li>Turbo block code
-      </li>
-      <li>Serial concatenated Turbo code
-      </li>
-      <li>RA (Repeat-Accumulator)
-      </li>
-        <ul>
-          <li>Regular
-          </li>
-          <li>Irregular
-          </li>
-        </ul>
+      <li><a href="https://www.researchgate.net/publication/330629346_25_Years_of_Turbo_Codes_From_Mbs_to_beyond_100_Gbs">25 Years of Turbo Codes: From Mb/s to beyond 100 Gb/s</a>, see <a href=https://www.youtube.com/watch?v=g_9ul48cWSA>youtube</a> also
       </li>
     </ul>
   </li>
   <li>LDPC decoding
+    <ul>
+      <li>Layered decoding
+      </li>
+      <li>Message passing scheduling
+      </li>
+      <li>Delta value
+      </li>
+      <li>Column based
+      </li>
+      <li>Overview papers
+      </li>
+    </ul>
+  </li>
+  <li>Polar decoding
   </li>
 </ul>
     </body>
