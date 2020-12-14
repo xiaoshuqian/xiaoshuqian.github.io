@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            NR-LTE ASIC
+        </title>
+    </head>
+    <body>
+        <h1>
+            NR-LTE ASIC
+        </h1>
+        <h2>
+            Quarter offered
+        </h2>
+        <p>
+        </p>
+        <h2>
+            Course description
+        </h2>
+        <h4>
+            Instructor
+        </h4>
+        <p>
+        Dr. Xiaoshu Qian
+        </p>
+        <h4>
+            References
+        </h4>
+        <ul>
+          <li>Tutorials from mathworks.com
+            <ul>
+              <li><a href="https://www.mathworks.com/videos/acquiring-system-information-from-an-lte-signal-99565.html">Acquiring System Info in LTE</a>
+              </li>
+              <li> from <a href="https://www.mathworks.com/videos/acquiring-system-information-from-an-lte-signal-99565.html">LTE grid</a>
+              </li>
+            </ul>
+          <li>LTE related Books
+            <ul>
+              <li><a href="https://www.sciencedirect.com/book/9780128045756/4g-lte-advanced-pro-and-the-road-to-5g">4G, LTE-Advanced Pro and The Road to 5G</a> from Elsevier.
+              </li>
+              <li><a href="http://www.aldraji.com/download/The_UMTS_Long_Term_EvolutionB.pdf">LTE : The UMTS Long Term Evolution : From Theory to Practice</a> 2nd ed.
+              </li>
+            </ul>
+          <li>General COM related Books
+            <ul>
+              <li>Digital Communication 3rd Edition by John R. Barry, Edward A. Lee, David G. Messerschmitt
+              </li>
+              <li>David Forney
+                <ul>
+                  <li><a href="https://web.stanford.edu/class/ee392d/">Stanford course</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <h4>
+            Description
+        </h4>
+        <p>
+        </p>
+        <h4>
+            Detailed outline
+        </h4>
+<ul>
+  <li>Digital front end, Tx and Rx
+    <ul>
+      <li>Single component carrier case: freq down conversion, down-sampling
+        <ul>
+          <li>Output sampling rate = nFFT * SCS = normalized BW
+          </li>
+          <li>IQ and DC estimation and compensation
+          </li>
+          <li>AGC
+          </li>
+          <li>Digital pre-distortion
+          </li>
+        </ul>
+      </li>
+      <li>Two and more CC cases
+      </li>
+    </ul>
+  </li>
+  <li>FFT
+    <ul>
+      <li>FFT input rate = nFFT * SCS * 14/15, where 14/15 discounts the CP portion of the output from DFE
+      </li>
+      <li><a href=https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-973-communication-system-design-spring-2006/lecture-notes/lecture_10.pdf>FFT architectures</a>
+        <ul>
+          <li>Pipelined arch
+            <ul>
+              <li><a href=https://ieeexplore.ieee.org/document/1676458>SDF</a> = Single-path delay feedback
+                  <ul>
+                      <li>Radix4 SDP (Despain74)
+                      </li>
+                      <li>Radix22 SDP (Despain74)
+                      </li>
+                  </ul>
+              </li>
+              <li>Others: MDF (Multi-path delay feedback), 
+              </li>
+            </ul>
+          </li>
+          <li>Single/Dual Mem arch
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Channel estimation
+  </li>
+  <li>Parameter Est
+    <ul>
+      <li>Noise
+      </li>
+      <li>TO
+      </li>
+      <li>Delay spread
+      </li>
+      <li>FO
+      </li>
+      <li>Doppler spread
+      </li>
+    </ul>
+  </li>
+  <li>Demapper
+    <ul>
+      <li>IRC: Interference Rejection Combining
+      </li>
+      <li>MRC, EGC
+      </li>
+      <li>Sphere detector (ref: chap 5 of Advanced HW Design for ECC)
+        <ul>
+          <li>ML detector solves MIMO detection problem optimally for uncoded system
+          </li>
+          <li>For coded system
+            <ul>
+              <li>complexity of joint detector and decoder grows exponentially with the codeword length, rendering it impractical
+              </li>
+              <li>Iteravie receiver with a SfISfO (Soft In Soft Out) detector and SISO (Soft In Soft Out) decoder is more practical
+              </li>
+              <li>MAP detector, a SfISfO detector, provides the optimal APP or LLR for the decoder. LSD (List Sphere Detector) provides a candidate list for MAP detector.
+              </li>
+              <li>Jacobian Logarithm: jacln(a,b) = ln(e<sup>a</sup> + e<sup>b</sup>) = max(a, b) + ln(1 + exp(-|a - b|))
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+    </body>
+</html>
